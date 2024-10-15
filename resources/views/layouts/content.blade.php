@@ -1,19 +1,19 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard')
+@section('title', 'Coba')
 
 @section('content')
 <div class="app-content-header"> <!--begin::Container-->
     <div class="container-fluid"> <!--begin::Row-->
         <div class="row">
             <div class="col-sm-6">
-                <h3 class="mb-0">Dashboard</h3>
+                <h3 class="mb-0">Small Box</h3>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">
-                        Dashboard
+                        Small Box
                     </li>
                 </ol>
             </div>
@@ -22,7 +22,7 @@
 </div> <!--end::App Content Header--> <!--begin::App Content-->
 <div class="app-content"> <!--begin::Container-->
     <div class="container-fluid"> <!-- Small Box (Stat card) -->
-        <h5 class="mb-2">Dashboard</h5> <!-- Small boxes (Stat box) -->
+        <h5 class="mb-2">Small Box</h5> <!-- Small boxes (Stat box) -->
         <div class="row">
             <div class="col-lg-3 col-6"> <!-- small box -->
                 <div class="small-box text-bg-primary">
