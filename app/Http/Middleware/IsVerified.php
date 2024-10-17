@@ -18,6 +18,7 @@ class IsVerified
     {
         if (Auth::check() && !Auth::user()->isVerified) {
             Auth::logout();
+            toast('Mohon maaf akun anda belum terverifikasi.','warning')->hideCloseButton()->autoClose(3000);
             return redirect('/login');
         }
 

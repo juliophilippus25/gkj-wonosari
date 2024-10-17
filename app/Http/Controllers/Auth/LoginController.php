@@ -27,6 +27,12 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/dashboard';
 
+    public function authenticated($user)
+    {
+        toast('Anda berhasil masuk ke sistem.','success')->hideCloseButton()->autoClose(5000);
+        return redirect()->intended(route('dashboard'));
+    }
+
     /**
      * Create a new controller instance.
      *

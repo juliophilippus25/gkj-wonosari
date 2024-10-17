@@ -17,6 +17,17 @@
                         </p>
                     </a>
                 </li>
+                @if (Auth::user()->role == 'admin')
+                    <li class="nav-item">
+                        <a href="{{ route('users.index') }}"
+                            class="nav-link {{ request()->routeIs('users.index') ? 'active' : '' }}"> <i
+                                class="nav-icon bi bi-people"></i>
+                            <p>
+                                Pengguna
+                            </p>
+                        </a>
+                    </li>
+                @endif
             </ul> <!--end::Sidebar Menu-->
         </nav>
     </div> <!--end::Sidebar Wrapper-->
