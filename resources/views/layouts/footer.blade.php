@@ -1,5 +1,5 @@
 <footer class="app-footer"> <!--begin::To the end-->
-    <div class="float-end d-none d-sm-inline">{{env('APP_NAME')}}</div> <!--end::To the end--> <!--begin::Copyright--> <strong>
+    <div class="float-end d-none d-sm-inline">GKJ Wonosari</div> <!--end::To the end--> <!--begin::Copyright--> <strong>
         Copyright &copy; 2014-2024&nbsp;
         <a href="https://adminlte.io" class="text-decoration-none">AdminLTE.io</a>.
     </strong>

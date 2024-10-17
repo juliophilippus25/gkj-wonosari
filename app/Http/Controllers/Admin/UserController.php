@@ -10,8 +10,9 @@ class UserController extends Controller
 {
     public function index()
     {
+        $dataType = 'pengguna';
         $users = User::where('role', '!=', 'admin')->orderBy('created_at','asc')->get();
-        return view('admin.users.index', compact('users'));
+        return view('admin.users.index', compact('dataType','users'));
     }
 
     public function verify($id)
@@ -24,7 +25,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         if ($user->isVerified) {
-            toast('User sudah terverifikasi.','error')->timerProgressBar()->autoClose(5000);
+            toast('Pengguna sudah terverifikasi.','error')->timerProgressBar()->autoClose(5000);
             return redirect()->back();
         }
 

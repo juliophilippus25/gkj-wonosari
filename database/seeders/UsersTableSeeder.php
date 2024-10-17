@@ -16,14 +16,25 @@ class UsersTableSeeder extends Seeder
             [
               'id'  			=> '1',
               'name'  			=> 'Admin',
-              'email'		    => 'admin@admin.com',
+              'email'		    => 'admin@gmail.com',
               'password'		=> bcrypt('password'),
               'role'            => 'admin',
               'isVerified'      => true,
               'avatar'          => null,
               'created_at'      => \Carbon\Carbon::now(),
               'updated_at'      => \Carbon\Carbon::now()
-            ]
+            ],
+            [
+                'id'  			=> '2',
+                'name'  			=> 'Pdt. Gilbert',
+                'email'		    => 'gilbert@gmail.com',
+                'password'		=> bcrypt('password'),
+                'role'            => 'pendeta',
+                'isVerified'      => true,
+                'avatar'          => null,
+                'created_at'      => \Carbon\Carbon::now(),
+                'updated_at'      => \Carbon\Carbon::now()
+              ]
         ]);
     }
 }

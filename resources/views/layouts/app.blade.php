@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>{{ env('APP_NAME') }} | @yield('title')</title><!--begin::Primary Meta Tags-->
+    <title>GKJ Wonosari | @yield('title')</title><!--begin::Primary Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="{{ env('APP_NAME') }} | @yield('title') ">
     <meta name="author" content="ColorlibHQ">
@@ -91,24 +91,7 @@
             }
         });
     </script> <!--end::OverlayScrollbars Configure--> <!--end::Script-->
-    <script>
-        $(document).ready(function() {
-            $('#table').DataTable({
-                searching: true, // Aktifkan pencarian
-                paging: true, // Aktifkan pagination
-                pageLength: 10, // Jumlah data per halaman
-                language: {
-                    search: "Cari", // Label pencarian
-                    searchPlaceholder: "Cari di dalam tabel", // Placeholder pencarian
-                    lengthMenu: "Tampilkan _MENU_ data per halaman", // Menu jumlah data per halaman
-                    info: "Menampilkan _START_ hingga _END_ dari _TOTAL_ data", // Info pagination
-                    infoEmpty: "Tidak ada data yang tersedia", // Pesan saat tidak ada data
-                    infoFiltered: "(difilter dari _MAX_ total data)", // Pesan saat data difilter
-                    zeroRecords: "Tidak ada data yang ditemukan." // Pesan saat tidak ada hasil
-                }
-            });
-        });
-    </script>
+
     @yield('script')
 </body><!--end::Body-->
 

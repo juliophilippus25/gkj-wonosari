@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Users')
+@section('title', 'Pengguna')
 
 @section('content')
     <div class="app-content-header"> <!--begin::Container-->
@@ -99,4 +99,26 @@
                 </div> <!-- /.row -->
             </div> <!--end::Container-->
         </div> <!--end::App Content-->
-    @endsection
+    </div> <!--end::App Content-->
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable({
+                searching: true, // Aktifkan pencarian
+                paging: true, // Aktifkan pagination
+                pageLength: 10, // Jumlah data per halaman
+                language: {
+                    search: "Cari", // Label pencarian
+                    searchPlaceholder: "Cari {{ $dataType }}", // Placeholder pencarian
+                    lengthMenu: "Tampilkan _MENU_ data per halaman", // Menu jumlah data per halaman
+                    info: "Menampilkan _START_ hingga _END_ dari _TOTAL_ {{ $dataType }}", // Info pagination
+                    infoEmpty: "Tidak ada {{ $dataType }} yang tersedia", // Pesan saat tidak ada data
+                    infoFiltered: "(difilter dari _MAX_ total data)", // Pesan saat data difilter
+                    zeroRecords: "Tidak ada {{ $dataType }} yang ditemukan.", // Pesan saat tidak ada hasil
+                    emptyTable: "Tidak ada {{ $dataType }} yang tersedia di tabel."
+                }
+            });
+        });
+    </script>
+@endsection
+@endsection
