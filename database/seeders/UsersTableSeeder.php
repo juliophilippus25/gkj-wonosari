@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -14,27 +14,16 @@ class UsersTableSeeder extends Seeder
     {
         \App\Models\User::insert([
             [
-              'id'  			=> '1',
+              'id'  			=> strtoupper(md5("!@#!@#" . Carbon::now()->format('YmdH:i:s'))),
               'name'  			=> 'Admin',
               'email'		    => 'admin@gmail.com',
               'password'		=> bcrypt('password'),
               'role'            => 'admin',
-              'isVerified'      => true,
+              'is_verified'      => true,
               'avatar'          => null,
               'created_at'      => \Carbon\Carbon::now(),
               'updated_at'      => \Carbon\Carbon::now()
-            ],
-            [
-                'id'  			=> '2',
-                'name'  			=> 'Pdt. Gilbert',
-                'email'		    => 'gilbert@gmail.com',
-                'password'		=> bcrypt('password'),
-                'role'            => 'pendeta',
-                'isVerified'      => true,
-                'avatar'          => null,
-                'created_at'      => \Carbon\Carbon::now(),
-                'updated_at'      => \Carbon\Carbon::now()
-              ]
+            ]
         ]);
     }
 }

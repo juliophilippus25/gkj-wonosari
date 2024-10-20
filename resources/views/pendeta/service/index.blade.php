@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Jadwal')
+@section('title', 'Pelayanan')
 
 @section('content')
     <div class="app-content-header"> <!--begin::Container-->
@@ -10,7 +10,7 @@
                     <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            Jadwal
+                            Pelayanan
                         </li>
                     </ol>
                 </div>
@@ -22,36 +22,30 @@
             <div class="row">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Kelola Jadwal</h3>
+                        <h3 class="card-title">Kelola Pelayanan</h3>
                     </div>
 
                     <div class="card-body">
-                        <a href="{{ route('schedules.create') }}" class="btn btn-primary"> <i class="bi bi-plus"></i>
-                            Jadwal</a>
                         <table id="table" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
+                                    <th>Layanan</th>
                                     <th>Waktu Pelaksanaan</th>
-                                    <th>Pelayanan</th>
-                                    <th>Pendeta</th>
-                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($schedules as $schedule)
                                     <tr>
+                                        <td>{{ $schedule->services->name }}</td>
                                         <td>{{ \Carbon\Carbon::parse($schedule->date)->isoFormat('dddd, D MMMM YYYY') }},
                                             {{ \Carbon\Carbon::parse($schedule->time)->format('H:i') }}</td>
-                                        <td>{{ $schedule->services->name }}</td>
-                                        <td>{{ $schedule->users->name }}</td>
                                         <td>
-                                            <span
-                                                class="{{ $schedule->isExpired ? 'badge bg-danger' : 'badge bg-success' }}">
-                                                {{ $schedule->isExpired ? 'Kedaluwarsa' : 'Aktif' }}
-                                            </span>
+                                            <a href="{{ route('service.show', $schedule->id) }}"
+                                                class="btn btn-primary btn-sm" title="Detail">
+                                                <i class="bi bi-eye"></i>
+                                            </a>
                                         </td>
-                                        <td>Aksi</td>
                                     </tr>
                                 @endforeach
                             </tbody>

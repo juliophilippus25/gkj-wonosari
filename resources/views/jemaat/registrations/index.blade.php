@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Jadwal')
+@section('title', 'Pendaftaran')
 
 @section('content')
     <div class="app-content-header"> <!--begin::Container-->
@@ -10,7 +10,7 @@
                     <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            Jadwal
+                            Pendaftaran
                         </li>
                     </ol>
                 </div>
@@ -22,36 +22,56 @@
             <div class="row">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Kelola Jadwal</h3>
+                        <h3 class="card-title">Pendaftaran</h3>
                     </div>
 
                     <div class="card-body">
-                        <a href="{{ route('schedules.create') }}" class="btn btn-primary"> <i class="bi bi-plus"></i>
-                            Jadwal</a>
+                        <a href="{{ route('registrations.create') }}" class="btn btn-primary"> <i class="bi bi-plus"></i>
+                            Daftar</a>
                         <table id="table" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
+                                    <th>Nama</th>
                                     <th>Waktu Pelaksanaan</th>
-                                    <th>Pelayanan</th>
-                                    <th>Pendeta</th>
+                                    <th>Layanan</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($schedules as $schedule)
+                                @foreach ($registrations as $registration)
                                     <tr>
-                                        <td>{{ \Carbon\Carbon::parse($schedule->date)->isoFormat('dddd, D MMMM YYYY') }},
-                                            {{ \Carbon\Carbon::parse($schedule->time)->format('H:i') }}</td>
-                                        <td>{{ $schedule->services->name }}</td>
-                                        <td>{{ $schedule->users->name }}</td>
+                                        <td>{{ $registration->name }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($registration->schedule->date)->isoFormat('dddd, D MMMM YYYY') }},
+                                            {{ \Carbon\Carbon::parse($registration->schedule->time)->format('H:i') }}</td>
                                         <td>
-                                            <span
-                                                class="{{ $schedule->isExpired ? 'badge bg-danger' : 'badge bg-success' }}">
-                                                {{ $schedule->isExpired ? 'Kedaluwarsa' : 'Aktif' }}
-                                            </span>
+                                            {{ $registration->schedule->services->name }}
+                                            oleh
+                                            {{ $registration->schedule->users->name }}
                                         </td>
-                                        <td>Aksi</td>
+                                        <td>
+                                            @if ($registration->status == 'pending')
+                                                <span class="badge bg-warning">Diproses</span>
+                                            @elseif ($registration->status == 'approved')
+                                                <span class="badge bg-success">Disetujui</span>
+                                            @elseif ($registration->status == 'rejected')
+                                                <span class="badge bg-danger">Ditolak</span>
+                                            @else
+                                                <span class="badge bg-secondary">Status Tidak Diketahui</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            Aksi
+                                            {{-- <a href="{{ route('registrations.edit', $registration->id) }}"
+                                            class="btn btn-warning">Edit</a>
+                                        <form action="{{ route('registrations.destroy', $registration->id) }}"
+                                            method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger"
+                                                onclick="return confirm('Yakin ingin menghapus?')">Hapus</button>
+                                        </form> --}}
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

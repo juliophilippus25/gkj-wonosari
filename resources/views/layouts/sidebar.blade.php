@@ -18,14 +18,25 @@
                     </a>
                 </li>
                 @if (Auth::user()->role == 'admin')
-                    <li class="nav-item">
-                        <a href="{{ route('users.index') }}"
-                            class="nav-link {{ request()->routeIs('users.index') ? 'active' : '' }}"> <i
-                                class="nav-icon bi bi-people"></i>
+                    <li class="nav-item {{ request()->is('jemaat*', 'pendeta*') ? 'menu-open' : '' }}"> <a
+                            href="#" class="nav-link"> <i class="nav-icon bi bi-people"></i>
                             <p>
                                 Pengguna
+                                <i class="nav-arrow bi bi-chevron-right"></i>
                             </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item"> <a href="{{ route('jemaat.index') }}"
+                                    class="nav-link {{ request()->routeIs('jemaat.index') ? 'active' : '' }}"> <i
+                                        class="nav-icon bi bi-circle"></i>
+                                    <p>Jemaat</p>
+                                </a> </li>
+                            <li class="nav-item"> <a href="{{ route('pendeta.index') }}"
+                                    class="nav-link {{ request()->routeIs('pendeta*') ? 'active' : '' }}"> <i
+                                        class="nav-icon bi bi-circle"></i>
+                                    <p>Pendeta</p>
+                                </a> </li>
+                        </ul>
                     </li>
 
                     <li class="nav-item">
@@ -39,11 +50,25 @@
                     </li>
                 @endif
 
-                @if (Auth::user()->role == 'user')
+                @if (Auth::user()->role == 'jemaat')
                     <li class="nav-item">
-                        <a href="#" class="nav-link"> <i class="nav-icon bi bi-person-lines-fill"></i>
+                        <a href="{{ route('registrations.index') }}"
+                            class="nav-link {{ request()->routeIs('registrations.*') ? 'active' : '' }}"> <i
+                                class="nav-icon bi bi-person-lines-fill"></i>
                             <p>
                                 Pendaftaran
+                            </p>
+                        </a>
+                    </li>
+                @endif
+
+                @if (Auth::user()->role == 'pendeta')
+                    <li class="nav-item">
+                        <a href="{{ route('service.index') }}"
+                            class="nav-link {{ request()->routeIs('service.*') ? 'active' : '' }}"> <i
+                                class="nav-icon bi bi-person-lines-fill"></i>
+                            <p>
+                                Pelayanan
                             </p>
                         </a>
                     </li>

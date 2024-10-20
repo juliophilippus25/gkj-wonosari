@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>{{ env('APP_NAME') }} | Register</title><!--begin::Primary Meta Tags-->
+    <title>GKJ Wonosari | Register</title><!--begin::Primary Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="AdminLTE 4 | Register Page">
     <meta name="author" content="ColorlibHQ">
@@ -26,7 +26,7 @@
 
 <body class="register-page bg-body-secondary">
     <div class="register-box">
-        <div class="register-logo"> <a href="../index2.html"><b>{{ env('APP_NAME') }}</b></a> </div>
+        <div class="register-logo"> <a href="../index2.html"><b>GKJ Wonosari</b></a> </div>
         <!-- /.register-logo -->
         <div class="card">
             <div class="card-body register-card-body">
@@ -85,6 +85,9 @@
             </div> <!-- /.register-card-body -->
         </div>
     </div> <!-- /.register-box --> <!--begin::Third Party Plugin(OverlayScrollbars)-->
+    @include('sweetalert::alert')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js"
         integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script>
     <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->

@@ -6,13 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class JemaatController extends Controller
 {
     public function index()
     {
-        $dataType = 'pengguna';
-        $users = User::where('role', '!=', 'admin')->orderBy('created_at','asc')->get();
-        return view('admin.users.index', compact('dataType','users'));
+        $dataType = 'jemaat';
+        $jemaats = User::where('role', 'jemaat')->orderBy('created_at','asc')->get();
+        return view('admin.users.jemaat.index', compact('dataType','jemaats'));
     }
 
     public function verify($id)
@@ -24,15 +24,15 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
 
-        if ($user->isVerified) {
-            toast('Pengguna sudah terverifikasi.','error')->timerProgressBar()->autoClose(5000);
+        if ($user->is_verified) {
+            toast('Jemaat sudah terverifikasi.','error')->timerProgressBar()->autoClose(5000);
             return redirect()->back();
         }
 
-        $user->isVerified = 1;
+        $user->is_verified = 1;
         $user->save();
 
-        toast('Pengguna berhasil diverifikasi.','success')->timerProgressBar()->autoClose(5000);
+        toast('Jemaat berhasil diverifikasi.','success')->timerProgressBar()->autoClose(5000);
         return redirect()->back();
     }
 }

@@ -72,16 +72,21 @@
                                         class="form-select @error('pendeta_id') is-invalid @enderror @if (old('pendeta_id') && !$errors->has('pendeta_id')) is-valid @endif"
                                         name="pendeta_id" id="pendeta_id">
                                         <option hidden disabled selected value>Pilih pendeta</option>
-                                        @foreach ($pendetas as $pendeta)
+                                        @forelse ($pendetas as $pendeta)
                                             <option value="{{ $pendeta->id }}"
                                                 {{ old('pendeta_id') == $pendeta->id ? 'selected' : '' }}>
-                                                {{ $pendeta->name }}</option>
-                                        @endforeach
+                                                {{ $pendeta->name }}
+                                            </option>
+                                        @empty
+                                            <option value="" disabled>Tidak ada pendeta yang tersedia</option>
+                                        @endforelse
                                     </select>
+
                                     @error('pendeta_id')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
+
                             </div>
 
                             <div class="card-footer">

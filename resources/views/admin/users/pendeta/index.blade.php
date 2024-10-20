@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Jadwal')
+@section('title', 'Pendeta')
 
 @section('content')
     <div class="app-content-header"> <!--begin::Container-->
@@ -10,7 +10,7 @@
                     <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            Jadwal
+                            Pendeta
                         </li>
                     </ol>
                 </div>
@@ -22,46 +22,35 @@
             <div class="row">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Kelola Jadwal</h3>
+                        <h3 class="card-title">Kelola Pendeta</h3>
                     </div>
 
                     <div class="card-body">
-                        <a href="{{ route('schedules.create') }}" class="btn btn-primary"> <i class="bi bi-plus"></i>
-                            Jadwal</a>
+                        <a href="{{ route('pendeta.create') }}" class="btn btn-primary"> <i class="bi bi-plus"></i>
+                            Pendeta</a>
                         <table id="table" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Waktu Pelaksanaan</th>
-                                    <th>Pelayanan</th>
-                                    <th>Pendeta</th>
-                                    <th>Status</th>
+                                    <th>Nama</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($schedules as $schedule)
+                                @foreach ($pendetas as $pendeta)
                                     <tr>
-                                        <td>{{ \Carbon\Carbon::parse($schedule->date)->isoFormat('dddd, D MMMM YYYY') }},
-                                            {{ \Carbon\Carbon::parse($schedule->time)->format('H:i') }}</td>
-                                        <td>{{ $schedule->services->name }}</td>
-                                        <td>{{ $schedule->users->name }}</td>
+                                        <td>{{ $pendeta->name }}</td>
                                         <td>
-                                            <span
-                                                class="{{ $schedule->isExpired ? 'badge bg-danger' : 'badge bg-success' }}">
-                                                {{ $schedule->isExpired ? 'Kedaluwarsa' : 'Aktif' }}
-                                            </span>
+                                            Aksi
                                         </td>
-                                        <td>Aksi</td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div> <!-- /.row -->
-        </div> <!--end::Container-->
+                </div> <!-- /.row -->
+            </div> <!--end::Container-->
+        </div> <!--end::App Content-->
     </div> <!--end::App Content-->
-
 @section('script')
     <script>
         $(document).ready(function() {

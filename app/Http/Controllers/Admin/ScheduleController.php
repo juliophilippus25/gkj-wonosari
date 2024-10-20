@@ -56,7 +56,10 @@ class ScheduleController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $schedule = Schedule::create([
+        $id = strtoupper(md5("!@#!@#" . Carbon::now()->format('YmdH:i:s')));
+
+        Schedule::create([
+            'id' => $id,
             'date' => $request->date,
             'time' => $request->time,
             'pendeta_id' => $request->pendeta_id,
@@ -64,6 +67,6 @@ class ScheduleController extends Controller
         ]);
 
         toast('Jadwal berhasil ditambahkan.','success')->timerProgressBar()->autoClose(5000);
-        return redirect()->route('admin.schedules.index');
+        return redirect()->route('schedules.index');
     }
 }

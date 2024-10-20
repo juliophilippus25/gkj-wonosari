@@ -22,12 +22,11 @@
         integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous">
     <!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
     <link rel="stylesheet" href="{{ asset('adminLTE/css/adminlte.css') }}"><!--end::Required Plugin(AdminLTE)-->
-
+    <!--end::Required Plugin(AdminLTE)-->
     <!-- CSS DataTables Bootstrap -->
-    <!-- CSS DataTables Bootstrap -->
-    {{-- <link rel="stylesheet" href="{{ asset('datatables.net/datatables.net-bs5//css/dataTables.bootstrap5.min.css') }}"> --}}
     <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.1.8/datatables.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}"">
 
 </head> <!--end::Head--> <!--begin::Body-->
 
@@ -50,6 +49,9 @@
     @include('sweetalert::alert')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+    <script src="{{ asset('select2/js/select2.min.js') }}"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js"
         integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script>
     <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
@@ -62,9 +64,9 @@
     <!-- jQuery -->
     {{-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script> --}}
     <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.1.8/datatables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <!-- JS DataTables -->
-    {{-- <script src="{{ asset('datatables.net/datatables.net-bs5/js/jquery.dataTables.min.js') }}"></script> --}}
     <script src="{{ asset('datatables.net/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
 
     <script src="{{ asset('adminLTE/js/adminlte.js') }}"></script> <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
