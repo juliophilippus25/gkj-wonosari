@@ -61,16 +61,10 @@
                                             @endif
                                         </td>
                                         <td>
-                                            Aksi
-                                            {{-- <a href="{{ route('registrations.edit', $registration->id) }}"
-                                            class="btn btn-warning">Edit</a>
-                                        <form action="{{ route('registrations.destroy', $registration->id) }}"
-                                            method="POST" style="display:inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger"
-                                                onclick="return confirm('Yakin ingin menghapus?')">Hapus</button>
-                                        </form> --}}
+                                            @if ($registration->status == 'approved' && $registration->schedule->services->name == 'Katekisasi')
+                                                <a target="_blank" href="#" class="btn btn-success btn-sm"><i
+                                                        class="bi bi-download"></i></a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
