@@ -8,11 +8,18 @@
 
         <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
             <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <h2>Website Pelayanan</h2>
-                    <p>Baptis dan Sidhi {{ config('app.name') }}</p>
-                    <a href="{{ route('login') }}" class="btn-get-started">Login</a>
-                </div>
+                @auth
+                    <div class="col-lg-8">
+                        <p>Selamat datang,</p>
+                        <h2>{{ auth()->user()->name }}</h2>
+                    </div>
+                @else
+                    <div class="col-lg-8">
+                        <h2>Website Pelayanan</h2>
+                        <p>Baptis dan Sidhi {{ config('app.name') }}</p>
+                        <a href="{{ route('login') }}" class="btn-get-started">Login</a>
+                    </div>
+                @endauth
             </div>
         </div>
 

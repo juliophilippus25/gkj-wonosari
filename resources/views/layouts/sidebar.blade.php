@@ -52,6 +52,16 @@
 
                 @if (Auth::user()->role == 'jemaat')
                     <li class="nav-item">
+                        <a href="{{ route('home') }}"
+                            class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"> <i
+                                class="nav-icon bi bi-house"></i>
+                            <p>
+                                Home
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a href="{{ route('registrations.index') }}"
                             class="nav-link {{ request()->routeIs('registrations.*') ? 'active' : '' }}"> <i
                                 class="nav-icon bi bi-person-lines-fill"></i>

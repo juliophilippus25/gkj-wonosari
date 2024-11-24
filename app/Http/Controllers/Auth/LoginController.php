@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -29,8 +30,15 @@ class LoginController extends Controller
 
     public function authenticated($user)
     {
+        $user = Auth::user();
         toast('Anda berhasil masuk ke sistem.','success')->hideCloseButton()->autoClose(5000);
-        return redirect()->intended(route('dashboard'));
+        if($user->role == 'admin') {
+            return redirect('/dashboard');
+        } elseif($user->role == 'pendeta') {
+            return redirect('/dashboard');
+        } elseif($user->role == 'jemaat') {
+            return redirect('/');
+        }
     }
 
     /**
