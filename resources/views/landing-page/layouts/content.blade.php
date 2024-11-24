@@ -19,7 +19,7 @@
     </section>
 
     <!-- Jadwal Pelayanan -->
-    <section id="what-we-do" class="what-we-do section">
+    <section id="jadwal-pelayanan" class="what-we-do section">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
@@ -71,7 +71,7 @@
     </section>
 
     <!-- Pengumuman -->
-    <section id="services" class="services section light-background">
+    <section id="pengumuman" class="services section light-background">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
@@ -171,7 +171,7 @@
     </section>
 
     <!-- Kontak -->
-    <section id="contact" class="contact section">
+    <section id="kontak" class="contact section">
 
         <div class="container section-title" data-aos="fade-up">
             <h2>Kontak</h2>

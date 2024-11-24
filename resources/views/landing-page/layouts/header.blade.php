@@ -9,9 +9,9 @@
 
         <nav id="navmenu" class="navmenu">
             <ul>
-                <li><a href="/" class="{{ request()->routeIs('/') ? 'active' : '' }}">Home</a></li>
+                <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
                 <li><a href="#jadwal-pelayanan">Jadwal Pelayanan</a></li>
-                <li><a href="#services">Pengumuman</a></li>
+                <li><a href="#pengumuman">Pengumuman</a></li>
                 <li class="dropdown"><a href="#"><span>Layanan</span> <i
                             class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
@@ -20,9 +20,11 @@
                         <li><a href="#">Katekisasi</a></li>
                     </ul>
                 </li>
-                <li><a href="#contact">Kontak</a></li>
+                <li><a href="#kontak">Kontak</a></li>
                 <li><a href="{{ route('register') }}"
                         class="{{ request()->routeIs('register') ? 'active' : '' }}">Daftar</a></li>
+                <li><a href="{{ route('login') }}" class="{{ request()->routeIs('login') ? 'active' : '' }}">Login</a>
+                </li>
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
