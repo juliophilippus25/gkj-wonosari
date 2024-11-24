@@ -4,11 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/content', function () {
-    return view('layouts.content');
+    return view('landing-page.welcome');
 });
 
 Auth::routes();
