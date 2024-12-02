@@ -1,10 +1,12 @@
 @extends('landing-page.layouts.app')
 
+@section('title', 'Home')
+
 @section('content')
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
 
-        <img src="{{ asset('Lumia/assets/img/hero-bg.jpg') }}" alt="" data-aos="fade-in">
+        <img src="{{ asset('imgs/gedung.jpg') }}" alt="GKJ Wonosari" data-aos="fade-in">
 
         <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
             <div class="row justify-content-center">
@@ -16,7 +18,7 @@
                 @else
                     <div class="col-lg-8">
                         <h2>Website Pelayanan</h2>
-                        <p>Baptis dan Sidhi {{ config('app.name') }}</p>
+                        <p>Baptis, Sidhi/Baptis Dewasa, dan Katekisasi {{ config('app.name') }}</p>
                         <a href="{{ route('login') }}" class="btn-get-started">Login</a>
                     </div>
                 @endauth

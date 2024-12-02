@@ -31,12 +31,14 @@ class LoginController extends Controller
     public function authenticated($user)
     {
         $user = Auth::user();
-        toast('Anda berhasil masuk ke sistem.','success')->hideCloseButton()->autoClose(5000);
         if($user->role == 'admin') {
+            toast('Anda berhasil masuk ke sistem.','success')->hideCloseButton()->autoClose(5000);
             return redirect('/dashboard');
         } elseif($user->role == 'pendeta') {
+            toast('Anda berhasil masuk ke sistem.','success')->hideCloseButton()->autoClose(5000);
             return redirect('/dashboard');
         } elseif($user->role == 'jemaat') {
+            toast('Anda berhasil masuk ke sistem.','success')->hideCloseButton()->autoClose(5000);
             return redirect('/');
         }
     }

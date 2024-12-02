@@ -7,6 +7,11 @@ Route::get('/', function () {
     return view('landing-page.welcome');
 })->name('home');
 
+Route::prefix('/baptis')->group(function () {
+    Route::get('/', [App\Http\Controllers\BaptisController::class, 'index'])->name('baptis');
+    Route::get('/daftar', [App\Http\Controllers\BaptisController::class, 'create'])->name('baptis.create')->middleware('auth');
+});
+
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard')->middleware('verified');

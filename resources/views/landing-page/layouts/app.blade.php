@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>{{ config('app.name') }}</title>
+    <title>{{ config('app.name') }} | @yield('title')</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
 
@@ -28,6 +28,8 @@
 
     <!-- Main CSS File -->
     <link href="{{ asset('Lumia/assets/css/main.css') }}" rel="stylesheet">
+
+    @yield('styles')
 
     <!-- =======================================================
   * Template Name: Lumia
@@ -57,6 +59,7 @@
     <!-- Preloader -->
     <div id="preloader"></div>
 
+    @include('sweetalert::alert')
     <!-- Vendor JS Files -->
     <script src="{{ asset('Lumia/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('Lumia/assets/vendor/php-email-form/validate.js') }}"></script>

@@ -41,8 +41,8 @@
                             <tbody>
                                 @foreach ($schedules as $schedule)
                                     <tr>
-                                        <td>{{ \Carbon\Carbon::parse($schedule->date)->isoFormat('dddd, D MMMM YYYY') }},
-                                            {{ \Carbon\Carbon::parse($schedule->time)->format('H:i') }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($schedule->date)->isoFormat('dddd, D MMMM YYYY') }} -
+                                            {{ \Carbon\Carbon::parse($schedule->time)->format('H:i') }} WIB</td>
                                         <td>{{ $schedule->services->name }}</td>
                                         <td>{{ $schedule->users->name }}</td>
                                         <td>

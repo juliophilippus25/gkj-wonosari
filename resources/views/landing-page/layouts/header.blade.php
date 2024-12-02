@@ -1,9 +1,9 @@
 <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
 
-        <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto me-xl-0">
             <!-- Uncomment the line below if you also wish to use an image logo -->
-            <!-- <img src="assets/img/logo.png" alt=""> -->
+            <img src="{{ asset('imgs/logo.png') }}" alt="GKJ Wonosari">
             <h1 class="sitename">{{ config('app.name') }}</h1>
         </a>
 
@@ -15,7 +15,7 @@
                 <li class="dropdown"><a href="#"><span>Layanan</span> <i
                             class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
-                        <li><a href="#">Baptis</a></li>
+                        <li><a href="{{ route('baptis') }}">Baptis</a></li>
                         <li><a href="#">Sidhi/Baptis Dewasa</a></li>
                         <li><a href="#">Katekisasi</a></li>
                     </ul>
