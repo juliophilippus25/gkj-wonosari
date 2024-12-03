@@ -12,6 +12,11 @@ Route::prefix('/baptis')->group(function () {
     Route::get('/daftar', [App\Http\Controllers\BaptisController::class, 'create'])->name('baptis.create')->middleware('auth');
 });
 
+Route::prefix('/sidhi')->group(function () {
+    Route::get('/', [App\Http\Controllers\SidhiController::class, 'index'])->name('sidhi');
+    Route::get('/daftar', [App\Http\Controllers\SidhiController::class, 'create'])->name('sidhi.create')->middleware('auth');
+});
+
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard')->middleware('verified');

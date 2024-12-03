@@ -9,8 +9,8 @@
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    <link href="{{ asset('Lumia/assets/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('Lumia/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('imgs/logo.png') }}" rel="icon">
+    <link href="{{ asset('imgs/logo.png') }}" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">

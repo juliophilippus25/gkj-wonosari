@@ -16,7 +16,7 @@
                             class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
                         <li><a href="{{ route('baptis') }}">Baptis</a></li>
-                        <li><a href="#">Sidhi/Baptis Dewasa</a></li>
+                        <li><a href="{{ route('sidhi') }}">Sidhi/Baptis Dewasa</a></li>
                         <li><a href="#">Katekisasi</a></li>
                     </ul>
                 </li>

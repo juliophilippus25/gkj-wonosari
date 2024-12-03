@@ -19,7 +19,7 @@
             <div class="col-lg-2 col-6 footer-links">
                 <h4>Link Berguna</h4>
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li><a href="#">Jadwal Pelayanan</a></li>
                     <li><a href="#">Pengumuman</a></li>
                     <li><a href="#">Kontak</a></li>
@@ -29,8 +29,8 @@
             <div class="col-lg-2 col-6 footer-links">
                 <h4>Pelayanan Kami</h4>
                 <ul>
-                    <li><a href="#">Baptis</a></li>
-                    <li><a href="#">Sidhi/Baptis Dewasa</a></li>
+                    <li><a href="{{ route('baptis') }}">Baptis</a></li>
+                    <li><a href="{{ route('sidhi') }}">Sidhi/Baptis Dewasa</a></li>
                     <li><a href="#">Katekisasi</a></li>
                 </ul>
             </div>

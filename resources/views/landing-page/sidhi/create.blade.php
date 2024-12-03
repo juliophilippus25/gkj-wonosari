@@ -1,16 +1,16 @@
 @extends('landing-page.layouts.app')
 
-@section('title', 'Pendaftaran Baptis')
+@section('title', 'Pendaftaran Sidhi/Baptis Dewasa')
 
 @section('content')
     <!-- Page Title -->
     <div class="page-title light-background">
         <div class="container d-lg-flex justify-content-between align-items-center">
-            <h1 class="mb-2 mb-lg-0">Baptis</h1>
+            <h1 class="mb-2 mb-lg-0">Sidhi/Baptis Dewasa</h1>
             <nav class="breadcrumbs">
                 <ol>
                     <li><a href="{{ route('home') }}">Home</a></li>
-                    <li><a href="{{ route('baptis') }}">Baptis</a></li>
+                    <li><a href="{{ route('sidhi') }}">Sidhi/Baptis Dewasa</a></li>
                     <li class="current">Pendaftaran</li>
                 </ol>
             </nav>
@@ -21,7 +21,7 @@
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
-            <h2>Pendaftaran Baptis</h2>
+            <h2>Pendaftaran Sidhi/Baptis Dewasa</h2>
             <p>Lengkapi dan isi formulir di bawah ini</p>
         </div><!-- End Section Title -->
 

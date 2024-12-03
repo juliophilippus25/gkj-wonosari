@@ -5,17 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
 
-class BaptisController extends Controller
+class SidhiController extends Controller
 {
     public function index()
     {
-        return view('landing-page.baptis.index');
+        return view('landing-page.sidhi.index');
     }
 
     public function create(){
         $schedules = Schedule::whereHas('services', function($query) {
-            $query->where('name', 'Baptis');
+            $query->where('name', 'Sidhi/Baptis Dewasa');
         })->get();
-        return view('landing-page.baptis.create', compact('schedules'));
+        return view('landing-page.sidhi.create', compact('schedules'));
     }
 }

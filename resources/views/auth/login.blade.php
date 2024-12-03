@@ -1,5 +1,7 @@
 @extends('landing-page.layouts.app')
 
+@section('title', 'Login')
+
 @section('content')
     <section class="bg-body-secondary d-flex align-items-center justify-content-center">
         <div class="login-box" style="width: 400px; margin-top: 30px; margin-bottom: 30px;">
