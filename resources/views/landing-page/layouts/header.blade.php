@@ -12,8 +12,9 @@
                 <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
                 <li><a href="#jadwal-pelayanan">Jadwal Pelayanan</a></li>
                 <li><a href="#pengumuman">Pengumuman</a></li>
-                <li class="dropdown"><a href="#"><span>Layanan</span> <i
-                            class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <li class="dropdown"><a href="#"
+                        class="{{ request()->routeIs('baptis*', 'sidhi*', 'katekisasi*') ? 'active' : '' }}"><span>Layanan</span>
+                        <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
                         <li><a href="{{ route('baptis') }}">Baptis</a></li>
                         <li><a href="{{ route('sidhi') }}">Sidhi/Baptis Dewasa</a></li>

@@ -6,8 +6,13 @@
                 <a href="index.html" class="logo d-flex align-items-center">
                     <span class="sitename">{{ config('app.name') }}</span>
                 </a>
-                <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita
-                    valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+                <p>Gereja Kristen Jawa Wonosari adalah komunitas gereja yang berdedikasi untuk melayani dan membangun
+                    iman di tengah masyarakat. Dengan semangat kasih dan persaudaraan, kami berkomitmen untuk menjadi
+                    tempat yang ramah bagi setiap orang, menyebarkan kasih Tuhan, dan memperdalam pemahaman iman
+                    Kristen. Gereja ini juga berperan aktif dalam berbagai kegiatan sosial dan rohani, memberikan
+                    dukungan bagi individu dan keluarga dalam perjalanan kehidupan mereka. Kami mengundang Anda untuk
+                    bergabung dalam ibadah, pelayanan, dan kegiatan lainnya, serta bersama-sama merayakan kasih dan
+                    berkat Tuhan.</p>
                 <div class="social-links d-flex mt-4">
                     <a href=""><i class="bi bi-twitter-x"></i></a>
                     <a href=""><i class="bi bi-facebook"></i></a>
@@ -37,11 +42,9 @@
 
             <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
                 <h4>Kontak Kami</h4>
-                <p>A108 Adam Street</p>
-                <p>New York, NY 535022</p>
-                <p>United States</p>
-                <p class="mt-4"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-                <p><strong>Email:</strong> <span>info@example.com</span></p>
+                Jl. Gereja No.11-12, Purbosari, Kec. Wonosari, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55812.
+                <p class="mt-4"><strong>Phone:</strong> <span>+62 822-4242-1241</span></p>
+                <p><strong>Email:</strong> <span>gkjwonosari@gmail.com</span></p>
             </div>
 
         </div>

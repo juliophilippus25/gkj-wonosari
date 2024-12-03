@@ -80,35 +80,29 @@
 
         <div class="container" data-aos="fade-up">
             <h2 class="text-center">Syarat & Ketentuan Katekisasi</h2>
-            <p class="mt-4">Berikut adalah syarat dan ketentuan yang perlu dipenuhi untuk mengikuti sakramen baptis:</p>
+            <p class="mt-4">Berikut adalah syarat dan ketentuan yang perlu dipenuhi untuk mengikuti program katekisasi:
+            </p>
             <ul>
-                <li><strong>Usia:</strong> Peserta katekisasi harus berusia sesuai dengan ketentuan gereja (misalnya, bayi,
-                    anak-anak, atau orang dewasa).</li>
-                <li><strong>Persetujuan Orang Tua atau Wali:</strong> Untuk bayi atau anak-anak, persetujuan dari orang tua
-                    atau wali diperlukan.</li>
-                <li><strong>Kesiapan Rohani:</strong> Calon katekisasian harus memiliki kesiapan rohani untuk menerima
-                    sakramen
-                    ini (khususnya bagi orang dewasa yang akan dikatekisasi).</li>
-                <li><strong>Memiliki Nama katekisasi:</strong> Calon katekisasian harus memilih nama katekisasi yang akan
-                    digunakan
-                    dalam sakramen ini.</li>
-                <li><strong>Calon Orang Tua katekisasi (Wali):</strong> Bagi bayi atau anak, orang tua katekisasi atau wali
-                    yang
-                    akan menjamin kehidupan rohani calon katekisasian harus memiliki status sebagai umat Katolik yang aktif
-                    dan
-                    setia.</li>
-                <li><strong>Ikut Kelas Persiapan katekisasi:</strong> Sebelum pelaksanaan katekisasi, calon peserta (atau
-                    orang tua
-                    dan wali) diharuskan mengikuti kelas persiapan katekisasi.</li>
-                <li><strong>Jadwal dan Tempat:</strong> katekisasian biasanya dilakukan di gereja atau tempat yang
-                    ditentukan
-                    sesuai dengan jadwal yang telah disetujui dengan gereja setempat.</li>
-                <li><strong>Biaya Administrasi:</strong> Beberapa gereja mungkin meminta biaya administrasi sebagai bagian
-                    dari proses katekisasian, yang digunakan untuk biaya liturgi dan administrasi.</li>
-                <li><strong>Keinginan untuk Hidup dalam Iman:</strong> Setelah katekisasian, peserta diharapkan hidup dalam
-                    iman
-                    Katolik dan mengikuti ajaran gereja.</li>
+                <li><strong>Usia:</strong> Peserta katekisasi harus memenuhi ketentuan usia yang berlaku, baik untuk
+                    anak-anak, remaja, maupun dewasa.</li>
+                <li><strong>Persetujuan Orang Tua/Wali:</strong> Untuk peserta yang masih di bawah umur, persetujuan orang
+                    tua atau wali yang sah sangat diperlukan.</li>
+                <li><strong>Kesiapan Iman:</strong> Peserta harus menunjukkan kesiapan rohani dan mental untuk menerima
+                    sakramen katekisasi, terutama bagi calon dewasa.</li>
+                <li><strong>Pemilihan Nama Katekisasi:</strong> Peserta diharuskan memilih nama yang akan digunakan dalam
+                    sakramen, yang mencerminkan komitmen rohani mereka.</li>
+                <li><strong>Status Orang Tua/Wali:</strong> Orang tua atau wali untuk peserta yang masih anak-anak harus
+                    aktif dalam kehidupan rohani gereja dan memberikan teladan iman yang baik.</li>
+                <li><strong>Kelas Persiapan:</strong> Sebelum mengikuti katekisasi, peserta atau orang tua/wali diharuskan
+                    mengikuti kelas persiapan sebagai bagian dari pembekalan rohani.</li>
+                <li><strong>Jadwal dan Lokasi:</strong> Katekisasi akan dilakukan sesuai dengan jadwal yang telah disepakati
+                    bersama dan diadakan di gereja atau lokasi yang ditentukan oleh pihak gereja.</li>
+                <li><strong>Biaya Administrasi:</strong> Beberapa gereja mungkin memberlakukan biaya administrasi sebagai
+                    bagian dari proses katekisasi, yang digunakan untuk keperluan liturgi dan pengelolaan acara.</li>
+                <li><strong>Komitmen Iman:</strong> Setelah mengikuti katekisasi, peserta diharapkan untuk menerapkan ajaran
+                    gereja dalam kehidupan sehari-hari dan hidup sesuai dengan prinsip iman Katolik.</li>
             </ul>
+
 
             @auth
                 <div class="d-flex justify-content-center">

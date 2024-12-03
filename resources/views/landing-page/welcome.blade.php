@@ -30,10 +30,11 @@
     <!-- Jadwal Pelayanan -->
     <section id="jadwal-pelayanan" class="what-we-do section">
 
-        <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
-            <h2>Jadwal Pelayanan</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <h2>Layanan Kami</h2>
+            <p>Temukan berbagai layanan yang kami tawarkan sesuai dengan kebutuhan Anda. Kami menyediakan jadwal yang
+                fleksibel dan dapat disesuaikan, sehingga Anda dapat memilih waktu yang paling nyaman dan sesuai dengan
+                jadwal Anda.</p>
         </div><!-- End Section Title -->
 
         <div class="container">
@@ -47,8 +48,10 @@
                             <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                                 <i class="bi bi-clipboard-data"></i>
                                 <h4>Baptis</h4>
-                                <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut
-                                    aliquip</p>
+                                <p>Pelayanan Baptis adalah sakramen penting dalam kehidupan Kristen, yang menandakan awal
+                                    kehidupan rohani seseorang. Kami menyambut Anda untuk merayakan momen berharga ini
+                                    bersama keluarga dan komunitas kami. Ikuti proses dengan panduan yang penuh kasih dan
+                                    pengertian.</p>
                             </div>
                         </div><!-- End Icon Box -->
 
@@ -56,8 +59,9 @@
                             <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                                 <i class="bi bi-gem"></i>
                                 <h4>Sidhi/Baptis Dewasa</h4>
-                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                    deserunt</p>
+                                <p>Layanan Sidhi atau Baptis Dewasa adalah kesempatan untuk memperbarui iman dalam usia
+                                    dewasa, memberikan pemahaman lebih mendalam tentang ajaran Kristen. Ini adalah sakramen
+                                    penting yang menandai komitmen seseorang terhadap kehidupan rohani yang lebih penuh.</p>
                             </div>
                         </div><!-- End Icon Box -->
 
@@ -65,7 +69,10 @@
                             <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                                 <i class="bi bi-inboxes"></i>
                                 <h4>Katekisasi</h4>
-                                <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere
+                                <p>Katekisasi adalah program pendidikan agama untuk memperkenalkan ajaran Kristen lebih
+                                    dalam. Layanan ini dirancang untuk membantu individu mempelajari dasar-dasar iman dan
+                                    memperkuat hubungan dengan Tuhan. Ikuti kelas katekisasi kami untuk membangun landasan
+                                    rohani yang kuat.
                                 </p>
                             </div>
                         </div><!-- End Icon Box -->
@@ -85,7 +92,9 @@
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
             <h2>Pengumuman</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <p>Berikut adalah informasi terkini yang perlu Anda ketahui. Kami akan membagikan pengumuman penting terkait
+                kegiatan, acara, atau pembaruan lainnya. Pastikan Anda tidak ketinggalan informasi terbaru yang kami
+                sampaikan di sini.</p>
         </div><!-- End Section Title -->
 
         <div class="container">
@@ -183,8 +192,10 @@
     <section id="kontak" class="contact section">
 
         <div class="container section-title" data-aos="fade-up">
-            <h2>Kontak</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <h2>Kontak Kami</h2>
+            <p>Apakah Anda memiliki pertanyaan atau butuh informasi lebih lanjut? Kami siap membantu Anda! Jangan ragu untuk
+                menghubungi kami melalui berbagai saluran yang tersedia. Kami akan dengan senang hati memberikan respons
+                cepat dan solusi terbaik untuk kebutuhan Anda.</p>
         </div><!-- End Section Title -->
 
         <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
@@ -203,24 +214,25 @@
                     <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
                         <i class="bi bi-geo-alt flex-shrink-0"></i>
                         <div>
-                            <h3>Address</h3>
-                            <p>A108 Adam Street, New York, NY 535022</p>
+                            <h3>Alamat</h3>
+                            <p>Jl. Gereja No.11-12, Purbosari, Kec. Wonosari, Kabupaten Gunung Kidul, Daerah Istimewa
+                                Yogyakarta 55812.</p>
                         </div>
                     </div><!-- End Info Item -->
 
                     <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
                         <i class="bi bi-telephone flex-shrink-0"></i>
                         <div>
-                            <h3>Call Us</h3>
-                            <p>+1 5589 55488 55</p>
+                            <h3>Hubungi Kami</h3>
+                            <p>+62 822-4242-1241</p>
                         </div>
                     </div><!-- End Info Item -->
 
                     <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
                         <i class="bi bi-envelope flex-shrink-0"></i>
                         <div>
-                            <h3>Email Us</h3>
-                            <p>info@example.com</p>
+                            <h3>Email Kami</h3>
+                            <p>gkjwonosari@gmail.com</p>
                         </div>
                     </div><!-- End Info Item -->
 

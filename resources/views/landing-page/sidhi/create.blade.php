@@ -165,6 +165,32 @@
                                             @enderror
                                         </td>
                                     </tr>
+
+                                    <!-- Akta Baptis -->
+                                    <tr>
+                                        <td class="align-middle">Akta Baptis <b class="text-danger">*</b></td>
+                                        <td class="align-middle">:</td>
+                                        <td>
+                                            <input type="file" name="akta_baptis" id="akta_baptis" class="form-control"
+                                                required>
+                                            @error('akta_baptis')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </td>
+                                    </tr>
+
+                                    <!-- Sertifikasi Katekisasi -->
+                                    <tr>
+                                        <td class="align-middle">Sertifikasi Katekisasi <b class="text-danger">*</b></td>
+                                        <td class="align-middle">:</td>
+                                        <td>
+                                            <input type="file" name="katekisasi" id="katekisasi" class="form-control"
+                                                required>
+                                            @error('katekisasi')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                             <button type="submit" class="btn"

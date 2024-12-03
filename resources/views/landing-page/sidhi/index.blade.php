@@ -80,27 +80,28 @@
 
         <div class="container" data-aos="fade-up">
             <h2 class="text-center">Syarat & Ketentuan Sidhi/Baptis Dewasa</h2>
-            <p class="mt-4">Berikut adalah syarat dan ketentuan yang perlu dipenuhi untuk mengikuti sakramen baptis:</p>
+            <p class="mt-4">Berikut adalah syarat dan ketentuan yang perlu dipenuhi untuk mengikuti sakramen Sidhi/Baptis
+                Dewasa:</p>
             <ul>
-                <li><strong>Usia:</strong> Peserta baptis harus berusia sesuai dengan ketentuan gereja (misalnya, bayi,
-                    anak-anak, atau orang dewasa).</li>
-                <li><strong>Persetujuan Orang Tua atau Wali:</strong> Untuk bayi atau anak-anak, persetujuan dari orang tua
-                    atau wali diperlukan.</li>
-                <li><strong>Kesiapan Rohani:</strong> Calon baptisan harus memiliki kesiapan rohani untuk menerima sakramen
-                    ini (khususnya bagi orang dewasa yang akan dibaptis).</li>
-                <li><strong>Memiliki Nama Baptis:</strong> Calon baptisan harus memilih nama baptis yang akan digunakan
-                    dalam sakramen ini.</li>
-                <li><strong>Calon Orang Tua Baptis (Wali):</strong> Bagi bayi atau anak, orang tua baptis atau wali yang
-                    akan menjamin kehidupan rohani calon baptisan harus memiliki status sebagai umat Katolik yang aktif dan
-                    setia.</li>
-                <li><strong>Ikut Kelas Persiapan Baptis:</strong> Sebelum pelaksanaan baptis, calon peserta (atau orang tua
-                    dan wali) diharuskan mengikuti kelas persiapan baptis.</li>
-                <li><strong>Jadwal dan Tempat:</strong> Baptisan biasanya dilakukan di gereja atau tempat yang ditentukan
-                    sesuai dengan jadwal yang telah disetujui dengan gereja setempat.</li>
-                <li><strong>Biaya Administrasi:</strong> Beberapa gereja mungkin meminta biaya administrasi sebagai bagian
-                    dari proses baptisan, yang digunakan untuk biaya liturgi dan administrasi.</li>
-                <li><strong>Keinginan untuk Hidup dalam Iman:</strong> Setelah baptisan, peserta diharapkan hidup dalam iman
-                    Katolik dan mengikuti ajaran gereja.</li>
+                <li><strong>Usia:</strong> Peserta Sidhi/Baptis Dewasa harus berusia sesuai dengan ketentuan gereja, yaitu
+                    dewasa secara usia dan mental untuk memahami makna sakramen ini.</li>
+                <li><strong>Kesiapan Iman:</strong> Peserta diharapkan memiliki kesiapan rohani dan pemahaman yang mendalam
+                    tentang ajaran iman Katolik, serta komitmen untuk hidup sesuai dengan ajaran tersebut.</li>
+                <li><strong>Pemilihan Nama Baptis:</strong> Calon peserta harus memilih nama baptis yang akan digunakan
+                    dalam sakramen sebagai simbol komitmen dalam iman.</li>
+                <li><strong>Persetujuan Orang Tua/Wali:</strong> Bagi peserta yang membutuhkan, persetujuan orang tua atau
+                    wali mungkin diperlukan, terutama untuk mereka yang berusia lebih muda namun memenuhi syarat untuk
+                    Sidhi/Baptis Dewasa.</li>
+                <li><strong>Ikut Kelas Persiapan Baptis:</strong> Sebelum pelaksanaan Sidhi/Baptis Dewasa, calon peserta
+                    diharuskan mengikuti kelas persiapan sebagai bekal rohani untuk memahami makna dan tanggung jawab
+                    sakramen ini.</li>
+                <li><strong>Jadwal dan Tempat:</strong> Sidhi/Baptis Dewasa biasanya dilaksanakan di gereja atau tempat yang
+                    telah disetujui, mengikuti jadwal yang telah disepakati dengan gereja setempat.</li>
+                <li><strong>Biaya Administrasi:</strong> Beberapa gereja mungkin menetapkan biaya administrasi untuk
+                    keperluan liturgi, pengelolaan acara, dan administrasi lainnya terkait dengan Sidhi/Baptis Dewasa.</li>
+                <li><strong>Komitmen untuk Hidup dalam Iman:</strong> Setelah Sidhi/Baptis Dewasa, peserta diharapkan untuk
+                    terus menghidupi iman Katolik mereka, berpartisipasi dalam kehidupan gereja, dan mengikuti ajaran serta
+                    sakramen gereja secara aktif.</li>
             </ul>
 
             @auth

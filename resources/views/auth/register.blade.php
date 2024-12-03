@@ -3,6 +3,12 @@
 @section('title', 'Daftar Akun')
 
 @section('content')
+    <div class="page-title light-background">
+        <div class="container d-lg-flex justify-content-between align-items-center">
+            <h1 class="mb-2 mb-lg-0">Pendaftaran AKun</h1>
+        </div>
+    </div><!-- End Page Title -->
+
     <section class="bg-body-secondary d-flex align-items-center justify-content-center">
         <div class="register-box" style="width: 400px; margin-top: 30px; margin-bottom: 30px;">
             <div class="card">
