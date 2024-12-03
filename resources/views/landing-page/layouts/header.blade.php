@@ -17,7 +17,7 @@
                     <ul>
                         <li><a href="{{ route('baptis') }}">Baptis</a></li>
                         <li><a href="{{ route('sidhi') }}">Sidhi/Baptis Dewasa</a></li>
-                        <li><a href="#">Katekisasi</a></li>
+                        <li><a href="{{ route('katekisasi') }}">Katekisasi</a></li>
                     </ul>
                 </li>
                 <li><a href="#kontak">Kontak</a></li>

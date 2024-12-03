@@ -17,6 +17,11 @@ Route::prefix('/sidhi')->group(function () {
     Route::get('/daftar', [App\Http\Controllers\SidhiController::class, 'create'])->name('sidhi.create')->middleware('auth');
 });
 
+Route::prefix('/katekisasi')->group(function () {
+    Route::get('/', [App\Http\Controllers\KatekisasiController::class, 'index'])->name('katekisasi');
+    Route::get('/daftar', [App\Http\Controllers\KatekisasiController::class, 'create'])->name('katekisasi.create')->middleware('auth');
+});
+
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard')->middleware('verified');
