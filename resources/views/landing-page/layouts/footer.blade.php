@@ -43,7 +43,7 @@
             <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
                 <h4>Kontak Kami</h4>
                 Jl. Gereja No.11-12, Purbosari, Kec. Wonosari, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55812.
-                <p class="mt-4"><strong>Phone:</strong> <span>+62 822-4242-1241</span></p>
+                <p class="mt-4"><strong>No. Telepon:</strong> <span>+62 822-4242-1241</span></p>
                 <p><strong>Email:</strong> <span>gkjwonosari@gmail.com</span></p>
             </div>
 
