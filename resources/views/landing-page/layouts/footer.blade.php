@@ -27,7 +27,7 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="#">Jadwal Pelayanan</a></li>
                     <li><a href="#">Pengumuman</a></li>
-                    <li><a href="#">Kontak</a></li>
+                    <li><a href="#">Kontak Kami</a></li>
                 </ul>
             </div>
 

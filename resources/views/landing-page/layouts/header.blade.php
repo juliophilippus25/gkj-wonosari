@@ -21,7 +21,7 @@
                         <li><a href="{{ route('katekisasi') }}">Katekisasi</a></li>
                     </ul>
                 </li>
-                <li><a href="#kontak">Kontak</a></li>
+                <li><a href="#kontak">Kontak Kami</a></li>
                 @auth
                     <li class="dropdown"><a href="#"><span>{{ Auth::user()->name }}</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
