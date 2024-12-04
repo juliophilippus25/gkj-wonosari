@@ -38,7 +38,7 @@
                             <tbody>
                                 @foreach ($pendetas as $pendeta)
                                     <tr>
-                                        <td>{{ $pendeta->name }}</td>
+                                        <td>{{ $pendeta->profilPendeta->nama }}</td>
                                         <td>
                                             Aksi
                                         </td>

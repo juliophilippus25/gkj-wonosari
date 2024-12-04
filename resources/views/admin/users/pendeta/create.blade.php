@@ -35,12 +35,12 @@
                             <div class="row">
                                 <!-- Name Field -->
                                 <div class="col-md-6 mb-3">
-                                    <label for="name" class="form-label">Nama</label>
+                                    <label for="nama" class="form-label">Nama</label>
                                     <input type="text"
-                                        class="form-control @error('name') is-invalid @enderror @if (old('name') && !$errors->has('name')) is-valid @endif"
-                                        id="name" name="name" value="{{ old('name') }}"
+                                        class="form-control @error('nama') is-invalid @enderror @if (old('nama') && !$errors->has('name')) is-valid @endif"
+                                        id="nama" name="nama" value="{{ old('nama') }}"
                                         placeholder="Masukkan nama pendeta" required>
-                                    @error('name')
+                                    @error('nama')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
