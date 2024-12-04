@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Schedule;
+use App\Models\Jadwal;
 use Illuminate\Http\Request;
 
 class BaptisController extends Controller
@@ -13,9 +13,9 @@ class BaptisController extends Controller
     }
 
     public function create(){
-        $schedules = Schedule::whereHas('services', function($query) {
-            $query->where('name', 'Baptis');
+        $jadwals = Jadwal::whereHas('layanan', function($query) {
+            $query->where('nama', 'Baptis');
         })->get();
-        return view('landing-page.baptis.create', compact('schedules'));
+        return view('landing-page.baptis.create', compact('jadwals'));
     }
 }
