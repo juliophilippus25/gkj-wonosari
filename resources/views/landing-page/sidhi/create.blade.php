@@ -35,11 +35,20 @@
                                 <tbody>
                                     <!-- NIK Field -->
                                     <tr>
-                                        <td class="w-25 align-middle">NIK</td>
+                                        <td class="align-middle">NIK <b class="text-danger">*</b></td>
                                         <td class="align-middle">:</td>
                                         <td>
-                                            <input type="text" name="nik" id="nik" class="form-control"
-                                                placeholder="NIK">
+                                            @if (Auth::user()->profilJemaat && Auth::user()->profilJemaat->nik)
+                                                <!-- Jika NIK sudah ada, tampilkan value dan disable form -->
+                                                <input type="text" name="nik" id="nik" class="form-control"
+                                                    value="{{ Auth::user()->profilJemaat->nik }}" placeholder="NIK"
+                                                    disabled>
+                                            @else
+                                                <!-- Jika NIK belum ada, form bisa diisi -->
+                                                <input type="text" name="nik" id="nik" class="form-control"
+                                                    placeholder="NIK">
+                                            @endif
+
                                             @error('nik')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
@@ -52,7 +61,7 @@
                                         <td class="align-middle">:</td>
                                         <td>
                                             <input type="text" name="name" id="name"
-                                                value="{{ Auth::user()->name }}" class="form-control"
+                                                value="{{ Auth::user()->profilJemaat->nama }}" class="form-control"
                                                 placeholder="Nama Lengkap" disabled>
                                             @error('name')
                                                 <small class="text-danger">{{ $message }}</small>
@@ -65,19 +74,10 @@
                                         <td class="align-middle">Jenis Kelamin <b class="text-danger">*</b></td>
                                         <td class="align-middle">:</td>
                                         <td>
-                                            <div class="d-flex gap-3 align-items-center">
-                                                <label class="form-check-label">
-                                                    <input type="radio" name="gender" value="M" id="gender_m"
-                                                        @if (old('gender') == 'M') checked @endif>
-                                                    Laki-laki
-                                                </label>
-                                                <label class="form-check-label">
-                                                    <input type="radio" name="gender" value="F" id="gender_f"
-                                                        @if (old('gender') == 'F') checked @endif>
-                                                    Perempuan
-                                                </label>
-                                            </div>
-                                            @error('gender')
+                                            <input type="text" name="jenis_kelamin" id="jenis_kelamin"
+                                                value="{{ Auth::user()->profilJemaat->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan' }}"
+                                                class="form-control" placeholder="Jenis Kelamin" disabled>
+                                            @error('jenis_kelamin')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </td>
@@ -89,7 +89,8 @@
                                         <td class="align-middle">:</td>
                                         <td>
                                             <input type="text" name="tempat_lahir" id="tempat_lahir" class="form-control"
-                                                placeholder="Tempat Lahir" required>
+                                                placeholder="Tempat Lahir"
+                                                value="{{ Auth::user()->profilJemaat->tempat_lahir }}" disabled>
                                             @error('tempat_lahir')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
@@ -101,8 +102,10 @@
                                         <td class="align-middle">Tanggal Lahir <b class="text-danger">*</b></td>
                                         <td class="align-middle">:</td>
                                         <td>
-                                            <input type="date" name="tanggal_lahir" id="tanggal_lahir"
-                                                class="form-control" required>
+                                            <input type="text" name="tanggal_lahir" id="tanggal_lahir"
+                                                class="form-control"
+                                                value="{{ \Carbon\Carbon::parse(Auth::user()->profilJemaat->tanggal_lahir)->isoFormat('D MMMM YYYY') }}"
+                                                disabled>
                                             @error('tanggal_lahir')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
@@ -115,7 +118,8 @@
                                         <td class="align-middle">:</td>
                                         <td>
                                             <input type="text" name="ayah" id="ayah" class="form-control"
-                                                placeholder="Nama Ayah" required>
+                                                placeholder="Nama Ayah" value="{{ Auth::user()->profilJemaat->ayah }}"
+                                                disabled>
                                             @error('ayah')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
@@ -128,7 +132,8 @@
                                         <td class="align-middle">:</td>
                                         <td>
                                             <input type="text" name="ibu" id="ibu" class="form-control"
-                                                placeholder="Nama Ibu" required>
+                                                placeholder="Nama Ibu" value="{{ Auth::user()->profilJemaat->ibu }}"
+                                                disabled>
                                             @error('ibu')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
@@ -141,26 +146,26 @@
                                         <td class="align-middle">:</td>
                                         <td>
                                             <select name="schedule_id" id="schedule_id" class="form-control">
-                                                @if ($schedules->isEmpty() || $schedules->every(fn($schedule) => $schedule->isExpired))
+                                                @if ($jadwals->isEmpty() || $jadwals->every(fn($jadwal) => $jadwal->isExpired))
                                                     <option disabled selected>Belum ada jadwal</option>
                                                 @else
                                                     <option value="">Pilih Jadwal</option>
-                                                    @foreach ($schedules as $schedule)
-                                                        @if (!$schedule->isExpired)
-                                                            <option value="{{ $schedule->id }}"
-                                                                @if (old('schedule_id') == $schedule->id) selected @endif>
-                                                                {{ \Carbon\Carbon::parse($schedule->date)->isoFormat('dddd, D MMMM YYYY') }}
+                                                    @foreach ($jadwals as $jadwal)
+                                                        @if (!$jadwal->isExpired)
+                                                            <option value="{{ $jadwal->id }}"
+                                                                @if (old('jadwal_id') == $jadwal->id) selected @endif>
+                                                                {{ \Carbon\Carbon::parse($jadwal->tanggal)->isoFormat('dddd, D MMMM YYYY') }}
                                                                 -
-                                                                {{ \Carbon\Carbon::parse($schedule->time)->format('H:i') }}
+                                                                {{ \Carbon\Carbon::parse($jadwal->jam)->format('H:i') }}
                                                                 -
-                                                                {{ $schedule->services->name }}
-                                                                ({{ $schedule->users->name }})
+                                                                {{ $jadwal->layanan->nama }}
+                                                                ({{ $jadwal->pendeta->profilPendeta->nama }})
                                                             </option>
                                                         @endif
                                                     @endforeach
                                                 @endif
                                             </select>
-                                            @error('schedule_id')
+                                            @error('jadwal_id')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </td>
@@ -171,8 +176,8 @@
                                         <td class="align-middle">Akta Baptis <b class="text-danger">*</b></td>
                                         <td class="align-middle">:</td>
                                         <td>
-                                            <input type="file" name="akta_baptis" id="akta_baptis" class="form-control"
-                                                required>
+                                            <input type="file" name="akta_baptis" id="akta_baptis"
+                                                class="form-control" required>
                                             @error('akta_baptis')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
