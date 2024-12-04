@@ -3,9 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('landing-page.welcome');
-})->name('home');
+Route::get('/', [App\Http\Controllers\LandingPageController::class, 'index'])->name('home');
 
 Route::prefix('/baptis')->group(function () {
     Route::get('/', [App\Http\Controllers\BaptisController::class, 'index'])->name('baptis');

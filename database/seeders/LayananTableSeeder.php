@@ -21,7 +21,7 @@ class LayananTableSeeder extends Seeder
             ],
             [
                 'id'  			=> '2',
-                'nama'  			=> 'Sidi/Baptis Dewasa',
+                'nama'  			=> 'Sidhi/Baptis Dewasa',
                 'created_at'      => \Carbon\Carbon::now(),
                 'updated_at'      => \Carbon\Carbon::now()
             ],

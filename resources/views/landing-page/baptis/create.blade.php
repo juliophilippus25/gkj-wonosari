@@ -156,9 +156,7 @@
                                                                 @if (old('jadwal_id') == $jadwal->id) selected @endif>
                                                                 {{ \Carbon\Carbon::parse($jadwal->tanggal)->isoFormat('dddd, D MMMM YYYY') }}
                                                                 -
-                                                                {{ \Carbon\Carbon::parse($jadwal->jam)->format('H:i') }}
-                                                                -
-                                                                {{ $jadwal->layanan->nama }}
+                                                                {{ \Carbon\Carbon::parse($jadwal->jam)->isoFormat('H:mm a') }}
                                                                 ({{ $jadwal->pendeta->profilPendeta->nama }})
                                                             </option>
                                                         @endif

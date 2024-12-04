@@ -36,13 +36,11 @@
     </section>
 
     <!-- Jadwal Pelayanan -->
-    <section id="jadwal-pelayanan" class="what-we-do section">
+    <section class="what-we-do section">
 
         <div class="container section-title" data-aos="fade-up">
             <h2>Layanan Kami</h2>
-            <p>Temukan berbagai layanan yang kami tawarkan sesuai dengan kebutuhan Anda. Kami menyediakan jadwal yang
-                fleksibel dan dapat disesuaikan, sehingga Anda dapat memilih waktu yang paling nyaman dan sesuai dengan
-                jadwal Anda.</p>
+            <p>Temukan berbagai layanan yang kami tawarkan sesuai dengan kebutuhan Anda.</p>
         </div><!-- End Section Title -->
 
         <div class="container">
@@ -60,6 +58,7 @@
                                     kehidupan rohani seseorang. Kami menyambut Anda untuk merayakan momen berharga ini
                                     bersama keluarga dan komunitas kami. Ikuti proses dengan panduan yang penuh kasih dan
                                     pengertian.</p>
+                                <a href="{{ route('baptis') }}" class="stretched-link">Lihat Selengkapnya</a>
                             </div>
                         </div><!-- End Icon Box -->
 
@@ -70,6 +69,7 @@
                                 <p>Layanan Sidhi atau Baptis Dewasa adalah kesempatan untuk memperbarui iman dalam usia
                                     dewasa, memberikan pemahaman lebih mendalam tentang ajaran Kristen. Ini adalah sakramen
                                     penting yang menandai komitmen seseorang terhadap kehidupan rohani yang lebih penuh.</p>
+                                <a href="{{ route('sidhi') }}" class="stretched-link">Lihat Selengkapnya</a>
                             </div>
                         </div><!-- End Icon Box -->
 
@@ -82,6 +82,7 @@
                                     memperkuat hubungan dengan Tuhan. Ikuti kelas katekisasi kami untuk membangun landasan
                                     rohani yang kuat.
                                 </p>
+                                <a href="{{ route('katekisasi') }}" class="stretched-link">Lihat Selengkapnya</a>
                             </div>
                         </div><!-- End Icon Box -->
 
@@ -95,109 +96,66 @@
     </section>
 
     <!-- Pengumuman -->
-    <section id="pengumuman" class="services section light-background">
+    <section class="services section light-background">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
-            <h2>Pengumuman</h2>
-            <p>Berikut adalah informasi terkini yang perlu Anda ketahui. Kami akan membagikan pengumuman penting terkait
-                kegiatan, acara, atau pembaruan lainnya. Pastikan Anda tidak ketinggalan informasi terbaru yang kami
-                sampaikan di sini.</p>
+            <h2>Jadwal Pelayanan</h2>
+            <p>Temukan jadwal pelayanan yang sesuai dengan kebutuhan Anda.</p>
         </div><!-- End Section Title -->
 
-        <div class="container">
+        <div class="container" data-aos="fade-up">
 
-            <div class="row gy-4">
+            @forelse ($jadwals as $jadwal)
+                <div class="row gy-4">
 
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-item  position-relative">
-                        <div class="icon">
-                            <i class="bi bi-activity"></i>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-item  position-relative">
+                            <a href="service-details.html" class="stretched-link">
+                                <h3>Pelayanan {{ $jadwal->layanan->nama }}</h3>
+                            </a>
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <td class="fw-bold">Tanggal</td>
+                                        <td>
+                                            {{ \Carbon\Carbon::parse($jadwal->tanggal)->isoFormat('dddd, D MMMM YYYY') }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">Waktu</td>
+                                        <td>
+                                            {{ \Carbon\Carbon::parse($jadwal->jam)->isoFormat('H:mm a') }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">Pendeta</td>
+                                        <td>
+                                            {{ $jadwal->pendeta->profilPendeta->nama }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">Jumlah Pendaftar</td>
+                                        <td>
+                                            20
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <a href="service-details.html" class="stretched-link">
-                            <h3>Nesciunt Mete</h3>
-                        </a>
-                        <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores
-                            iure perferendis tempore et consequatur.</p>
-                    </div>
-                </div><!-- End Service Item -->
+                    </div><!-- End Service Item -->
 
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-item position-relative">
-                        <div class="icon">
-                            <i class="bi bi-broadcast"></i>
-                        </div>
-                        <a href="service-details.html" class="stretched-link">
-                            <h3>Eosle Commodi</h3>
-                        </a>
-                        <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum
-                            hic non ut nesciunt dolorem.</p>
-                    </div>
-                </div><!-- End Service Item -->
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-item position-relative">
-                        <div class="icon">
-                            <i class="bi bi-easel"></i>
-                        </div>
-                        <a href="service-details.html" class="stretched-link">
-                            <h3>Ledo Markt</h3>
-                        </a>
-                        <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id
-                            voluptas adipisci eos earum corrupti.</p>
-                    </div>
-                </div><!-- End Service Item -->
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-item position-relative">
-                        <div class="icon">
-                            <i class="bi bi-bounding-box-circles"></i>
-                        </div>
-                        <a href="service-details.html" class="stretched-link">
-                            <h3>Asperiores Commodit</h3>
-                        </a>
-                        <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga
-                            sit provident adipisci neque.</p>
-                        <a href="service-details.html" class="stretched-link"></a>
-                    </div>
-                </div><!-- End Service Item -->
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                    <div class="service-item position-relative">
-                        <div class="icon">
-                            <i class="bi bi-calendar4-week"></i>
-                        </div>
-                        <a href="service-details.html" class="stretched-link">
-                            <h3>Velit Doloremque</h3>
-                        </a>
-                        <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed
-                            animi at autem alias eius labore.</p>
-                        <a href="service-details.html" class="stretched-link"></a>
-                    </div>
-                </div><!-- End Service Item -->
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-                    <div class="service-item position-relative">
-                        <div class="icon">
-                            <i class="bi bi-chat-square-text"></i>
-                        </div>
-                        <a href="service-details.html" class="stretched-link">
-                            <h3>Dolori Architecto</h3>
-                        </a>
-                        <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure.
-                            Corrupti recusandae ducimus enim.</p>
-                        <a href="service-details.html" class="stretched-link"></a>
-                    </div>
-                </div><!-- End Service Item -->
-
-            </div>
+                </div>
+            @empty
+                <p class="text-center text-danger">Belum ada jadwal pelayanan.</p>
+            @endforelse
 
         </div>
 
     </section>
 
     <!-- Kontak -->
-    <section id="kontak" class="contact section">
+    <section class="contact section">
 
         <div class="container section-title" data-aos="fade-up">
             <h2>Kontak Kami</h2>

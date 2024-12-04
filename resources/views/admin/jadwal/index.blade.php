@@ -42,7 +42,7 @@
                                 @foreach ($jadwals as $jadwal)
                                     <tr>
                                         <td>{{ \Carbon\Carbon::parse($jadwal->tanggal)->isoFormat('dddd, D MMMM YYYY') }} -
-                                            {{ \Carbon\Carbon::parse($jadwal->jam)->format('H:i') }} WIB</td>
+                                            {{ \Carbon\Carbon::parse($jadwal->jam)->isoFormat('H:mm a') }}</td>
                                         <td>{{ $jadwal->layanan->nama }}</td>
                                         <td>{{ $jadwal->pendeta->profilPendeta->nama }}</td>
                                         <td>

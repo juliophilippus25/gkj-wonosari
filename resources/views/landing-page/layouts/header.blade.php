@@ -11,7 +11,6 @@
             <ul>
                 <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
                 <li><a href="#jadwal-pelayanan">Jadwal Pelayanan</a></li>
-                <li><a href="#pengumuman">Pengumuman</a></li>
                 <li class="dropdown"><a href="#"
                         class="{{ request()->routeIs('baptis*', 'sidhi*', 'katekisasi*') ? 'active' : '' }}"><span>Layanan</span>
                         <i class="bi bi-chevron-down toggle-dropdown"></i></a>
