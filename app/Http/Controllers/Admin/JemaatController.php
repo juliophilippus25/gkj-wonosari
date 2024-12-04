@@ -11,7 +11,7 @@ class JemaatController extends Controller
     public function index()
     {
         $dataType = 'jemaat';
-        $jemaats = User::where('role', 'jemaat')->orderBy('created_at','asc')->get();
+        $jemaats = User::with('profilJemaat')->where('role', 'jemaat')->orderBy('created_at','asc')->get();
         return view('admin.users.jemaat.index', compact('dataType','jemaats'));
     }
 

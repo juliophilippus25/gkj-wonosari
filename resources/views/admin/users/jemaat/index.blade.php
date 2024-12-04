@@ -37,7 +37,7 @@
                             <tbody>
                                 @foreach ($jemaats as $jemaat)
                                     <tr>
-                                        <td>{{ $jemaat->name }}</td>
+                                        <td>{{ $jemaat->profilJemaat->nama }}</td>
                                         <td>
                                             @if ($jemaat->is_verified == 0)
                                                 <span class="badge bg-danger">Belum Diverifikasi</span>
@@ -66,8 +66,8 @@
                                                                     data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                Apakah Anda yakin ingin memverifikasi jemaat
-                                                                {{ $jemaat->name }}?
+                                                                Apakah Anda yakin ingin memverifikasi
+                                                                <strong>{{ $jemaat->profilJemaat->nama }}</strong>?
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"

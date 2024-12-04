@@ -23,8 +23,15 @@
                 </li>
                 <li><a href="#kontak">Kontak Kami</a></li>
                 @auth
-                    <li class="dropdown"><a href="#"><span>{{ Auth::user()->name }}</span> <i
-                                class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <li class="dropdown"><a href="#"><span>
+                                @if (auth()->user()->role == 'admin')
+                                    {{ auth()->user()->profilAdmin->nama }}
+                                @elseif(auth()->user()->role == 'jemaat')
+                                    {{ auth()->user()->profilJemaat->nama }}
+                                @elseif(auth()->user()->role == 'pendeta')
+                                    {{ auth()->user()->profilPendeta->nama }}
+                                @endif
+                            </span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
                             <li><a href="{{ route('logout') }}"

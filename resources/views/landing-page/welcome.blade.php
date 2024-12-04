@@ -13,7 +13,15 @@
                 @auth
                     <div class="col-lg-8">
                         <p>Selamat datang,</p>
-                        <h2>{{ auth()->user()->name }}</h2>
+                        <h2>
+                            @if (auth()->user()->role == 'admin')
+                                {{ auth()->user()->profilAdmin->nama }}
+                            @elseif(auth()->user()->role == 'jemaat')
+                                {{ auth()->user()->profilJemaat->nama }}
+                            @elseif(auth()->user()->role == 'pendeta')
+                                {{ auth()->user()->profilPendeta->nama }}
+                            @endif
+                        </h2>
                     </div>
                 @else
                     <div class="col-lg-8">
