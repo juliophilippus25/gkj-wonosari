@@ -24,20 +24,20 @@
                                         value="{{ old('nik') }}" placeholder="NIK">
                                     @error('nik')
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="name">Nama Lengkap <b class="text-danger">*</b></label>
+                                <label for="nama">Nama Lengkap <b class="text-danger">*</b></label>
                                 <div class="input-group mb-3 mt-1">
-                                    <input id="name" type="text"
-                                        class="form-control @error('name') is-invalid @enderror" name="name"
-                                        value="{{ old('name') }}" placeholder="Nama lengkap">
-                                    @error('name')
+                                    <input id="nama" type="text"
+                                        class="form-control @error('nama') is-invalid @enderror" name="nama"
+                                        value="{{ old('nama') }}" placeholder="Nama lengkap">
+                                    @error('nama')
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
@@ -52,7 +52,7 @@
                                         value="{{ old('email') }}" placeholder="Email">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
@@ -65,7 +65,7 @@
                                         value="{{ old('no_hp') }}" placeholder="No. Handphone">
                                     @error('no_hp')
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
@@ -80,7 +80,7 @@
                                         value="{{ old('tempat_lahir') }}" placeholder="Tempat Lahir">
                                     @error('tempat_lahir')
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
@@ -93,7 +93,7 @@
                                         name="tanggal_lahir" value="{{ old('tanggal_lahir') }}">
                                     @error('tanggal_lahir')
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
@@ -108,7 +108,7 @@
                                         value="{{ old('ayah') }}" placeholder="Nama Ayah">
                                     @error('ayah')
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
@@ -121,7 +121,7 @@
                                         value="{{ old('ibu') }}" placeholder="Nama Ibu">
                                     @error('ibu')
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
@@ -132,18 +132,18 @@
                                 <label for="jenis_kelamin">Jenis Kelamin <b class="text-danger">*</b></label>
                                 <div class="input-group mb-3 mt-1 flex gap-3">
                                     <label class="form-check-label">
-                                        <input type="radio" name="jenis_kelamin" value="M" id="gender_m"
-                                            @if (old('jenis_kelamin') == 'M') checked @endif>
+                                        <input type="radio" name="jenis_kelamin" value="L" id="laki_laki"
+                                            @if (old('jenis_kelamin') == 'L') checked @endif>
                                         Laki-laki
                                     </label>
                                     <label class="form-check-label">
-                                        <input type="radio" name="jenis_kelamin" value="F" id="gender_f"
-                                            @if (old('jenis_kelamin') == 'F') checked @endif>
+                                        <input type="radio" name="jenis_kelamin" value="P" id="perempuan"
+                                            @if (old('jenis_kelamin') == 'P') checked @endif>
                                         Perempuan
                                     </label>
                                     @error('jenis_kelamin')
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
@@ -158,7 +158,7 @@
                                         placeholder="Password">
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div> <!--begin::Row-->
@@ -167,9 +167,15 @@
                                 <label for="password_confirmation">Konfirmasi Password <b
                                         class="text-danger">*</b></label>
                                 <div class="input-group mb-3 mt-1">
-                                    <input id="password_confirmation" type="password" class="form-control"
+                                    <input id="password_confirmation" type="password"
+                                        class="form-control @error('password_confirmation') is-invalid @enderror"
                                         name="password_confirmation" placeholder="Konfirmasi Password">
                                 </div>
+                                @error('password_confirmation')
+                                    <span class="invalid-feedback" role="alert">
+                                        <small>{{ $message }}</small>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
