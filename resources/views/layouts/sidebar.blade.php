@@ -50,8 +50,8 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('schedules.index') }}"
-                            class="nav-link {{ request()->routeIs('schedules.*') ? 'active' : '' }}"> <i
+                        <a href="{{ route('jadwal.index') }}"
+                            class="nav-link {{ request()->routeIs('jadwal.*') ? 'active' : '' }}"> <i
                                 class="nav-icon bi bi-calendar-event"></i>
                             <p>
                                 Jadwal

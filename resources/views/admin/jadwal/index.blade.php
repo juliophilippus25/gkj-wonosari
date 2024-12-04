@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="card-body">
-                        <a href="{{ route('schedules.create') }}" class="btn btn-primary"> <i class="bi bi-plus"></i>
+                        <a href="{{ route('jadwal.create') }}" class="btn btn-primary"> <i class="bi bi-plus"></i>
                             Jadwal</a>
                         <table id="table" class="table table-bordered table-striped">
                             <thead>
@@ -39,16 +39,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($schedules as $schedule)
+                                @foreach ($jadwals as $jadwal)
                                     <tr>
-                                        <td>{{ \Carbon\Carbon::parse($schedule->date)->isoFormat('dddd, D MMMM YYYY') }} -
-                                            {{ \Carbon\Carbon::parse($schedule->time)->format('H:i') }} WIB</td>
-                                        <td>{{ $schedule->services->name }}</td>
-                                        <td>{{ $schedule->users->name }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($jadwal->tanggal)->isoFormat('dddd, D MMMM YYYY') }} -
+                                            {{ \Carbon\Carbon::parse($jadwal->jam)->format('H:i') }} WIB</td>
+                                        <td>{{ $jadwal->layanan->nama }}</td>
+                                        <td>{{ $jadwal->pendeta->profilPendeta->nama }}</td>
                                         <td>
-                                            <span
-                                                class="{{ $schedule->isExpired ? 'badge bg-danger' : 'badge bg-success' }}">
-                                                {{ $schedule->isExpired ? 'Kedaluwarsa' : 'Aktif' }}
+                                            <span class="{{ $jadwal->isExpired ? 'badge bg-danger' : 'badge bg-success' }}">
+                                                {{ $jadwal->isExpired ? 'Kedaluwarsa' : 'Aktif' }}
                                             </span>
                                         </td>
                                         <td>Aksi</td>

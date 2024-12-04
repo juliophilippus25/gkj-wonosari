@@ -45,9 +45,9 @@ Route::prefix('/pendeta')->group(function () {
 });
 
 Route::prefix('/jadwal')->group(function () {
-    Route::get('/', [App\Http\Controllers\Admin\ScheduleController::class, 'index'])->name('schedules.index');
-    Route::get('/tambah', [App\Http\Controllers\Admin\ScheduleController::class, 'create'])->name('schedules.create');
-    Route::post('/post', [App\Http\Controllers\Admin\ScheduleController::class, 'store'])->name('schedules.store');
+    Route::get('/', [App\Http\Controllers\Admin\JadwalController::class, 'index'])->name('jadwal.index');
+    Route::get('/tambah', [App\Http\Controllers\Admin\JadwalController::class, 'create'])->name('jadwal.create');
+    Route::post('/post', [App\Http\Controllers\Admin\JadwalController::class, 'store'])->name('jadwal.store');
 });
 
 Route::prefix('/pendaftaran')->group(function () {
