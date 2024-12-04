@@ -10,45 +10,167 @@
     </div><!-- End Page Title -->
 
     <section class="bg-body-secondary d-flex align-items-center justify-content-center">
-        <div class="register-box" style="width: 400px; margin-top: 30px; margin-bottom: 30px;">
+        <div class="register-box" style="width: 800px; margin-top: 30px; margin-bottom: 30px;">
             <div class="card">
                 <div class="card-body register-card-body">
                     <form action="{{ route('register') }}" method="POST">
                         @csrf
-                        <div class="input-group mb-3">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                name="name" value="{{ old('name') }}" placeholder="Nama lengkap">
-                            <div class="input-group-text"> <span class="bi bi-person"></span> </div>
-                            @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="nik">NIK</label>
+                                <div class="input-group mb-3 mt-1">
+                                    <input id="nik" type="text"
+                                        class="form-control @error('nik') is-invalid @enderror" name="nik"
+                                        value="{{ old('nik') }}" placeholder="NIK">
+                                    @error('nik')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="name">Nama Lengkap <b class="text-danger">*</b></label>
+                                <div class="input-group mb-3 mt-1">
+                                    <input id="name" type="text"
+                                        class="form-control @error('name') is-invalid @enderror" name="name"
+                                        value="{{ old('name') }}" placeholder="Nama lengkap">
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
-                        <div class="input-group mb-3">
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                name="email" value="{{ old('email') }}" placeholder="Email">
-                            <div class="input-group-text"> <span class="bi bi-envelope"></span> </div>
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="email">Email <b class="text-danger">*</b></label>
+                                <div class="input-group mb-3 mt-1">
+                                    <input id="email" type="email"
+                                        class="form-control @error('email') is-invalid @enderror" name="email"
+                                        value="{{ old('email') }}" placeholder="Email">
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="no_hp">No. Handphone</label>
+                                <div class="input-group mb-3 mt-1">
+                                    <input id="no_hp" type="text"
+                                        class="form-control @error('no_hp') is-invalid @enderror" name="no_hp"
+                                        value="{{ old('no_hp') }}" placeholder="No. Handphone">
+                                    @error('no_hp')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
-                        <div class="input-group mb-3">
-                            <input id="password" name="password" type="password"
-                                class="form-control @error('password') is-invalid @enderror" placeholder="Kata sandi">
-                            <div class="input-group-text"> <span class="bi bi-lock-fill"></span> </div>
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div> <!--begin::Row-->
-                        <div class="input-group mb-3">
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                                placeholder="Konfirmasi kata sandi">
-                            <div class="input-group-text"> <span class="bi bi-lock-fill"></span> </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="tempat_lahir">Tempat Lahir <b class="text-danger">*</b></label>
+                                <div class="input-group mb-3 mt-1">
+                                    <input id="tempat_lahir" type="text"
+                                        class="form-control @error('tempat_lahir') is-invalid @enderror" name="tempat_lahir"
+                                        value="{{ old('tempat_lahir') }}" placeholder="Tempat Lahir">
+                                    @error('tempat_lahir')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="tanggal_lahir">Tanggal Lahir <b class="text-danger">*</b></label>
+                                <div class="input-group mb-3 mt-1">
+                                    <input id="tanggal_lahir" type="date"
+                                        class="form-control @error('tanggal_lahir') is-invalid @enderror"
+                                        name="tanggal_lahir" value="{{ old('tanggal_lahir') }}">
+                                    @error('tanggal_lahir')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="ayah">Nama Ayah <b class="text-danger">*</b></label>
+                                <div class="input-group mb-3 mt-1">
+                                    <input id="ayah" type="text"
+                                        class="form-control @error('ayah') is-invalid @enderror" name="ayah"
+                                        value="{{ old('ayah') }}" placeholder="Nama Ayah">
+                                    @error('ayah')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="ibu">Nama Ibu <b class="text-danger">*</b></label>
+                                <div class="input-group mb-3">
+                                    <input id="ibu" type="text"
+                                        class="form-control @error('ibu') is-invalid @enderror" name="ibu"
+                                        value="{{ old('ibu') }}" placeholder="Nama Ibu">
+                                    @error('ibu')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="jenis_kelamin">Jenis Kelamin <b class="text-danger">*</b></label>
+                                <div class="input-group mb-3 mt-1 flex gap-3">
+                                    <label class="form-check-label">
+                                        <input type="radio" name="jenis_kelamin" value="M" id="gender_m"
+                                            @if (old('jenis_kelamin') == 'M') checked @endif>
+                                        Laki-laki
+                                    </label>
+                                    <label class="form-check-label">
+                                        <input type="radio" name="jenis_kelamin" value="F" id="gender_f"
+                                            @if (old('jenis_kelamin') == 'F') checked @endif>
+                                        Perempuan
+                                    </label>
+                                    @error('jenis_kelamin')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="password">Password <b class="text-danger">*</b></label>
+                                <div class="input-group mb-3 mt-1">
+                                    <input id="password" name="password" type="password"
+                                        class="form-control @error('password') is-invalid @enderror"
+                                        placeholder="Password">
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div> <!--begin::Row-->
+                            </div>
+                            <div class="col-md-6">
+                                <label for="password_confirmation">Konfirmasi Password <b
+                                        class="text-danger">*</b></label>
+                                <div class="input-group mb-3 mt-1">
+                                    <input id="password_confirmation" type="password" class="form-control"
+                                        name="password_confirmation" placeholder="Konfirmasi Password">
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-8">

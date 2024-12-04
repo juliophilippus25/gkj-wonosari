@@ -22,7 +22,6 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'id',
-        'name',
         'email',
         'password',
         'role',
@@ -52,8 +51,20 @@ class User extends Authenticatable
         ];
     }
 
-    public function schedules()
+    public function profilJemaat(){
+        return $this->hasOne(ProfilJemaat::class);
+    }
+
+    public function profilAdmin(){
+        return $this->hasOne(ProfilAdmin::class);
+    }
+
+    public function profilPendeta(){
+        return $this->hasOne(ProfilPendeta::class);
+    }
+
+    public function jadwal()
     {
-        return $this->hasMany(Schedule::class, 'pendeta_id');
+        return $this->hasMany(Jadwal::class);
     }
 }

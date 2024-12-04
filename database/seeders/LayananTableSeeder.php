@@ -5,29 +5,29 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ServicesTableSeeder extends Seeder
+class LayananTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        \App\Models\Service::insert([
+        \App\Models\Layanan::insert([
             [
               'id'  			=> '1',
-              'name'  			=> 'Baptis',
+              'nama'  			=> 'Baptis',
               'created_at'      => \Carbon\Carbon::now(),
               'updated_at'      => \Carbon\Carbon::now()
             ],
             [
                 'id'  			=> '2',
-                'name'  			=> 'Sidi/Baptis Dewasa',
+                'nama'  			=> 'Sidi/Baptis Dewasa',
                 'created_at'      => \Carbon\Carbon::now(),
                 'updated_at'      => \Carbon\Carbon::now()
             ],
             [
                 'id'  			=> '3',
-                'name'  			=> 'Katekisasi',
+                'nama'  			=> 'Katekisasi',
                 'created_at'      => \Carbon\Carbon::now(),
                 'updated_at'      => \Carbon\Carbon::now()
             ],

@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('schedules', function (Blueprint $table) {
+        Schema::create('jadwals', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->date('date');
-            $table->time('time');
+            $table->date('tanggal');
+            $table->time('jam');
             $table->string('pendeta_id');
             $table->foreign('pendeta_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('service_id');
-            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
+            $table->string('layanan_id');
+            $table->foreign('layanan_id')->references('id')->on('layanans')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('schedules');
+        Schema::dropIfExists('jadwals');
     }
 };

@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
+class Wilayah extends Model
 {
     use HasFactory;
-
-    public function schedules()
-    {
-        return $this->hasMany(Schedule::class, 'service_id');
-    }
 }
