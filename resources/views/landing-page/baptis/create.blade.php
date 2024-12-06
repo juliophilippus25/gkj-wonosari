@@ -44,8 +44,9 @@
                                                 value="{{ Auth::user()->profilJemaat->nik }}" placeholder="NIK" disabled>
                                         @else
                                             <!-- Jika NIK belum ada, form bisa diisi -->
-                                            <input type="text" name="nik" id="nik" class="form-control"
-                                                placeholder="NIK">
+                                            <input type="text" name="nik" id="nik"
+                                                class="form-control @error('nik') is-invalid @enderror"
+                                                value="{{ old('nik') }}" placeholder="NIK">
                                         @endif
 
                                         @error('nik')
@@ -156,7 +157,8 @@
                                     <td class="align-middle">Jadwal Pelayanan <b class="text-danger">*</b></td>
                                     <td class="align-middle">:</td>
                                     <td>
-                                        <select name="jadwal_id" id="jadwal_id" class="form-control">
+                                        <select name="jadwal_id" id="jadwal_id"
+                                            class="form-control @error('jadwal_id') is-invalid @enderror">
                                             @if ($jadwals->isEmpty() || $jadwals->every(fn($jadwal) => $jadwal->isExpired))
                                                 <option disabled selected>Belum ada jadwal</option>
                                             @else

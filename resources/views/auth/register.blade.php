@@ -166,7 +166,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label for="password">Password <b class="text-danger">*</b></label>
+                                <label for="password">Kata Sandi <b class="text-danger">*</b></label>
                                 <div class="input-group mb-3 mt-1">
                                     <input id="password" name="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror"
@@ -179,7 +179,7 @@
                                 </div> <!--begin::Row-->
                             </div>
                             <div class="col-md-6">
-                                <label for="password_confirmation">Konfirmasi Password <b
+                                <label for="password_confirmation">Konfirmasi Kata Sandi <b
                                         class="text-danger">*</b></label>
                                 <div class="input-group mb-3 mt-1">
                                     <input id="password_confirmation" type="password"

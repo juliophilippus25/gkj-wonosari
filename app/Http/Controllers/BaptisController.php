@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Baptis;
 use App\Models\Jadwal;
+use App\Models\ProfilJemaat;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -23,9 +24,12 @@ class BaptisController extends Controller
 
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
+            'nik' => 'nullable|numeric|digits:16',
             'jemaat_id' => 'required',
             'jadwal_id' => 'required'
         ], [
+            'nik.numeric' => 'NIK harus berupa angka.',
+            'nik.digits' => 'NIK harus memiliki 16 angka.',
             'jemaat_id.required' => 'Jemaat wajib diisi.',
             'jadwal_id.required' => 'Jadwal wajib diisi.',
         ]);
@@ -42,6 +46,12 @@ class BaptisController extends Controller
         if ($pernahBaptis) {
             toast('Anda sudah pernah mendaftar baptis.','error')->timerProgressBar()->autoClose(5000);
             return redirect()->back()->withInput();
+        }
+
+        if ($request->filled('nik')) {
+            ProfilJemaat::where('user_id', $jemaatId)->update([
+                'nik' => $request->nik
+            ]);
         }
 
         Baptis::create([
