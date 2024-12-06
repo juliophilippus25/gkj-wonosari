@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="no_hp">No. Handphone</label>
+                                <label for="no_hp">No. Handphone <b class="text-danger">*</b></label>
                                 <div class="input-group mb-3 mt-1">
                                     <input id="no_hp" type="text"
                                         class="form-control @error('no_hp') is-invalid @enderror" name="no_hp"
@@ -147,6 +147,21 @@
                                         </span>
                                     @enderror
                                 </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="wilayah_id" class="form-label">Wilayah <b class="text-danger">*</b></label>
+                                <select class="form-select @error('wilayah_id') is-invalid @enderror" name="wilayah_id"
+                                    id="wilayah_id" required>
+                                    <option hidden disabled selected value>Pilih wilayah</option>
+                                    @foreach ($sortedWilayahs as $wilayah)
+                                        <option value="{{ $wilayah->id }}">
+                                            {{ $wilayah->nama }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('wilayah_id')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">

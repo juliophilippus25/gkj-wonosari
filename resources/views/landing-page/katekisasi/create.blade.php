@@ -140,6 +140,20 @@
                                         </td>
                                     </tr>
 
+                                    <!-- Wilayah -->
+                                    <tr>
+                                        <td class="align-middle">Wilayah <b class="text-danger">*</b></td>
+                                        <td class="align-middle">:</td>
+                                        <td>
+                                            <input type="text" name="wilayah_id" id="wilayah_id" class="form-control"
+                                                placeholder="Wilayah"
+                                                value="{{ Auth::user()->profilJemaat->wilayah->nama }}" disabled>
+                                            @error('wilayah_id')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </td>
+                                    </tr>
+
                                     <!-- Jadwal Pelayanan -->
                                     <tr>
                                         <td class="align-middle">Jadwal Pelayanan <b class="text-danger">*</b></td>

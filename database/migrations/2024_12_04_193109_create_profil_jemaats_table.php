@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('profil_jemaats', function (Blueprint $table) {
             $table->string('user_id')->primary();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('wilayah_id');
+            $table->foreign('wilayah_id')->references('id')->on('wilayahs')->onDelete('cascade');
             $table->string('nik')->unique()->nullable();
             $table->string('nama');
             $table->date('tanggal_lahir');

@@ -9,6 +9,9 @@ class Layanan extends Model
 {
     use HasFactory;
 
+    protected $keyType = 'string';
+    protected $primaryKey = 'id';
+
     public function jadwal()
     {
         return $this->hasMany(Jadwal::class);

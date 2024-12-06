@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\ProfilJemaat;
 use App\Models\User;
+use App\Models\Wilayah;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -50,7 +51,20 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        return view('auth.register');
+        $wilayahs = Wilayah::all();
+
+        $priorityOrder = [
+            'Wilayah 1', 'Wilayah 2', 'Wilayah 3', 'Wilayah 4', 'Wilayah 5',
+            'Wilayah 6', 'Wilayah 7', 'Wilayah 8', 'Wilayah 9',
+            'Panthan Bendungan', 'Panthan Randukuning', 'Panthan Nglipar',
+            'Panthan Kebonjero', 'Panthan Hargomulyo', 'Kelompok Wareng'
+        ];
+
+        $sortedWilayahs = $wilayahs->sortBy(function($wilayah) use ($priorityOrder) {
+            return array_search($wilayah->nama, $priorityOrder);
+        });
+
+        return view('auth.register', compact('sortedWilayahs'));
     }
 
     /**
@@ -74,6 +88,7 @@ class RegisterController extends Controller
             'ayah' => ['required', 'string', 'max:255'],
             'ibu' => ['required', 'string', 'max:255'],
             'jenis_kelamin' => ['required', 'in:L,P'],
+            'wilayah_id' => ['required'],
         ], [
             // Pesan untuk nama
             'nama.required' => 'Nama wajib diisi.',
@@ -131,6 +146,9 @@ class RegisterController extends Controller
             // Pesan untuk jenis kelamin
             'jenis_kelamin.required' => 'Jenis kelamin wajib diisi.',
             'jenis_kelamin.in' => 'Jenis kelamin harus berupa L (Laki-laki) atau P (Perempuan).',
+
+            // Pesan untuk wilayah
+            'wilayah_id.required' => 'Wilayah wajib dipilih.',
         ]);
 
         if ($validator->fails()) {
@@ -165,6 +183,7 @@ class RegisterController extends Controller
             'ayah' => $data['ayah'],
             'ibu' => $data['ibu'],
             'jenis_kelamin' => $data['jenis_kelamin'],
+            'wilayah_id' => $data['wilayah_id'],
         ]);
     }
 

@@ -57,8 +57,7 @@
                                         name="layanan_id" id="layanan_id">
                                         <option hidden disabled selected value>Pilih pelayanan</option>
                                         @foreach ($layanans as $layanan)
-                                            <option value="{{ $layanan->id }}"
-                                                {{ old('layanan_id') == $layanan->id ? 'selected' : '' }}>
+                                            <option value="{{ $layanan->id }}">
                                                 {{ $layanan->nama }}</option>
                                         @endforeach
                                     </select>
@@ -73,8 +72,7 @@
                                         name="pendeta_id" id="pendeta_id">
                                         <option hidden disabled selected value>Pilih pendeta</option>
                                         @forelse ($pendetas as $pendeta)
-                                            <option value="{{ $pendeta->id }}"
-                                                {{ old('pendeta_id') == $pendeta->id ? 'selected' : '' }}>
+                                            <option value="{{ $pendeta->id }}">
                                                 {{ $pendeta->profilPendeta->nama }}
                                             </option>
                                         @empty

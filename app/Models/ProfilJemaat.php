@@ -14,6 +14,7 @@ class ProfilJemaat extends Model
 
     protected $fillable = [
         'user_id',
+        'wilayah_id',
         'nik',
         'nama',
         'no_hp',
@@ -23,4 +24,8 @@ class ProfilJemaat extends Model
         'ibu',
         'jenis_kelamin',
     ];
+
+    public function wilayah(){
+        return $this->belongsTo(Wilayah::class);
+    }
 }
