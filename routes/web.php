@@ -8,6 +8,7 @@ Route::get('/', [App\Http\Controllers\LandingPageController::class, 'index'])->n
 Route::prefix('/baptis')->group(function () {
     Route::get('/', [App\Http\Controllers\BaptisController::class, 'index'])->name('baptis');
     Route::get('/daftar', [App\Http\Controllers\BaptisController::class, 'create'])->name('baptis.create')->middleware('auth');
+    Route::post('/post', [App\Http\Controllers\BaptisController::class, 'store'])->name('baptis.store');
 });
 
 Route::prefix('/sidhi')->group(function () {
