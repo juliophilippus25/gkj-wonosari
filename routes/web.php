@@ -31,10 +31,9 @@ Route::prefix('/jemaat')->group(function () {
 });
 
 Route::prefix('/pelayanan')->group(function () {
-    Route::get('/', [App\Http\Controllers\Pendeta\ServiceController::class, 'index'])->name('service.index');
-    Route::get('/{scheduleId}', [App\Http\Controllers\Pendeta\ServiceController::class, 'show'])->name('service.show');
-    Route::post('/terima/{registationId}', [App\Http\Controllers\Pendeta\ServiceController::class, 'accept'])->name('service.acceptRegistrant');
-    Route::post('/tolak/{registationId}', [App\Http\Controllers\Pendeta\ServiceController::class, 'reject'])->name('service.rejectRegistrant');
+    Route::prefix('/baptis')->group(function () {
+        Route::get('/', [App\Http\Controllers\Pendeta\BaptisController::class, 'index'])->name('baptis.pendeta.index');
+    });
 });
 
 Route::prefix('/pendeta')->group(function () {
