@@ -41,7 +41,7 @@ class BaptisController extends Controller
         }
 
         $jemaatId = $request->jemaat_id;
-        $pernahBaptis = Baptis::where('jemaat_id', $jemaatId)->first();
+        $pernahBaptis = Baptis::where('jemaat_id', $jemaatId)->where('status_verifikasi', '!=', 'ditolak')->first();
 
         if ($pernahBaptis) {
             toast('Anda sudah pernah mendaftar baptis.','error')->timerProgressBar()->autoClose(5000);

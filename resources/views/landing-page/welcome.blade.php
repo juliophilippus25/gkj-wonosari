@@ -106,9 +106,8 @@
 
         <div class="container" data-aos="fade-up">
 
-            @forelse ($jadwals as $jadwal)
-                <div class="row gy-4">
-
+            <div class="row gy-4">
+                @forelse ($jadwals as $jadwal)
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="service-item  position-relative">
                             <a href="service-details.html" class="stretched-link">
@@ -145,10 +144,10 @@
                         </div>
                     </div><!-- End Service Item -->
 
-                </div>
-            @empty
-                <p class="text-center text-danger">Belum ada jadwal pelayanan.</p>
-            @endforelse
+                @empty
+                    <p class="text-center text-danger">Belum ada jadwal pelayanan.</p>
+                @endforelse
+            </div>
 
         </div>
 

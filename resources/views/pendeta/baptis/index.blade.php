@@ -39,7 +39,7 @@
                                     <tr>
                                         <td>{{ \Carbon\Carbon::parse($jadwal->tanggal)->isoFormat('dddd, D MMMM YYYY') }},
                                             {{ \Carbon\Carbon::parse($jadwal->jam)->isoFormat('H:mm a') }}</td>
-                                        <td class="text-start">{{ $jadwal->baptis_count }}</td>
+                                        <td class="text-start">{{ $jadwal->jumlah_pendaftar }}</td>
                                         <td>
                                             <a href="{{ route('baptis.pendeta.show', $jadwal->id) }}"
                                                 class="btn btn-primary btn-sm" title="Detail">

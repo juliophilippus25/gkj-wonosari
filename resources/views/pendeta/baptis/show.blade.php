@@ -25,7 +25,7 @@
                         <h3 class="card-title">
                             Pendaftar {{ $jadwal->layanan->nama }}
                             {{ \Carbon\Carbon::parse($jadwal->tanggal)->isoFormat('dddd, D MMMM YYYY') }},
-                            {{ \Carbon\Carbon::parse($jadwal->jam)->isoFormat('H:mm a') }}</td>
+                            {{ \Carbon\Carbon::parse($jadwal->jam)->isoFormat('H:mm a') }}
                         </h3>
                     </div>
 
@@ -35,7 +35,6 @@
                                 <tr>
                                     <th>Nama</th>
                                     <th>Status</th>
-                                    <th>Catatan</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -46,21 +45,18 @@
                                         <td>
                                             @if ($pendaftar->status_verifikasi == 'diproses')
                                                 <span class="badge bg-warning">Diproses</span>
-                                            @elseif ($pendaftar->status == 'diterima')
+                                            @elseif ($pendaftar->status_verifikasi == 'disetujui')
                                                 <span class="badge bg-success">Disetujui</span>
-                                            @elseif ($pendaftar->status == 'ditolak')
+                                            @elseif ($pendaftar->status_verifikasi == 'ditolak')
                                                 <span class="badge bg-danger">Ditolak</span>
                                             @endif
-                                        </td>
-                                        <td>
-                                            {{ $pendaftar->catatan ?? '-' }}
                                         </td>
                                         <td>
                                             @if ($pendaftar->status_verifikasi == 'diproses')
                                                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                                     data-bs-target="#verificationModal{{ $pendaftar->id }}"
                                                     data-id="{{ $pendaftar->id }}">
-                                                    <i class="bi bi-check"></i>
+                                                    <i class="bi bi-check"></i> Verifikasi
                                                 </button>
                                             @else
                                                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
@@ -125,21 +121,54 @@
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
+
                                                         </div>
                                                         <div class="modal-footer">
-                                                            {{-- <form
-                                                                action="{{ route('service.rejectRegistrant', $pendaftar->id) }}"
-                                                                method="POST" style="display:inline;">
-                                                                @csrf
-                                                                <button type="submit" class="btn btn-danger">Tolak</button>
-                                                            </form>
+                                                            <button type="button" class="btn btn-danger"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#catatanModal{{ $pendaftar->id }}">
+                                                                Tolak
+                                                            </button>
                                                             <form
-                                                                action="{{ route('service.acceptRegistrant', $pendaftar->id) }}"
+                                                                action="{{ route('baptis.pendeta.accept', $pendaftar->id) }}"
                                                                 method="POST" style="display:inline;">
                                                                 @csrf
                                                                 <button type="submit"
                                                                     class="btn btn-primary">Terima</button>
-                                                            </form> --}}
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Modal Catatan untuk Tolak -->
+                                            <div class="modal fade" id="catatanModal{{ $pendaftar->id }}" tabindex="-1"
+                                                aria-labelledby="catatanModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="catatanModalLabel">
+                                                                Tolak Pendaftar {{ $pendaftar->profilJemaat->nama }}
+                                                            </h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <!-- Form Catatan Tolak -->
+                                                            <form
+                                                                action="{{ route('baptis.pendeta.reject', $pendaftar->id) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                <div class="mb-3">
+                                                                    <label for="catatan"
+                                                                        class="form-label">Catatan:</label>
+                                                                    <textarea class="form-control" id="catatan" name="catatan" rows="3" required></textarea>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit" class="btn btn-danger">Tolak
+                                                                        Pendaftar</button>
+                                                                </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -153,18 +182,12 @@
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="verificationModalLabel">Detail
                                                                 Pendaftar</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close"></button>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <!-- Data Penanggung Jawab -->
                                                             <table class="table-borderless w-100 mb-4">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th colspan="3" class="text-center fw-bold fs-4">
-                                                                            Data Pendaftar</th>
-                                                                    </tr>
-                                                                </thead>
                                                                 <tbody>
                                                                     <tr>
                                                                         <td class="fw-bold" style="width: 45%">Nama
@@ -207,10 +230,6 @@
                                                                 </tbody>
                                                             </table>
                                                         </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Tutup</button>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -222,11 +241,41 @@
                         </table>
                     </div>
 
-                    <div class="card-footer">
-                        <a href="{{ route('baptis.pendeta.index') }}" class="btn btn-secondary">Kembali</a>
-                    </div>
                 </div>
             </div> <!-- /.row -->
+
+            <div class="row mt-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            Pendaftar ditolak
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <table id="table1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>Catatan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($pendaftarDitolaks as $pendaftar)
+                                    <tr>
+                                        <td>{{ $pendaftar->profilJemaat->nama }}</td>
+                                        <td>
+                                            {{ $pendaftar->catatan ?? '-' }}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <a href="{{ route('baptis.pendeta.index') }}" class="btn btn-secondary mt-4">Kembali</a>
+
         </div> <!--end::Container-->
     </div> <!--end::App Content-->
 
@@ -246,6 +295,24 @@
                     infoFiltered: "(difilter dari _MAX_ total data)", // Pesan saat data difilter
                     zeroRecords: "Tidak ada {{ $dataType }} yang ditemukan.", // Pesan saat tidak ada hasil
                     emptyTable: "Tidak ada {{ $dataType }} yang tersedia di tabel."
+                }
+            });
+        });
+
+        $(document).ready(function() {
+            $('#table1').DataTable({
+                searching: true, // Aktifkan pencarian
+                paging: true, // Aktifkan pagination
+                pageLength: 10, // Jumlah data per halaman
+                language: {
+                    search: "Cari", // Label pencarian
+                    searchPlaceholder: "Cari {{ $dataType1 }}", // Placeholder pencarian
+                    lengthMenu: "Tampilkan _MENU_ data per halaman", // Menu jumlah data per halaman
+                    info: "Menampilkan _START_ hingga _END_ dari _TOTAL_ {{ $dataType1 }}", // Info pagination
+                    infoEmpty: "Tidak ada {{ $dataType1 }}", // Pesan saat tidak ada data
+                    infoFiltered: "(difilter dari _MAX_ total data)", // Pesan saat data difilter
+                    zeroRecords: "Tidak ada {{ $dataType1 }} yang ditemukan.", // Pesan saat tidak ada hasil
+                    emptyTable: "Tidak ada {{ $dataType1 }} di tabel."
                 }
             });
         });

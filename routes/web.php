@@ -34,6 +34,9 @@ Route::prefix('/pelayanan')->group(function () {
     Route::prefix('/baptis')->group(function () {
         Route::get('/', [App\Http\Controllers\Pendeta\BaptisController::class, 'index'])->name('baptis.pendeta.index');
         Route::get('/{id}', [App\Http\Controllers\Pendeta\BaptisController::class, 'show'])->name('baptis.pendeta.show');
+        Route::post('/diterima/{id}', [App\Http\Controllers\Pendeta\BaptisController::class, 'accept'])->name('baptis.pendeta.accept');
+        Route::get('/ditolak/{id}', [App\Http\Controllers\Pendeta\BaptisController::class, 'showRejectForm'])->name('baptis.pendeta.rejectForm');
+        Route::post('/pendaftar/ditolak/{id}', [App\Http\Controllers\Pendeta\BaptisController::class, 'reject'])->name('baptis.pendeta.reject');
     });
 });
 
