@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreign('jemaat_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('jadwal_id');
             $table->foreign('jadwal_id')->references('id')->on('jadwals')->onDelete('cascade');
-            $table->enum('status_verifikasi', ['diproses','disetujui', 'ditolak'])->default('diproses');
-            $table->enum('status_kehadiran', ['belum', 'hadir', 'tidak hadir'])->default('belum');
+            $table->enum('status_verifikasi', ['Diproses','Disetujui', 'Ditolak'])->default('Diproses');
+            $table->enum('status_kehadiran', ['Belum', 'Hadir', 'Tidak Hadir'])->default('Belum');
             $table->string('catatan')->nullable();
             $table->timestamps();
         });

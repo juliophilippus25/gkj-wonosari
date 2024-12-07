@@ -35,7 +35,7 @@
                             <div class="row">
                                 <!-- Name Field -->
                                 <div class="col-md-6 mb-3">
-                                    <label for="nama" class="form-label">Nama</label>
+                                    <label for="nama" class="form-label">Nama <b class="text-danger">*</b></label>
                                     <input type="text"
                                         class="form-control @error('nama') is-invalid @enderror @if (old('nama') && !$errors->has('name')) is-valid @endif"
                                         id="nama" name="nama" value="{{ old('nama') }}"
@@ -47,7 +47,7 @@
 
                                 <!-- Email Field -->
                                 <div class="col-md-6 mb-3">
-                                    <label for="email" class="form-label">Email</label>
+                                    <label for="email" class="form-label">Email <b class="text-danger">*</b></label>
                                     <input type="email"
                                         class="form-control @error('email') is-invalid @enderror @if (old('email') && !$errors->has('email')) is-valid @endif"
                                         id="email" name="email" value="{{ old('email') }}"
@@ -59,7 +59,7 @@
 
                                 <!-- Password Field -->
                                 <div class="col-md-6 mb-3">
-                                    <label for="password" class="form-label">Kata Sandi</label>
+                                    <label for="password" class="form-label">Kata Sandi <b class="text-danger">*</b></label>
                                     <input type="password"
                                         class="form-control @error('password') is-invalid @enderror @if (old('password') && !$errors->has('password')) is-valid @endif"
                                         id="password" name="password" placeholder="Masukkan kata sandi" required>
@@ -70,7 +70,8 @@
 
                                 <!-- Password Confirmation Field -->
                                 <div class="col-md-6 mb-3">
-                                    <label for="password_confirmation" class="form-label">Konfirmasi Kata Sandi</label>
+                                    <label for="password_confirmation" class="form-label">Konfirmasi Kata Sandi <b
+                                            class="text-danger">*</b></label>
                                     <input type="password"
                                         class="form-control @error('password_confirmation') is-invalid @enderror @if (old('password_confirmation') && !$errors->has('password_confirmation')) is-valid @endif"
                                         id="password_confirmation" name="password_confirmation"

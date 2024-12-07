@@ -44,19 +44,19 @@ class BaptisController extends Controller
             ->whereHas('jadwal', function($query) use ($pendetaId) {
                 $query->where('pendeta_id', $pendetaId);
             })
-            ->where('status_verifikasi', '!=', 'ditolak')
+            ->where('status_verifikasi', '!=', 'Ditolak')
             ->get();
 
         $pendaftarDitolaks = Baptis::where('jadwal_id', $id)
             ->whereHas('jadwal', function ($query) use ($pendetaId) {
                 $query->where('pendeta_id', $pendetaId);
             })
-            ->where('status_verifikasi', 'ditolak')
+            ->where('status_verifikasi', 'Ditolak')
             ->whereNotIn('jemaat_id', function ($query) use ($id) {
                 $query->select('jemaat_id')
                     ->from('baptis')
                     ->where('jadwal_id', $id)
-                    ->where('status_verifikasi', 'disetujui');
+                    ->where('status_verifikasi', 'Disetujui');
             })
             ->get();
 
@@ -88,7 +88,7 @@ class BaptisController extends Controller
 
         $pendaftar = Baptis::findOrFail($id);
 
-        $pendaftar->status_verifikasi = 'ditolak';
+        $pendaftar->status_verifikasi = 'Ditolak';
         $pendaftar->catatan = $request->catatan;
         $pendaftar->save();
 
@@ -99,7 +99,7 @@ class BaptisController extends Controller
     public function accept($id){
         $pendaftar = Baptis::findOrFail($id);
 
-        $pendaftar->status_verifikasi = 'disetujui';
+        $pendaftar->status_verifikasi = 'Disetujui';
         $pendaftar->save();
 
         toast("Pendaftar berhasil disetujui.", 'success')->timerProgressBar()->autoClose(5000);

@@ -154,7 +154,8 @@
                                     id="wilayah_id" required>
                                     <option hidden disabled selected value>Pilih wilayah</option>
                                     @foreach ($sortedWilayahs as $wilayah)
-                                        <option value="{{ $wilayah->id }}">
+                                        <option value="{{ $wilayah->id }}"
+                                            @if (old('wilayah_id') == $wilayah->id) selected @endif>
                                             {{ $wilayah->nama }}
                                         </option>
                                     @endforeach
@@ -185,12 +186,12 @@
                                     <input id="password_confirmation" type="password"
                                         class="form-control @error('password_confirmation') is-invalid @enderror"
                                         name="password_confirmation" placeholder="Konfirmasi Password">
+                                    @error('password_confirmation')
+                                        <span class="invalid-feedback" role="alert">
+                                            <small>{{ $message }}</small>
+                                        </span>
+                                    @enderror
                                 </div>
-                                @error('password_confirmation')
-                                    <span class="invalid-feedback" role="alert">
-                                        <small>{{ $message }}</small>
-                                    </span>
-                                @enderror
                             </div>
                         </div>
                         <div class="row">

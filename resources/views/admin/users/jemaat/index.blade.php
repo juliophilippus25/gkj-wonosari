@@ -49,7 +49,7 @@
                                             @if ($jemaat->is_verified == 0)
                                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                                     data-bs-target="#verifyModal{{ $jemaat->id }}" title="Verifikasi">
-                                                    <i class="bi bi-check"></i>
+                                                    <i class="bi bi-check"></i> Verifikasi
                                                 </button>
 
                                                 <!-- Modal -->
@@ -70,8 +70,6 @@
                                                                 <strong>{{ $jemaat->profilJemaat->nama }}</strong>?
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-bs-dismiss="modal">Batal</button>
                                                                 <form action="{{ route('jemaat.verify', $jemaat->id) }}"
                                                                     method="POST" id="verifyForm{{ $jemaat->id }}">
                                                                     @csrf
@@ -85,7 +83,7 @@
                                             @elseif ($jemaat->is_verified == 1)
                                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                                     data-bs-target="#detailModal{{ $jemaat->id }}" title="Detail">
-                                                    <i class="bi bi-eye"></i>
+                                                    <i class="bi bi-eye"></i> Detail
                                                 </button>
                                             @endif
                                         </td>

@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('baptis', function (Blueprint $table) {
+        Schema::create('katekisasis', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('jemaat_id');
             $table->foreign('jemaat_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('jadwal_id');
             $table->foreign('jadwal_id')->references('id')->on('jadwals')->onDelete('cascade');
+            $table->enum('jenis_katekisasi', ['Baptis Dewasa', 'Sidhi']);
             $table->enum('status_verifikasi', ['Diproses','Disetujui', 'Ditolak'])->default('Diproses');
             $table->enum('status_kehadiran', ['Belum', 'Hadir', 'Tidak Hadir'])->default('Belum');
             $table->string('catatan')->nullable();
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('baptis');
+        Schema::dropIfExists('katekisasis');
     }
 };

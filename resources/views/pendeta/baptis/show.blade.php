@@ -43,16 +43,16 @@
                                     <tr>
                                         <td>{{ $pendaftar->profilJemaat->nama }}</td>
                                         <td>
-                                            @if ($pendaftar->status_verifikasi == 'diproses')
+                                            @if ($pendaftar->status_verifikasi == 'Diproses')
                                                 <span class="badge bg-warning">Diproses</span>
-                                            @elseif ($pendaftar->status_verifikasi == 'disetujui')
+                                            @elseif ($pendaftar->status_verifikasi == 'Disetujui')
                                                 <span class="badge bg-success">Disetujui</span>
-                                            @elseif ($pendaftar->status_verifikasi == 'ditolak')
+                                            @elseif ($pendaftar->status_verifikasi == 'Ditolak')
                                                 <span class="badge bg-danger">Ditolak</span>
                                             @endif
                                         </td>
                                         <td>
-                                            @if ($pendaftar->status_verifikasi == 'diproses')
+                                            @if ($pendaftar->status_verifikasi == 'Diproses')
                                                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                                     data-bs-target="#verificationModal{{ $pendaftar->id }}"
                                                     data-id="{{ $pendaftar->id }}">

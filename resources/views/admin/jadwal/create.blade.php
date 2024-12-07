@@ -33,7 +33,7 @@
                             @csrf
                             <div class="row mb-3">
                                 <div class="col-md-6 mb-3">
-                                    <label for="tanggal" class="form-label">Tanggal</label>
+                                    <label for="tanggal" class="form-label">Tanggal <b class="text-danger">*</b></label>
                                     <input type="date"
                                         class="form-control @error('tanggal') is-invalid @enderror @if (old('tanggal') && !$errors->has('tanggal')) is-valid @endif"
                                         id="tanggal" name="tanggal" value="{{ old('tanggal') }}" required>
@@ -42,7 +42,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="jam" class="form-label">Jam</label>
+                                    <label for="jam" class="form-label">Jam <b class="text-danger">*</b></label>
                                     <input type="time"
                                         class="form-control @error('jam') is-invalid @enderror @if (old('jam') && !$errors->has('jam')) is-valid @endif"
                                         id="jam" name="jam" value="{{ old('jam') }}" required>
@@ -51,13 +51,14 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="layanan" class="form-label">Pelayanan</label>
+                                    <label for="layanan" class="form-label">Pelayanan <b class="text-danger">*</b></label>
                                     <select
                                         class="form-select @error('layanan_id') is-invalid @enderror @if (old('layanan_id') && !$errors->has('layanan_id')) is-valid @endif"
                                         name="layanan_id" id="layanan_id">
                                         <option hidden disabled selected value>Pilih pelayanan</option>
                                         @foreach ($layanans as $layanan)
-                                            <option value="{{ $layanan->id }}">
+                                            <option value="{{ $layanan->id }}"
+                                                @if (old('layanan_id') == $layanan->id) selected @endif>
                                                 {{ $layanan->nama }}</option>
                                         @endforeach
                                     </select>
@@ -72,7 +73,8 @@
                                         name="pendeta_id" id="pendeta_id">
                                         <option hidden disabled selected value>Pilih pendeta</option>
                                         @forelse ($pendetas as $pendeta)
-                                            <option value="{{ $pendeta->id }}">
+                                            <option value="{{ $pendeta->id }}"
+                                                @if (old('pendeta_id') == $pendeta->id) selected @endif>
                                                 {{ $pendeta->profilPendeta->nama }}
                                             </option>
                                         @empty
