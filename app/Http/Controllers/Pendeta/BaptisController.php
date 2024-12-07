@@ -12,17 +12,32 @@ class BaptisController extends Controller
 {
     public function index()
     {
-        $dataType = 'baptis';
+        $dataType = 'jadwal baptis';
 
         $pendetaId = Auth::id();
         $jadwals = Jadwal::where('pendeta_id', $pendetaId)
-        ->whereHas('layanan', function($query) {
-            $query->where('nama', 'Baptis');
-        })
-        ->get();
+            ->whereHas('layanan', function($query) {
+                $query->where('nama', 'Baptis');
+            })
+            ->withCount('baptis')
+            ->get();
 
-        $jumlahPendaftar = Baptis::where('jadwal_id', $jadwals[0]->id)->count();
+        return view('pendeta.baptis.index', compact('dataType', 'jadwals'));
+    }
 
-        return view('pendeta.baptis.index', compact('dataType', 'jadwals', 'jumlahPendaftar'));
+
+    public function show($id){
+        $dataType = 'pendaftar baptis';
+        $jadwal = Jadwal::find($id);
+
+        $pendetaId = Auth::id();
+        $pendaftars = Baptis::where('jadwal_id', $id)
+            ->whereHas('jadwal', function($query) use ($pendetaId) {
+                $query->where('pendeta_id', $pendetaId);
+            })
+            ->with('profilJemaat')
+            ->get();
+
+        return view('pendeta.baptis.show', compact('dataType', 'jadwal', 'pendaftars'));
     }
 }

@@ -33,6 +33,7 @@ Route::prefix('/jemaat')->group(function () {
 Route::prefix('/pelayanan')->group(function () {
     Route::prefix('/baptis')->group(function () {
         Route::get('/', [App\Http\Controllers\Pendeta\BaptisController::class, 'index'])->name('baptis.pendeta.index');
+        Route::get('/{id}', [App\Http\Controllers\Pendeta\BaptisController::class, 'show'])->name('baptis.pendeta.show');
     });
 });
 

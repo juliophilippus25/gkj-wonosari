@@ -21,9 +21,9 @@ class Baptis extends Model
         'catatan',
     ];
 
-    public function jemaat()
+    public function profilJemaat()
     {
-        return $this->belongsTo(User::class, 'jemaat_id');
+        return $this->belongsTo(ProfilJemaat::class,'jemaat_id', 'user_id');
     }
 
     public function jadwal()

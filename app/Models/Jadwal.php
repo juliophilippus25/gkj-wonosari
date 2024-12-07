@@ -34,4 +34,9 @@ class Jadwal extends Model
     {
         return Carbon::today()->greaterThan($this->tanggal);
     }
+
+    public function baptis()
+    {
+        return $this->hasMany(Baptis::class);
+    }
 }
