@@ -50,10 +50,6 @@ Route::prefix('/jadwal')->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\JadwalController::class, 'index'])->name('jadwal.index');
     Route::get('/tambah', [App\Http\Controllers\Admin\JadwalController::class, 'create'])->name('jadwal.create');
     Route::post('/post', [App\Http\Controllers\Admin\JadwalController::class, 'store'])->name('jadwal.store');
+    Route::get('/{id}', [App\Http\Controllers\Admin\JadwalController::class, 'show'])->name('jadwal.show');
 });
 
-Route::prefix('/pendaftaran')->group(function () {
-    Route::get('/', [App\Http\Controllers\User\RegistrationController::class, 'index'])->name('registrations.index');
-    Route::get('/tambah', [App\Http\Controllers\User\RegistrationController::class, 'create'])->name('registrations.create');
-    Route::post('/post', [App\Http\Controllers\User\RegistrationController::class, 'store'])->name('registrations.store');
-});

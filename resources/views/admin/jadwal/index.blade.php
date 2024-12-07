@@ -50,7 +50,12 @@
                                                 {{ $jadwal->isExpired ? 'Kedaluwarsa' : 'Aktif' }}
                                             </span>
                                         </td>
-                                        <td>Aksi</td>
+                                        <td>
+                                            <a href="{{ route('jadwal.show', $jadwal->id) }}"
+                                                class="btn btn-primary btn-sm"><i class="bi bi-eye"></i>
+                                                Detail
+                                            </a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

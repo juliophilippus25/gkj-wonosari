@@ -68,4 +68,11 @@ class JadwalController extends Controller
         toast('Jadwal berhasil ditambahkan.','success')->timerProgressBar()->autoClose(5000);
         return redirect()->route('jadwal.index');
     }
+
+    public function show($id){
+        $dataType = 'pendaftar';
+        $jadwal = Jadwal::findOrFail($id);
+
+        return view('admin.jadwal.show', compact('dataType', 'jadwal'));
+    }
 }
