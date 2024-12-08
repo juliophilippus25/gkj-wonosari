@@ -113,34 +113,24 @@
                             <a href="service-details.html" class="stretched-link">
                                 <h3>Pelayanan {{ $jadwal->layanan->nama }}</h3>
                             </a>
-                            <table class="table table-borderless">
-                                <tbody>
-                                    <tr>
-                                        <td class="fw-bold">Tanggal</td>
-                                        <td>
-                                            {{ \Carbon\Carbon::parse($jadwal->tanggal)->isoFormat('dddd, D MMMM YYYY') }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">Waktu</td>
-                                        <td>
-                                            {{ \Carbon\Carbon::parse($jadwal->jam)->isoFormat('H:mm a') }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">Pendeta</td>
-                                        <td>
-                                            {{ $jadwal->pendeta->profilPendeta->nama }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">Jumlah Pendaftar</td>
-                                        <td>
-                                            20
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="d-flex flex-column gap-1">
+                                <div class="d-flex justify-content-between">
+                                    <p class="fw-bold">Tanggal</p>
+                                    <p>{{ \Carbon\Carbon::parse($jadwal->tanggal)->isoFormat('dddd, D MMMM YYYY') }}</p>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="fw-bold">Jam</p>
+                                    <p>{{ \Carbon\Carbon::parse($jadwal->jam)->isoFormat('H:mm a') }}</p>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="fw-bold">Pendeta</p>
+                                    <p>{{ $jadwal->pendeta->profilPendeta->nama }}</p>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="fw-bold">Jumlah Pendaftar</p>
+                                    <p>12</p>
+                                </div>
+                            </div>
                         </div>
                     </div><!-- End Service Item -->
 
