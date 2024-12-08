@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Baptis;
 use App\Models\Jadwal;
+use App\Models\Katekisasi;
 use App\Models\Layanan;
+use App\Models\Sidhi;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -69,10 +72,67 @@ class JadwalController extends Controller
         return redirect()->route('jadwal.index');
     }
 
-    public function show($id){
+    public function show($id)
+    {
         $dataType = 'pendaftar';
+
         $jadwal = Jadwal::findOrFail($id);
 
-        return view('admin.jadwal.show', compact('dataType', 'jadwal'));
+        $pendaftars = collect();
+
+        if (Baptis::where('jadwal_id', $jadwal->id)->exists()) {
+            $pendaftars = Baptis::where('jadwal_id', $jadwal->id)
+                ->where('status_verifikasi', '!=', 'Ditolak')
+                ->get();
+        } elseif (Sidhi::where('jadwal_id', $jadwal->id)->exists()) {
+            $pendaftars = Sidhi::where('jadwal_id', $jadwal->id)
+                ->where('status_verifikasi', '!=', 'Ditolak')
+                ->get();
+        } elseif (Katekisasi::where('jadwal_id', $jadwal->id)->exists()) {
+            $pendaftars = Katekisasi::where('jadwal_id', $jadwal->id)
+                ->where('status_verifikasi', '!=', 'Ditolak')
+                ->get();
+        }
+
+        $pendaftarCount = $pendaftars ? $pendaftars->pluck('jemaat_id')->unique()->count() : 0;
+        $jadwal->jumlah_pendaftar = $pendaftarCount;
+
+        return view('admin.jadwal.show', compact('dataType', 'jadwal', 'pendaftars'));
+    }
+
+    public function verifyPresent($id)
+    {
+        $pendaftar = null;
+        if ($pendaftar = Baptis::find($id)) {
+            $pendaftar->status_kehadiran = 'Hadir';
+            $pendaftar->save();
+        } elseif ($pendaftar = Sidhi::find($id)) {
+            $pendaftar->status_kehadiran = 'Hadir';
+            $pendaftar->save();
+        } elseif ($pendaftar = Katekisasi::find($id)) {
+            $pendaftar->status_kehadiran = 'Hadir';
+            $pendaftar->save();
+        }
+
+        toast('Kehadiran berhasil diperbarui ke Hadir.', 'success')->timerProgressBar()->autoClose(5000);
+        return redirect()->back();
+    }
+
+    public function verifyAbsent($id)
+    {
+        $pendaftar = null;
+        if ($pendaftar = Baptis::find($id)) {
+            $pendaftar->status_kehadiran = 'Tidak Hadir';
+            $pendaftar->save();
+        } elseif ($pendaftar = Sidhi::find($id)) {
+            $pendaftar->status_kehadiran = 'Tidak Hadir';
+            $pendaftar->save();
+        } elseif ($pendaftar = Katekisasi::find($id)) {
+            $pendaftar->status_kehadiran = 'Tidak Hadir';
+            $pendaftar->save();
+        }
+
+        toast('Kehadiran berhasil diperbarui ke Tidak Hadir.', 'success')->timerProgressBar()->autoClose(5000);
+        return redirect()->back();
     }
 }

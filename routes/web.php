@@ -69,5 +69,7 @@ Route::prefix('/jadwal')->group(function () {
     Route::get('/tambah', [App\Http\Controllers\Admin\JadwalController::class, 'create'])->name('jadwal.create');
     Route::post('/post', [App\Http\Controllers\Admin\JadwalController::class, 'store'])->name('jadwal.store');
     Route::get('/{id}', [App\Http\Controllers\Admin\JadwalController::class, 'show'])->name('jadwal.show');
+    Route::post('/{id}/hadir', [App\Http\Controllers\Admin\JadwalController::class, 'verifyPresent'])->name('jadwal.present');
+    Route::post('/{id}/tidak-hadir', [App\Http\Controllers\Admin\JadwalController::class, 'verifyAbsent'])->name('jadwal.absent');
 });
 

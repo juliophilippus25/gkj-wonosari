@@ -10,7 +10,7 @@
                     <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            Pelayanan
+                            Pelayanan {{ $jadwal->layanan->nama }}
                         </li>
                     </ol>
                 </div>
@@ -23,13 +23,35 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            Pendaftar {{ $jadwal->layanan->nama }}
-                            {{ \Carbon\Carbon::parse($jadwal->tanggal)->isoFormat('dddd, D MMMM YYYY') }},
-                            {{ \Carbon\Carbon::parse($jadwal->jam)->isoFormat('H:mm a') }}
+                            Pendaftar Pelayanan {{ $jadwal->layanan->nama }}
                         </h3>
                     </div>
 
                     <div class="card-body">
+                        <table class="table table-borderless mb-4">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 25%;" class="fw-bold">Pendeta</td>
+                                    <td style="width: 0%;">:</td>
+                                    <td>{{ $jadwal->pendeta->profilPendeta->nama }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 10%;" class="fw-bold">Waktu Pelaksanaan</td>
+                                    <td style="width: 0%;">:</td>
+                                    <td>
+                                        {{ \Carbon\Carbon::parse($jadwal->tanggal)->isoFormat('dddd, D MMMM YYYY') }},
+                                        {{ \Carbon\Carbon::parse($jadwal->jam)->isoFormat('H:mm a') }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 10%;" class="fw-bold">Jumlah Pendaftar</td>
+                                    <td style="width: 0%;">:</td>
+                                    <td>
+                                        {{ $jadwal->jumlah_pendaftar }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <table id="table" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
@@ -40,30 +62,39 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($pendaftars as $pendaftar)
+                                @foreach ($pendaftars as $pendaftar)
                                     <tr>
                                         <td>{{ $pendaftar->profilJemaat->nama }}</td>
                                         <td>
-                                            @if ($pendaftar->status_verifikasi == 'diproses')
+                                            @if ($pendaftar->status_verifikasi == 'Diproses')
                                                 <span class="badge bg-warning">Diproses</span>
-                                            @elseif ($pendaftar->status_verifikasi == 'disetujui')
+                                            @elseif ($pendaftar->status_verifikasi == 'Disetujui')
                                                 <span class="badge bg-success">Disetujui</span>
-                                            @elseif ($pendaftar->status_verifikasi == 'ditolak')
+                                            @elseif ($pendaftar->status_verifikasi == 'Ditolak')
                                                 <span class="badge bg-danger">Ditolak</span>
                                             @endif
                                         </td>
                                         <td>
-                                            @if ($pendaftar->status_verifikasi == 'diproses')
+                                            @if ($pendaftar->status_kehadiran == 'Belum')
+                                                <span class="badge bg-warning">Belum Dimulai</span>
+                                            @elseif ($pendaftar->status_kehadiran == 'Hadir')
+                                                <span class="badge bg-success">Hadir</span>
+                                            @elseif ($pendaftar->status_kehadiran == 'Tidak Hadir')
+                                                <span class="badge bg-danger">Tidak Hadir</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($pendaftar->status_kehadiran == 'Belum')
                                                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                                     data-bs-target="#verificationModal{{ $pendaftar->id }}"
                                                     data-id="{{ $pendaftar->id }}">
                                                     <i class="bi bi-check"></i> Verifikasi
                                                 </button>
-                                            @else
+                                            @elseif($pendaftar->status_kehadiran == 'Hadir')
                                                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                                     data-bs-target="#detailModal{{ $pendaftar->id }}"
                                                     data-id="{{ $pendaftar->id }}">
-                                                    <i class="bi bi-eye"></i>
+                                                    <i class="bi bi-download"></i> Unduh {{ $jadwal->layanan->nama }}
                                                 </button>
                                             @endif
 
@@ -74,68 +105,27 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="verificationModalLabel">Verifikasi
-                                                                Pendaftar</h5>
+                                                                Kehadiran</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <!-- Data Penanggung Jawab -->
-                                                            <table class="table-borderless w-100 mb-4">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td class="fw-bold" style="width: 45%">Nama
-                                                                        </td>
-                                                                        <td>:</td>
-                                                                        <td style="width: 55%">
-                                                                            {{ $pendaftar->profilJemaat->nama }}
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="fw-bold">Jenis kelamin</td>
-                                                                        <td>:</td>
-                                                                        <td>{{ $pendaftar->profilJemaat->jenis_kelamin === 'L' ? 'Laki-laki' : 'Perempuan' }}
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="fw-bold">Tempat dan tanggal lahir</td>
-                                                                        <td>:</td>
-                                                                        <td>
-                                                                            {{ $pendaftar->profilJemaat->tempat_lahir }},
-                                                                            {{ \Carbon\Carbon::parse($pendaftar->profilJemaat->tanggal_lahir)->isoFormat('D MMMM YYYY') }}
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="fw-bold">Wilayah</td>
-                                                                        <td>:</td>
-                                                                        <td>{{ $pendaftar->profilJemaat->wilayah->nama }}
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="fw-bold">Nama ayah</td>
-                                                                        <td>:</td>
-                                                                        <td>{{ $pendaftar->profilJemaat->ayah }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="fw-bold">Nama ibu</td>
-                                                                        <td>:</td>
-                                                                        <td>{{ $pendaftar->profilJemaat->ibu }}</td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-
+                                                            Pastikan bahwa Anda memverifikasi dengan benar kehadiran
+                                                            <strong>{{ $pendaftar->profilJemaat->nama }}</strong> sebelum
+                                                            menekan tombol konfirmasi.
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#catatanModal{{ $pendaftar->id }}">
-                                                                Tolak
-                                                            </button>
-                                                            <form
-                                                                action="{{ route('baptis.pendeta.accept', $pendaftar->id) }}"
+                                                            <form action="{{ route('jadwal.absent', $pendaftar->id) }}"
+                                                                method="POST" style="display:inline;">
+                                                                @csrf
+                                                                <button type="submit" class="btn btn-danger">Tidak
+                                                                    Hadir</button>
+                                                            </form>
+                                                            <form action="{{ route('jadwal.present', $pendaftar->id) }}"
                                                                 method="POST" style="display:inline;">
                                                                 @csrf
                                                                 <button type="submit"
-                                                                    class="btn btn-primary">Terima</button>
+                                                                    class="btn btn-primary">Hadir</button>
                                                             </form>
                                                         </div>
                                                     </div>
@@ -237,7 +227,7 @@
 
                                         </td>
                                     </tr>
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

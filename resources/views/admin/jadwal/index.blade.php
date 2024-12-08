@@ -46,14 +46,15 @@
                                         <td>{{ $jadwal->layanan->nama }}</td>
                                         <td>{{ $jadwal->pendeta->profilPendeta->nama }}</td>
                                         <td>
-                                            <span class="{{ $jadwal->isExpired ? 'badge bg-danger' : 'badge bg-success' }}">
-                                                {{ $jadwal->isExpired ? 'Kedaluwarsa' : 'Aktif' }}
+                                            <span
+                                                class="{{ $jadwal->isExpired ? 'badge bg-success' : 'badge bg-warning' }}">
+                                                {{ $jadwal->isExpired ? 'Sudah Dilaksanakan' : 'Belum Dilaksanakan' }}
                                             </span>
                                         </td>
                                         <td>
                                             <a href="{{ route('jadwal.show', $jadwal->id) }}"
-                                                class="btn btn-primary btn-sm"><i class="bi bi-eye"></i>
-                                                Detail
+                                                class="btn btn-primary btn-sm">
+                                                <i class="bi bi-eye"></i> Detail
                                             </a>
                                         </td>
                                     </tr>
