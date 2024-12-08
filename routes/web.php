@@ -14,6 +14,7 @@ Route::prefix('/baptis')->group(function () {
 Route::prefix('/sidhi')->group(function () {
     Route::get('/', [App\Http\Controllers\SidhiController::class, 'index'])->name('sidhi');
     Route::get('/daftar', [App\Http\Controllers\SidhiController::class, 'create'])->name('sidhi.create')->middleware('auth');
+    Route::post('/post', [App\Http\Controllers\SidhiController::class, 'store'])->name('sidhi.store');
 });
 
 Route::prefix('/katekisasi')->group(function () {

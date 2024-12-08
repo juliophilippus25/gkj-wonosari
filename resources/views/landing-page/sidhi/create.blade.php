@@ -28,8 +28,9 @@
         <div class="container" data-aos="fade-up">
             <div class="row">
                 <div class="col-md-6 col-lg-8">
-                    <form>
+                    <form action="{{ route('sidhi.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="jemaat_id" value="{{ Auth::user()->id }}">
                         <table class="table table-borderless">
                             <tbody>
                                 <!-- NIK Field -->
@@ -184,11 +185,19 @@
                                     <td class="align-middle">Akta Baptis <b class="text-danger">*</b></td>
                                     <td class="align-middle">:</td>
                                     <td>
-                                        <input type="file" name="akta_baptis" id="akta_baptis" class="form-control"
-                                            required>
-                                        @error('akta_baptis')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
+                                        @if (Auth::user()->profilJemaat && Auth::user()->profilJemaat->akta_baptis)
+                                            <a href="{{ asset('storage/' . Auth::user()->profilJemaat->akta_baptis) }}"
+                                                target="_blank" class="text-decoration-none"> Lihat Akta
+                                                Baptis
+                                            </a>
+                                        @else
+                                            <input type="file" name="akta_baptis" id="akta_baptis"
+                                                class="form-control" required>
+                                            @error('akta_baptis')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        @endif
+
                                     </td>
                                 </tr>
 

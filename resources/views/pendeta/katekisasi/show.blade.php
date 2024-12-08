@@ -34,6 +34,7 @@
                             <thead>
                                 <tr>
                                     <th>Nama</th>
+                                    <th>Jenis Katekisasi</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -42,6 +43,7 @@
                                 @foreach ($pendaftars as $pendaftar)
                                     <tr>
                                         <td>{{ $pendaftar->profilJemaat->nama }}</td>
+                                        <td>{{ $pendaftar->jenis_katekisasi }}</td>
                                         <td>
                                             @if ($pendaftar->status_verifikasi == 'Diproses')
                                                 <span class="badge bg-warning">Diproses</span>
