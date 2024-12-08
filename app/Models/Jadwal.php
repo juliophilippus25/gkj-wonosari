@@ -39,4 +39,14 @@ class Jadwal extends Model
     {
         return $this->hasMany(Baptis::class);
     }
+
+    public function sidhi()
+    {
+        return $this->hasMany(Sidhi::class);
+    }
+
+    public function katekisasi()
+    {
+        return $this->hasMany(Katekisasi::class);
+    }
 }

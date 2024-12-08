@@ -48,6 +48,14 @@ Route::prefix('/pelayanan')->group(function () {
         Route::get('/ditolak/{id}', [App\Http\Controllers\Pendeta\KatekisasiController::class, 'showRejectForm'])->name('katekisasi.pendeta.rejectForm');
         Route::post('/pendaftar/ditolak/{id}', [App\Http\Controllers\Pendeta\KatekisasiController::class, 'reject'])->name('katekisasi.pendeta.reject');
     });
+
+    Route::prefix('/sidhi')->group(function () {
+        Route::get('/', [App\Http\Controllers\Pendeta\SidhiController::class, 'index'])->name('sidhi.pendeta.index');
+        Route::get('/{id}', [App\Http\Controllers\Pendeta\SidhiController::class, 'show'])->name('sidhi.pendeta.show');
+        Route::post('/diterima/{id}', [App\Http\Controllers\Pendeta\SidhiController::class, 'accept'])->name('sidhi.pendeta.accept');
+        Route::get('/ditolak/{id}', [App\Http\Controllers\Pendeta\SidhiController::class, 'showRejectForm'])->name('sidhi.pendeta.rejectForm');
+        Route::post('/pendaftar/ditolak/{id}', [App\Http\Controllers\Pendeta\SidhiController::class, 'reject'])->name('sidhi.pendeta.reject');
+    });
 });
 
 Route::prefix('/pendeta')->group(function () {

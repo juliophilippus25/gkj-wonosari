@@ -9,6 +9,9 @@ class Sidhi extends Model
 {
     use HasFactory;
 
+    protected $keyType = 'string';
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'id',
         'jemaat_id',

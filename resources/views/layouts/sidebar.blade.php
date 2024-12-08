@@ -84,7 +84,7 @@
 
                 @if (Auth::user()->role == 'pendeta')
                     <li
-                        class="nav-item {{ request()->is('pelayanan/baptis*', 'pelayanan/katekisasi*') ? 'menu-open' : '' }}">
+                        class="nav-item {{ request()->is('pelayanan/baptis*', 'pelayanan/sidhi*', 'pelayanan/katekisasi*') ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link"> <i class="nav-icon bi bi-person-lines-fill"></i>
                             <p>
                                 Pelayanan
@@ -100,7 +100,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <a href="{{ route('sidhi.pendeta.index') }}" class="nav-link"> <i
+                                        class="nav-icon bi bi-circle"></i>
                                     <p>Sidhi/Baptis Dewasa</p>
                                 </a>
                             </li>

@@ -23,6 +23,7 @@ class BaptisController extends Controller
             ->get()
             ->map(function ($jadwal) {
                 $uniquePendaftarCount = Baptis::where('jadwal_id', $jadwal->id)
+                    ->where('status_verifikasi', '!=', 'Ditolak')
                     ->distinct('jemaat_id')
                     ->count();
 
