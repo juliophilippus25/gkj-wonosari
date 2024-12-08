@@ -9,6 +9,7 @@ use App\Models\Katekisasi;
 use App\Models\Layanan;
 use App\Models\Sidhi;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -134,5 +135,27 @@ class JadwalController extends Controller
 
         toast('Kehadiran berhasil diperbarui ke Tidak Hadir.', 'success')->timerProgressBar()->autoClose(5000);
         return redirect()->back();
+    }
+
+    public function downloadPDF($id)
+    {
+        $pendaftar = null;
+
+        if ($pendaftar = Baptis::find($id)) {
+            $pendaftar->jadwal;
+        } elseif ($pendaftar = Sidhi::find($id)) {
+            $pendaftar->jadwal;
+        } elseif ($pendaftar = Katekisasi::find($id)) {
+            $pendaftar->jadwal;
+        }
+
+        // Setup PDF
+        $pdf = PDF::loadView('admin.jadwal.pdf', compact('pendaftar'));
+        $nama = strtoupper(str_replace(' ', '_', $pendaftar->profilJemaat->nama));
+        $layanan = strtoupper(str_replace(' ', '_', $pendaftar->jadwal->layanan->nama));
+        $tanggal = strtoupper(str_replace(' ', '_', \Carbon\Carbon::parse($pendaftar->jadwal->tanggal)->isoFormat('D_MMMM_Y')));
+
+        // Download PDF file with download method
+        return $pdf->stream('SURAT_'.$layanan.'_'.$nama.'_'.$tanggal.'_'.'.pdf', compact('pendaftar'));
     }
 }

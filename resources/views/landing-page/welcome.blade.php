@@ -108,32 +108,34 @@
 
             <div class="row gy-4">
                 @forelse ($jadwals as $jadwal)
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="service-item  position-relative">
-                            <a href="service-details.html" class="stretched-link">
-                                <h3>Pelayanan {{ $jadwal->layanan->nama }}</h3>
-                            </a>
-                            <div class="d-flex flex-column gap-1">
-                                <div class="d-flex justify-content-between">
-                                    <p class="fw-bold">Tanggal</p>
-                                    <p>{{ \Carbon\Carbon::parse($jadwal->tanggal)->isoFormat('dddd, D MMMM YYYY') }}</p>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <p class="fw-bold">Jam</p>
-                                    <p>{{ \Carbon\Carbon::parse($jadwal->jam)->isoFormat('H:mm a') }}</p>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <p class="fw-bold">Pendeta</p>
-                                    <p>{{ $jadwal->pendeta->profilPendeta->nama }}</p>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <p class="fw-bold">Jumlah Pendaftar</p>
-                                    <p>12</p>
+                    @if (!$jadwal->isExpired)
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="service-item  position-relative">
+                                <a href="service-details.html" class="stretched-link">
+                                    <h3>Pelayanan {{ $jadwal->layanan->nama }}</h3>
+                                </a>
+                                <div class="d-flex flex-column gap-1">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="fw-bold">Tanggal</p>
+                                        <p>{{ \Carbon\Carbon::parse($jadwal->tanggal)->isoFormat('dddd, D MMMM YYYY') }}
+                                        </p>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="fw-bold">Jam</p>
+                                        <p>{{ \Carbon\Carbon::parse($jadwal->jam)->isoFormat('H:mm a') }}</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="fw-bold">Pendeta</p>
+                                        <p>{{ $jadwal->pendeta->profilPendeta->nama }}</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="fw-bold">Jumlah Pendaftar</p>
+                                        <p>12</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div><!-- End Service Item -->
-
+                        </div><!-- End Service Item -->
+                    @endif
                 @empty
                     <p class="text-center text-danger">Belum ada jadwal pelayanan.</p>
                 @endforelse

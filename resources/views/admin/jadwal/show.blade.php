@@ -50,6 +50,15 @@
                                         {{ $jadwal->jumlah_pendaftar }}
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td style="width: 10%;" class="fw-bold">Status</td>
+                                    <td style="width: 0%;">:</td>
+                                    <td>
+                                        <span class="{{ $jadwal->isExpired ? 'badge bg-success' : 'badge bg-warning' }}">
+                                            {{ $jadwal->isExpired ? 'Sudah Dilaksanakan' : 'Belum Dilaksanakan' }}
+                                        </span>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                         <table id="table" class="table table-bordered table-striped">
@@ -76,7 +85,7 @@
                                         </td>
                                         <td>
                                             @if ($pendaftar->status_kehadiran == 'Belum')
-                                                <span class="badge bg-warning">Belum Dimulai</span>
+                                                -
                                             @elseif ($pendaftar->status_kehadiran == 'Hadir')
                                                 <span class="badge bg-success">Hadir</span>
                                             @elseif ($pendaftar->status_kehadiran == 'Tidak Hadir')
@@ -84,18 +93,17 @@
                                             @endif
                                         </td>
                                         <td>
-                                            @if ($pendaftar->status_kehadiran == 'Belum')
+                                            @if ($pendaftar->status_kehadiran == 'Belum' && $jadwal->isExpired)
                                                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                                     data-bs-target="#verificationModal{{ $pendaftar->id }}"
                                                     data-id="{{ $pendaftar->id }}">
                                                     <i class="bi bi-check"></i> Verifikasi
                                                 </button>
                                             @elseif($pendaftar->status_kehadiran == 'Hadir')
-                                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                                    data-bs-target="#detailModal{{ $pendaftar->id }}"
-                                                    data-id="{{ $pendaftar->id }}">
-                                                    <i class="bi bi-download"></i> Unduh {{ $jadwal->layanan->nama }}
-                                                </button>
+                                                <a href="{{ route('jadwal.pdf', $pendaftar->id) }}"
+                                                    class="btn btn-sm btn-primary" target="_blank">
+                                                    <i class="bi bi-eye"></i> Unduh {{ $jadwal->layanan->nama }}
+                                                </a>
                                             @endif
 
                                             <!-- Verification Modal -->
@@ -127,99 +135,6 @@
                                                                 <button type="submit"
                                                                     class="btn btn-primary">Hadir</button>
                                                             </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Modal Catatan untuk Tolak -->
-                                            <div class="modal fade" id="catatanModal{{ $pendaftar->id }}" tabindex="-1"
-                                                aria-labelledby="catatanModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="catatanModalLabel">
-                                                                Tolak Pendaftar {{ $pendaftar->profilJemaat->nama }}
-                                                            </h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <!-- Form Catatan Tolak -->
-                                                            <form
-                                                                action="{{ route('baptis.pendeta.reject', $pendaftar->id) }}"
-                                                                method="POST">
-                                                                @csrf
-                                                                <div class="mb-3">
-                                                                    <label for="catatan"
-                                                                        class="form-label">Catatan:</label>
-                                                                    <textarea class="form-control" id="catatan" name="catatan" rows="3" required></textarea>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="submit" class="btn btn-danger">Tolak
-                                                                        Pendaftar</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Detail Modal -->
-                                            <div class="modal fade" id="detailModal{{ $pendaftar->id }}" tabindex="-1"
-                                                aria-labelledby="verificationModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="verificationModalLabel">Detail
-                                                                Pendaftar</h5>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <!-- Data Penanggung Jawab -->
-                                                            <table class="table-borderless w-100 mb-4">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td class="fw-bold" style="width: 45%">Nama
-                                                                        </td>
-                                                                        <td>:</td>
-                                                                        <td style="width: 55%">
-                                                                            {{ $pendaftar->profilJemaat->nama }}
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="fw-bold">Jenis kelamin</td>
-                                                                        <td>:</td>
-                                                                        <td>{{ $pendaftar->profilJemaat->jenis_kelamin === 'L' ? 'Laki-laki' : 'Perempuan' }}
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="fw-bold">Tempat dan tanggal lahir</td>
-                                                                        <td>:</td>
-                                                                        <td>
-                                                                            {{ $pendaftar->profilJemaat->tempat_lahir }},
-                                                                            {{ \Carbon\Carbon::parse($pendaftar->profilJemaat->tanggal_lahir)->isoFormat('D MMMM YYYY') }}
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="fw-bold">Wilayah</td>
-                                                                        <td>:</td>
-                                                                        <td>{{ $pendaftar->profilJemaat->wilayah->nama }}
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="fw-bold">Nama ayah</td>
-                                                                        <td>:</td>
-                                                                        <td>{{ $pendaftar->profilJemaat->ayah }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="fw-bold">Nama ibu</td>
-                                                                        <td>:</td>
-                                                                        <td>{{ $pendaftar->profilJemaat->ibu }}</td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
                                                         </div>
                                                     </div>
                                                 </div>

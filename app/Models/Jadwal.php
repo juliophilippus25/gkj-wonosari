@@ -32,7 +32,9 @@ class Jadwal extends Model
 
     public function getIsExpiredAttribute()
     {
-        return Carbon::today()->greaterThan($this->tanggal);
+        $waktuPelaksanaan = Carbon::parse($this->tanggal . ' ' . $this->jam);
+
+        return Carbon::now()->greaterThan($waktuPelaksanaan);
     }
 
     public function baptis()

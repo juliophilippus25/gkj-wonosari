@@ -71,5 +71,6 @@ Route::prefix('/jadwal')->group(function () {
     Route::get('/{id}', [App\Http\Controllers\Admin\JadwalController::class, 'show'])->name('jadwal.show');
     Route::post('/{id}/hadir', [App\Http\Controllers\Admin\JadwalController::class, 'verifyPresent'])->name('jadwal.present');
     Route::post('/{id}/tidak-hadir', [App\Http\Controllers\Admin\JadwalController::class, 'verifyAbsent'])->name('jadwal.absent');
+    Route::get('/pdf/{id}', [App\Http\Controllers\Admin\JadwalController::class, 'downloadPDF'])->name('jadwal.pdf');
 });
 
