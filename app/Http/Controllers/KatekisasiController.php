@@ -7,6 +7,7 @@ use App\Models\Katekisasi;
 use App\Models\ProfilJemaat;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class KatekisasiController extends Controller
@@ -60,17 +61,25 @@ class KatekisasiController extends Controller
             $extension = $request->akta_baptis->getClientOriginalExtension();
             $fileName = time() . '.' . $extension;
             $aktaBaptisPath = $request->file('akta_baptis')->storeAs('jemaat/akta_baptis', $fileName);
-        } else {
-            $aktaBaptisPath = NULL;
-        }
 
-        if ($request->filled(['nik', 'akta_baptis'])) {
+            $profil = ProfilJemaat::where('user_id', $jemaatId)->first();
+
+            if ($profil && $profil->akta_baptis) {
+                if (Storage::exists($profil->akta_baptis)) {
+                    Storage::delete($profil->akta_baptis);
+                }
+            }
+
             ProfilJemaat::where('user_id', $jemaatId)->update([
-                'nik' => $request->nik,
                 'akta_baptis' => $aktaBaptisPath
             ]);
         }
 
+        if ($request->filled('nik')) {
+            ProfilJemaat::where('user_id', $jemaatId)->update([
+                'nik' => $request->nik
+            ]);
+        }
         Katekisasi::create([
             'id' => strtoupper(md5("!@#!@#" . Carbon::now()->format('YmdH:i:s'))),
             'jemaat_id' => $jemaatId,

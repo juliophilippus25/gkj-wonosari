@@ -39,6 +39,14 @@ Route::prefix('/pelayanan')->group(function () {
         Route::get('/ditolak/{id}', [App\Http\Controllers\Pendeta\BaptisController::class, 'showRejectForm'])->name('baptis.pendeta.rejectForm');
         Route::post('/pendaftar/ditolak/{id}', [App\Http\Controllers\Pendeta\BaptisController::class, 'reject'])->name('baptis.pendeta.reject');
     });
+
+    Route::prefix('/katekisasi')->group(function () {
+        Route::get('/', [App\Http\Controllers\Pendeta\KatekisasiController::class, 'index'])->name('katekisasi.pendeta.index');
+        Route::get('/{id}', [App\Http\Controllers\Pendeta\KatekisasiController::class, 'show'])->name('katekisasi.pendeta.show');
+        Route::post('/diterima/{id}', [App\Http\Controllers\Pendeta\KatekisasiController::class, 'accept'])->name('katekisasi.pendeta.accept');
+        Route::get('/ditolak/{id}', [App\Http\Controllers\Pendeta\KatekisasiController::class, 'showRejectForm'])->name('katekisasi.pendeta.rejectForm');
+        Route::post('/pendaftar/ditolak/{id}', [App\Http\Controllers\Pendeta\KatekisasiController::class, 'reject'])->name('katekisasi.pendeta.reject');
+    });
 });
 
 Route::prefix('/pendeta')->group(function () {

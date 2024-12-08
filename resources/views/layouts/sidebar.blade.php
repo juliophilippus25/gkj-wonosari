@@ -83,8 +83,9 @@
                 @endif --}}
 
                 @if (Auth::user()->role == 'pendeta')
-                    <li class="nav-item {{ request()->is('pelayanan/baptis*') ? 'menu-open' : '' }}"> <a href="#"
-                            class="nav-link"> <i class="nav-icon bi bi-person-lines-fill"></i>
+                    <li
+                        class="nav-item {{ request()->is('pelayanan/baptis*', 'pelayanan/katekisasi*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link"> <i class="nav-icon bi bi-person-lines-fill"></i>
                             <p>
                                 Pelayanan
                                 <i class="nav-arrow bi bi-chevron-right"></i>
@@ -104,7 +105,9 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <a href="{{ route('katekisasi.pendeta.index') }}"
+                                    class="nav-link {{ request()->routeIs('katekisasi.pendeta.*') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-circle"></i>
                                     <p>Katekisasi</p>
                                 </a>
                             </li>

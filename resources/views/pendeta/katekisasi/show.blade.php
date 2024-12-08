@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Pelayanan Baptis')
+@section('title', 'Pelayanan Katekisasi')
 
 @section('content')
     <div class="app-content-header"> <!--begin::Container-->
@@ -117,7 +117,25 @@
                                                                     <tr>
                                                                         <td class="fw-bold">Nama ibu</td>
                                                                         <td>:</td>
-                                                                        <td>{{ $pendaftar->profilJemaat->ibu }}</td>
+                                                                        <td>{{ $pendaftar->profilJemaat->ibu }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="fw-bold">Akta Baptis</td>
+                                                                        <td>:</td>
+                                                                        <td>
+                                                                            @if ($pendaftar->profilJemaat && $pendaftar->profilJemaat->akta_baptis)
+                                                                                <a href="{{ asset('storage/' . $pendaftar->profilJemaat->akta_baptis) }}"
+                                                                                    target="_blank"
+                                                                                    class="text-decoration-none"> Lihat Akta
+                                                                                    Baptis
+                                                                                </a>
+                                                                            @else
+                                                                                <span class="text-danger">
+                                                                                    Belum diupload
+                                                                                </span>
+                                                                            @endif
+                                                                        </td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
@@ -130,7 +148,7 @@
                                                                 Tolak
                                                             </button>
                                                             <form
-                                                                action="{{ route('baptis.pendeta.accept', $pendaftar->id) }}"
+                                                                action="{{ route('katekisasi.pendeta.accept', $pendaftar->id) }}"
                                                                 method="POST" style="display:inline;">
                                                                 @csrf
                                                                 <button type="submit"
@@ -156,7 +174,7 @@
                                                         <div class="modal-body">
                                                             <!-- Form Catatan Tolak -->
                                                             <form
-                                                                action="{{ route('baptis.pendeta.reject', $pendaftar->id) }}"
+                                                                action="{{ route('katekisasi.pendeta.reject', $pendaftar->id) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 <div class="mb-3">
@@ -227,6 +245,24 @@
                                                                         <td>:</td>
                                                                         <td>{{ $pendaftar->profilJemaat->ibu }}</td>
                                                                     </tr>
+                                                                    <tr>
+                                                                        <td class="fw-bold">Akta Baptis</td>
+                                                                        <td>:</td>
+                                                                        <td>
+                                                                            @if ($pendaftar->profilJemaat && $pendaftar->profilJemaat->akta_baptis)
+                                                                                <a href="{{ asset('storage/' . $pendaftar->profilJemaat->akta_baptis) }}"
+                                                                                    target="_blank"
+                                                                                    class="text-decoration-none"> Lihat
+                                                                                    Akta
+                                                                                    Baptis
+                                                                                </a>
+                                                                            @else
+                                                                                <span class="text-danger">
+                                                                                    Belum diupload
+                                                                                </span>
+                                                                            @endif
+                                                                        </td>
+                                                                    </tr>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -274,7 +310,7 @@
                 </div>
             </div>
 
-            <a href="{{ route('baptis.pendeta.index') }}" class="btn btn-secondary mt-4">Kembali</a>
+            <a href="{{ route('katekisasi.pendeta.index') }}" class="btn btn-secondary mt-4">Kembali</a>
 
         </div> <!--end::Container-->
     </div> <!--end::App Content-->

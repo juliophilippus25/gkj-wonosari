@@ -23,6 +23,8 @@ class ProfilJemaat extends Model
         'ayah',
         'ibu',
         'jenis_kelamin',
+        'akta_baptis',
+        'katekisasi'
     ];
 
     public function wilayah(){
