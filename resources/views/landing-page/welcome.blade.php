@@ -130,7 +130,7 @@
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <p class="fw-bold">Jumlah Pendaftar</p>
-                                        <p>12</p>
+                                        <p>{{ $jadwal->jumlah_pendaftar }}</p>
                                     </div>
                                 </div>
                             </div>
