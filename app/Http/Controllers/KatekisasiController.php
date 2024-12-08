@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jadwal;
+use App\Models\Katekisasi;
+use App\Models\ProfilJemaat;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class KatekisasiController extends Controller
 {
@@ -17,5 +21,64 @@ class KatekisasiController extends Controller
             $query->where('nama', 'Katekisasi');
         })->get();
         return view('landing-page.katekisasi.create', compact('jadwals'));
+    }
+
+    public function store(Request $request){
+        $validator = Validator::make($request->all(), [
+            'nik' => 'nullable|numeric|digits:16',
+            'akta_baptis' => 'required|mimes:pdf,jpg,jpeg,png|max:2048',
+            'jemaat_id' => 'required',
+            'jadwal_id' => 'required',
+            'jenis_katekisasi' => 'required|in:Baptis Dewasa,Katekisasi'
+        ], [
+            'nik.numeric' => 'NIK harus berupa angka.',
+            'nik.digits' => 'NIK harus memiliki 16 angka.',
+            'akta_baptis.required' => 'Akta Baptis wajib diisi.',
+            'akta_baptis.max' => 'Ukuran file maksimal 2MB.',
+            'akta_baptis.mimes' => 'File baptis harus PDF, JPG, JPEG, atau PNG.',
+            'jemaat_id.required' => 'Jemaat wajib diisi.',
+            'jadwal_id.required' => 'Jadwal wajib diisi.',
+            'jenis_katekisasi.required' => 'Jenis katekisasi wajib diisi.',
+            'jenis_katekisasi.in' => 'Jenis katekisasi tidak valid.'
+        ]);
+
+        if($validator->fails()){
+            // redirect dengan pesan error
+            toast('Gagal mendaftar katekisasi.','error')->timerProgressBar()->autoClose(5000);
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $jemaatId = $request->jemaat_id;
+        $pernahKatekisasi = Katekisasi::where('jemaat_id', $jemaatId)->where('status_verifikasi', '!=', 'ditolak')->first();
+
+        if ($pernahKatekisasi) {
+            toast('Anda sudah pernah mendaftar katekisasi.','error')->timerProgressBar()->autoClose(5000);
+            return redirect()->back()->withInput();
+        }
+
+        if ($request->hasFile('akta_baptis') && $request->file('akta_baptis')->isValid()) {
+            $extension = $request->akta_baptis->getClientOriginalExtension();
+            $fileName = time() . '.' . $extension;
+            $aktaBaptisPath = $request->file('akta_baptis')->storeAs('jemaat/akta_baptis', $fileName);
+        } else {
+            $aktaBaptisPath = NULL;
+        }
+
+        if ($request->filled(['nik', 'akta_baptis'])) {
+            ProfilJemaat::where('user_id', $jemaatId)->update([
+                'nik' => $request->nik,
+                'akta_baptis' => $aktaBaptisPath
+            ]);
+        }
+
+        Katekisasi::create([
+            'id' => strtoupper(md5("!@#!@#" . Carbon::now()->format('YmdH:i:s'))),
+            'jemaat_id' => $jemaatId,
+            'jadwal_id' => $request->jadwal_id,
+            'jenis_katekisasi' => $request->jenis_katekisasi,
+        ]);
+
+        toast('Berhasil mendaftar katekisasi.','success')->timerProgressBar()->autoClose(5000);
+        return redirect()->route('katekisasi');
     }
 }

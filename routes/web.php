@@ -19,6 +19,7 @@ Route::prefix('/sidhi')->group(function () {
 Route::prefix('/katekisasi')->group(function () {
     Route::get('/', [App\Http\Controllers\KatekisasiController::class, 'index'])->name('katekisasi');
     Route::get('/daftar', [App\Http\Controllers\KatekisasiController::class, 'create'])->name('katekisasi.create')->middleware('auth');
+    Route::post('/post', [App\Http\Controllers\KatekisasiController::class, 'store'])->name('katekisasi.store');
 });
 
 Auth::routes();
