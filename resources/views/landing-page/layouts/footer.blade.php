@@ -25,8 +25,9 @@
                 <h4>Link Berguna</h4>
                 <ul>
                     <li><a href="{{ route('home') }}">Home</a></li>
-                    <li><a href="#">Jadwal Pelayanan</a></li>
-                    <li><a href="#">Kontak Kami</a></li>
+                    <li><a href="{{ route('lp.jadwal') }}">Jadwal Pelayanan</a></li>
+                    <li><a href="{{ route('register') }}">Daftar</a></li>
+                    <li><a href="{{ route('login') }}">Login</a></li>
                 </ul>
             </div>
 

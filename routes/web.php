@@ -23,6 +23,11 @@ Route::prefix('/katekisasi')->group(function () {
     Route::post('/post', [App\Http\Controllers\KatekisasiController::class, 'store'])->name('katekisasi.store');
 });
 
+Route::prefix('/jadwal-pelayanan')->group(function () {
+    Route::get('/', [App\Http\Controllers\JadwalPelayananController::class, 'index'])->name('lp.jadwal');
+    Route::get('/{id}', [App\Http\Controllers\JadwalPelayananController::class, 'show'])->name('lp.jadwal.show');
+});
+
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard')->middleware('verified');

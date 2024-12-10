@@ -10,7 +10,9 @@
         <nav id="navmenu" class="navmenu">
             <ul>
                 <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
-                <li><a href="#jadwal-pelayanan">Jadwal Pelayanan</a></li>
+                <li><a href="{{ route('lp.jadwal') }}"
+                        class="{{ request()->routeIs('lp.jadwal*') ? 'active' : '' }}">Jadwal
+                        Pelayanan</a></li>
                 <li class="dropdown"><a href="#"
                         class="{{ request()->routeIs('baptis*', 'sidhi*', 'katekisasi*') ? 'active' : '' }}"><span>Layanan</span>
                         <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -20,9 +22,10 @@
                         <li><a href="{{ route('katekisasi') }}">Katekisasi</a></li>
                     </ul>
                 </li>
-                <li><a href="#kontak">Kontak Kami</a></li>
                 @auth
-                    <li class="dropdown"><a href="#"><span>
+                    <li class="dropdown">
+                        <a href="#">
+                            <span>
                                 @if (auth()->user()->role == 'admin')
                                     {{ auth()->user()->profilAdmin->nama }}
                                 @elseif(auth()->user()->role == 'jemaat')
@@ -30,7 +33,8 @@
                                 @elseif(auth()->user()->role == 'pendeta')
                                     {{ auth()->user()->profilPendeta->nama }}
                                 @endif
-                            </span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                            </span> <i class="bi bi-chevron-down toggle-dropdown"></i>
+                        </a>
                         <ul>
                             <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
                             <li><a href="{{ route('logout') }}"
