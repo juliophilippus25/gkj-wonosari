@@ -192,9 +192,9 @@
                                                 Baptis Dewasa
                                             </label>
                                             <label class="form-check-label">
-                                                <input type="radio" name="jenis_katekisasi" value="Katekisasi"
-                                                    id="katekisasi" @if (old('jenis_katekisasi') == 'Katekisasi') checked @endif>
-                                                Katekisasi
+                                                <input type="radio" name="jenis_katekisasi" value="Sidhi"
+                                                    id="sidhi" @if (old('jenis_katekisasi') == 'Sidhi') checked @endif>
+                                                Sidhi
                                             </label>
                                         </div>
                                         @error('jenis_katekisasi')

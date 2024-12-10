@@ -7,6 +7,7 @@ use App\Models\ProfilJemaat;
 use App\Models\Sidhi;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -14,7 +15,9 @@ class SidhiController extends Controller
 {
     public function index()
     {
-        return view('landing-page.sidhi.index');
+        $jemaatId = Auth::id();
+        $pernahSidhi = Sidhi::where('jemaat_id', $jemaatId)->where('status_verifikasi', '!=', 'ditolak')->first();
+        return view('landing-page.sidhi.index', compact('pernahSidhi'));
     }
 
     public function create(){
@@ -50,9 +53,9 @@ class SidhiController extends Controller
         }
 
         $jemaatId = $request->jemaat_id;
-        $pernahBaptis = Sidhi::where('jemaat_id', $jemaatId)->where('status_verifikasi', '!=', 'ditolak')->first();
+        $pernahSidhi = Sidhi::where('jemaat_id', $jemaatId)->where('status_verifikasi', '!=', 'ditolak')->first();
 
-        if ($pernahBaptis) {
+        if ($pernahSidhi) {
             toast('Anda sudah pernah mendaftar sidhi/baptis dewasa.','error')->timerProgressBar()->autoClose(5000);
             return redirect()->back()->withInput();
         }

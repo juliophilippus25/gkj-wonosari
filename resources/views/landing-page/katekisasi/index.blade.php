@@ -106,9 +106,12 @@
 
             @auth
                 <div class="d-flex justify-content-center">
-                    <a href="{{ route('katekisasi.create') }}" class="btn"
-                        style="background-color: #3498db; color: white;">Daftar
-                        Katekisasi</a>
+                    @if ($pernahKatekisasi)
+                        <p class="text-danger">Anda sudah terdaftar untuk katekisasi.</p>
+                    @else
+                        <a href="{{ route('katekisasi.create') }}" class="btn"
+                            style="background-color: #3498db; color: white;">Daftar Katekisasi</a>
+                    @endif
                 </div>
             @else
                 <div class="d-flex justify-content-center">

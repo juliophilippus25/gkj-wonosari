@@ -7,6 +7,7 @@ use App\Models\Katekisasi;
 use App\Models\ProfilJemaat;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -14,7 +15,9 @@ class KatekisasiController extends Controller
 {
     public function index()
     {
-        return view('landing-page.katekisasi.index');
+        $jemaatId = Auth::id();
+        $pernahKatekisasi = Katekisasi::where('jemaat_id', $jemaatId)->where('status_verifikasi', '!=', 'ditolak')->first();
+        return view('landing-page.katekisasi.index', compact('pernahKatekisasi'));
     }
 
     public function create(){
@@ -30,7 +33,7 @@ class KatekisasiController extends Controller
             'akta_baptis' => 'required|mimes:pdf,jpg,jpeg,png|max:2048',
             'jemaat_id' => 'required',
             'jadwal_id' => 'required',
-            'jenis_katekisasi' => 'required|in:Baptis Dewasa,Katekisasi'
+            'jenis_katekisasi' => 'required|in:Baptis Dewasa,Sidhi'
         ], [
             'nik.numeric' => 'NIK harus berupa angka.',
             'nik.digits' => 'NIK harus memiliki 16 angka.',

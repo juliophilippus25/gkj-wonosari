@@ -106,8 +106,14 @@
 
             @auth
                 <div class="d-flex justify-content-center">
-                    <a href="{{ route('sidhi.create') }}" class="btn" style="background-color: #3498db; color: white;">Daftar
-                        Sidhi/Baptis Dewasa</a>
+                    <div class="d-flex justify-content-center">
+                        @if ($pernahSidhi)
+                            <p class="text-danger">Anda sudah terdaftar untuk sidhi/baptis dewasa.</p>
+                        @else
+                            <a href="{{ route('sidhi.create') }}" class="btn"
+                                style="background-color: #3498db; color: white;">Daftar Sidhi/Baptis Dewasa</a>
+                        @endif
+                    </div>
                 </div>
             @else
                 <div class="d-flex justify-content-center">

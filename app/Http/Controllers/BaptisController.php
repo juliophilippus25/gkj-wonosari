@@ -7,12 +7,15 @@ use App\Models\Jadwal;
 use App\Models\ProfilJemaat;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class BaptisController extends Controller
 {
     public function index(){
-        return view('landing-page.baptis.index');
+        $jemaatId = Auth::id();
+        $pernahBaptis = Baptis::where('jemaat_id', $jemaatId)->where('status_verifikasi', '!=', 'ditolak')->first();
+        return view('landing-page.baptis.index', compact('pernahBaptis'));
     }
 
     public function create(){

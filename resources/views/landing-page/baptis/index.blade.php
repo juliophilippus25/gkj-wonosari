@@ -105,9 +105,14 @@
 
             @auth
                 <div class="d-flex justify-content-center">
-                    <a href="{{ route('baptis.create') }}" class="btn"
-                        style="background-color: #3498db; color: white;">Daftar
-                        Baptis</a>
+                    <div class="d-flex justify-content-center">
+                        @if ($pernahBaptis)
+                            <p class="text-danger">Anda sudah terdaftar untuk baptis.</p>
+                        @else
+                            <a href="{{ route('baptis.create') }}" class="btn"
+                                style="background-color: #3498db; color: white;">Daftar Baptis</a>
+                        @endif
+                    </div>
                 </div>
             @else
                 <div class="d-flex justify-content-center">
