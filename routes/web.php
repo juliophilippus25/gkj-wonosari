@@ -32,6 +32,8 @@ Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard')->middleware('verified');
 
+Route::get('/surat-kehadiran-katekisasi/{id}', [App\Http\Controllers\DashboardController::class, 'kartuKehadiranPDF'])->name('kartuKehadiranPDF');
+
 Route::prefix('/jemaat')->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\JemaatController::class, 'index'])->name('jemaat.index');
     Route::post('/verifikasi/{id}', [App\Http\Controllers\Admin\JemaatController::class, 'verify'])->name('jemaat.verify');

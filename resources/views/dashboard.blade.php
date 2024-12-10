@@ -60,7 +60,7 @@
                                 <a href="{{ route('download.pdf', $getSuratBaptis->id) }}"
                                     class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
                                     target="_blank">
-                                    Download <i class="bi bi-download"></i>
+                                    Unduh <i class="bi bi-download"></i>
                                 </a>
                             @endif
                         </div>
@@ -85,7 +85,7 @@
                                 <a href="{{ route('download.pdf', $getSuratSidhi->id) }}"
                                     class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
                                     target="_blank">
-                                    Download <i class="bi bi-download"></i>
+                                    Unduh <i class="bi bi-download"></i>
                                 </a>
                             @endif
                         </div>
@@ -110,12 +110,17 @@
                                 <a href="{{ route('jadwal.pdf', $getSuratKatekisasi->id) }}"
                                     class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
                                     target="_blank">
-                                    Download <i class="bi bi-download"></i>
+                                    Unduh <i class="bi bi-download"></i>
                                 </a>
                             @endif
                         </div>
                     </div> <!-- ./col -->
                 </div> <!-- /.row -->
+
+                <p>
+                    Unduh kartu kehadiran katekisasi : <a href="{{ route('kartuKehadiranPDF', Auth::user()->id) }}"
+                        target="_blank">Unduh</a>
+                </p>
             </div>
         @endif
     </div>

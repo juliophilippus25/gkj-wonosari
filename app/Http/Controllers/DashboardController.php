@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Baptis;
 use App\Models\Katekisasi;
+use App\Models\ProfilJemaat;
 use App\Models\Sidhi;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -72,25 +73,23 @@ class DashboardController extends Controller
         return $suratKatekisasi;
     }
 
-    public function downloadPDF($id)
+    public function kartuKehadiranPDF($id)
     {
-        $pendaftar = null;
+        $jemaatId = Auth::user()->id;  // Mendapatkan ID pengguna yang sedang login
 
-        if ($pendaftar = Baptis::find($id)) {
-            $pendaftar->jadwal;
-        } elseif ($pendaftar = Sidhi::find($id)) {
-            $pendaftar->jadwal;
-        } elseif ($pendaftar = Katekisasi::find($id)) {
-            $pendaftar->jadwal;
-        }
+        // Mengambil ProfilJemaat berdasarkan ID pengguna yang sedang login
+        $profilJemaat = ProfilJemaat::where('user_id', $jemaatId)->first();  // Ganti 'user_id' dengan kolom yang benar jika berbeda
+
+        $katekisasi = Katekisasi::where('jemaat_id', $jemaatId)->first();
 
         // Setup PDF
-        $pdf = PDF::loadView('admin.jadwal.pdf', compact('pendaftar'));
-        $nama = strtoupper(str_replace(' ', '_', $pendaftar->profilJemaat->nama));
-        $layanan = strtoupper(str_replace(' ', '_', $pendaftar->jadwal->layanan->nama));
-        $tanggal = strtoupper(str_replace(' ', '_', \Carbon\Carbon::parse($pendaftar->jadwal->tanggal)->isoFormat('D_MMMM_Y')));
+        $pdf = PDF::loadView('pdf.kehadiran', compact('profilJemaat', 'katekisasi'));
 
-        // Download PDF file with download method
-        return $pdf->stream('SURAT_'.$layanan.'_'.$nama.'_'.$tanggal.'_'.'.pdf', compact('pendaftar'));
+        // Mendapatkan nama pengguna dan membuat nama file PDF yang dinamis
+        $namaJemaat = strtoupper(str_replace(' ', '_', $profilJemaat->nama)); // Ganti 'nama' dengan nama yang sesuai di model
+        $filename = 'Kartu_Kehadiran_' . $namaJemaat . '.pdf';
+
+        // Download PDF file dengan nama file yang dinamis
+        return $pdf->stream($filename);
     }
 }
