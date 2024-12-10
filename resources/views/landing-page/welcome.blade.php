@@ -2,6 +2,32 @@
 
 @section('title', 'Home')
 
+@section('styles')
+    <style>
+        .filter-btn {
+            border: 2px solid #3498db;
+            background-color: white;
+            color: #3498db;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background-color: #3498db;
+            color: white;
+            border: 2px solid #3498db;
+        }
+
+        .filter-btn:hover {
+            background-color: #c9e9ff;
+            color: #3498db;
+            border: 2px solid #3498db;
+        }
+    </style>
+@endsection
+
 @section('content')
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
@@ -102,6 +128,14 @@
         <div class="container section-title" data-aos="fade-up">
             <h2>Jadwal Pelayanan</h2>
             <p>Temukan jadwal pelayanan yang sesuai dengan kebutuhan Anda.</p>
+            <div class="mt-4">
+                <div class="d-flex justify-content-center gap-2" role="group" aria-label="Filter Jadwal Pelayanan">
+                    <button type="button" class="filter-btn active" id="filter-all">Tampilkan Semua</button>
+                    <button type="button" class="filter-btn" id="filter-baptis-dewasa">Baptis</button>
+                    <button type="button" class="filter-btn" id="filter-sidhi">Sidhi/Baptis Dewasa</button>
+                    <button type="button" class="filter-btn" id="filter-katekisasi">Katekisasi</button>
+                </div>
+            </div>
         </div><!-- End Section Title -->
 
         <div class="container" data-aos="fade-up">
@@ -109,7 +143,8 @@
             <div class="row gy-4">
                 @forelse ($jadwals as $jadwal)
                     @if (!$jadwal->isExpired)
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="col-lg-4 col-md-6 jadwal {{ strtolower(str_replace(['/', ' '], [' ', '_'], $jadwal->layanan->nama)) }}"
+                            data-aos="fade-up" data-aos-delay="100">
                             <div class="service-item  position-relative">
                                 <a href="service-details.html" class="stretched-link">
                                     <h3>Pelayanan {{ $jadwal->layanan->nama }}</h3>
@@ -200,4 +235,54 @@
         </div>
 
     </section>
+
+    <script>
+        document.getElementById('filter-baptis-dewasa').addEventListener('click', function() {
+            setActiveButton('filter-baptis-dewasa');
+            filterJadwal('baptis');
+        });
+
+        document.getElementById('filter-sidhi').addEventListener('click', function() {
+            setActiveButton('filter-sidhi');
+            filterJadwal('sidhi_baptis_dewasa');
+        });
+
+        document.getElementById('filter-katekisasi').addEventListener('click', function() {
+            setActiveButton('filter-katekisasi');
+            filterJadwal('katekisasi');
+        });
+
+        document.getElementById('filter-all').addEventListener('click', function() {
+            setActiveButton('filter-all');
+            showAllJadwal();
+        });
+
+        function setActiveButton(activeId) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            document.getElementById(activeId).classList.add('active');
+        }
+
+        function filterJadwal(kategori) {
+            const semuaJadwal = document.querySelectorAll('.jadwal');
+
+            semuaJadwal.forEach(function(jadwal) {
+                if (jadwal.classList.contains(kategori)) {
+                    jadwal.style.display = 'block';
+                } else {
+                    jadwal.style.display = 'none';
+                }
+            });
+        }
+
+        function showAllJadwal() {
+            const semuaJadwal = document.querySelectorAll('.jadwal');
+            semuaJadwal.forEach(function(jadwal) {
+                jadwal.style.display = 'block';
+            });
+        }
+    </script>
 @endsection
