@@ -29,14 +29,82 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        // Dashboard Jemaat
+        $jemaatId = Auth::user()->id;
         $getSuratBaptis = $this->getSuratBaptis();
         $getSuratSidhi = $this->getSuratSidhi();
         $getSuratKatekisasi = $this->getSuratKatekisasi();
 
+        $suratKehadiran = Katekisasi::where('jemaat_id', $jemaatId)
+            ->where('status_verifikasi', 'Disetujui')
+            ->orderBy('created_at', 'desc')
+            ->first();
+
+        $ditolakKatekisasi = Katekisasi::where('jemaat_id', $jemaatId)
+            ->where('status_verifikasi', 'Ditolak')
+            ->orderBy('created_at', 'desc')
+            ->first();
+
+        $ditolakBaptis = Baptis::where('jemaat_id', $jemaatId)
+            ->where('status_verifikasi', 'Ditolak')
+            ->orderBy('created_at', 'desc')
+            ->first();
+
+        $ditolakSidhi = Sidhi::where('jemaat_id', $jemaatId)
+            ->where('status_verifikasi', 'Ditolak')
+            ->orderBy('created_at', 'desc')
+            ->first();
+
+        $pendaftaranKatekisasiBaru = Katekisasi::where('jemaat_id', $jemaatId)
+            ->where('status_verifikasi', '!=', 'Ditolak')
+            ->orderBy('created_at', 'desc')
+            ->exists();
+
+        $pendaftaranBaptisBaru = Baptis::where('jemaat_id', $jemaatId)
+            ->where('status_verifikasi', '!=', 'Ditolak')
+            ->orderBy('created_at', 'desc')
+            ->exists();
+
+        $pendaftaranSidhiBaru = Sidhi::where('jemaat_id', $jemaatId)
+            ->where('status_verifikasi', '!=', 'Ditolak')
+            ->orderBy('created_at', 'desc')
+            ->exists();
+
+        $diprosesKatekisasi = Katekisasi::where('jemaat_id', $jemaatId)
+            ->where('status_verifikasi', 'Diproses')
+            ->first();
+
+        $diprosesBaptis = Baptis::where('jemaat_id', $jemaatId)
+            ->where('status_verifikasi', 'Diproses')
+            ->first();
+
+        $diprosesSidhi = Sidhi::where('jemaat_id', $jemaatId)
+            ->where('status_verifikasi', 'Diproses')
+            ->first();
+
+        $katekisasiTidakHadir = Katekisasi::where('jemaat_id', $jemaatId)
+            ->where('status_kehadiran', 'Tidak Hadir')
+            ->orderBy('created_at', 'desc')
+            ->first();
+
+        $isTidakHadirKatekisasi = $katekisasiTidakHadir ? true : false;
+
         return view('dashboard', compact(
             'getSuratBaptis',
             'getSuratSidhi',
-            'getSuratKatekisasi'
+            'getSuratKatekisasi',
+            'suratKehadiran',
+            'ditolakKatekisasi',
+            'ditolakBaptis',
+            'ditolakSidhi',
+            'pendaftaranKatekisasiBaru',
+            'pendaftaranBaptisBaru',
+            'pendaftaranSidhiBaru',
+            'diprosesKatekisasi',
+            'diprosesBaptis',
+            'diprosesSidhi',
+            'katekisasiTidakHadir',
+            'isTidakHadirKatekisasi'
         ));
     }
 
@@ -75,11 +143,9 @@ class DashboardController extends Controller
 
     public function kartuKehadiranPDF($id)
     {
-        $jemaatId = Auth::user()->id;  // Mendapatkan ID pengguna yang sedang login
+        $jemaatId = Auth::user()->id;
 
-        // Mengambil ProfilJemaat berdasarkan ID pengguna yang sedang login
-        $profilJemaat = ProfilJemaat::where('user_id', $jemaatId)->first();  // Ganti 'user_id' dengan kolom yang benar jika berbeda
-
+        $profilJemaat = ProfilJemaat::where('user_id', $jemaatId)->first();
         $katekisasi = Katekisasi::where('jemaat_id', $jemaatId)->first();
 
         // Setup PDF
@@ -87,7 +153,7 @@ class DashboardController extends Controller
 
         // Mendapatkan nama pengguna dan membuat nama file PDF yang dinamis
         $namaJemaat = strtoupper(str_replace(' ', '_', $profilJemaat->nama)); // Ganti 'nama' dengan nama yang sesuai di model
-        $filename = 'Kartu_Kehadiran_' . $namaJemaat . '.pdf';
+        $filename = 'KARTU_KEHADIRAN_KATEKISASI_' . $namaJemaat . '.pdf';
 
         // Download PDF file dengan nama file yang dinamis
         return $pdf->stream($filename);

@@ -40,6 +40,37 @@
             </div> <!--end::Container-->
         @elseif(Auth::user()->role == 'jemaat')
             <div class="container-fluid"> <!-- Small Box (Stat card) -->
+
+                @if ($ditolakBaptis && !$pendaftaranBaptisBaru)
+                    <div class="alert alert-danger">
+                        <i class="bi bi-exclamation-triangle-fill"> Peringatan!</i>
+                        Pendaftaran baptis Anda ditolak dengan catatan <strong>"{{ $ditolakBaptis->catatan }}"</strong>.
+                        Silahkan mendaftar
+                        lagi
+                        <a href="{{ route('baptis') }}" class="text-decoration-none">klik disini.</a>
+                    </div>
+                @endif
+
+                @if ($ditolakSidhi && !$pendaftaranSidhiBaru)
+                    <div class="alert alert-danger">
+                        <i class="bi bi-exclamation-triangle-fill"> Peringatan!</i>
+                        Pendaftaran sidhi/baptis dewasa Anda ditolak dengan catatan
+                        <strong>"{{ $ditolakSidhi->catatan }}"</strong>. Silahkan
+                        mendaftar lagi
+                        <a href="{{ route('sidhi') }}" class="text-decoration-none">klik disini.</a>
+                    </div>
+                @endif
+
+                @if ($ditolakKatekisasi && !$pendaftaranKatekisasiBaru)
+                    <div class="alert alert-danger">
+                        <i class="bi bi-exclamation-triangle-fill"> Peringatan!</i>
+                        Pendaftaran katekisasi Anda ditolak dengan catatan
+                        <strong>"{{ $ditolakKatekisasi->catatan }}"</strong>. Silahkan
+                        mendaftar lagi
+                        <a href="{{ route('katekisasi') }}" class="text-decoration-none">klik disini.</a>
+                    </div>
+                @endif
+
                 <div class="row">
                     <!-- Card untuk Baptis -->
                     <div class="col-lg-4 col-6"> <!-- small box -->
@@ -52,10 +83,16 @@
                             </div>
                             <i class="small-box-icon bi bi-envelope"></i>
                             @if ($getSuratBaptis === null)
-                                <a href="{{ route('baptis') }}"
+                                <div
                                     class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">
-                                    Silahkan daftar baptis
-                                </a>
+                                    @if ($diprosesBaptis)
+                                        Baptis sedang diproses
+                                    @else
+                                        <a href="{{ route('baptis') }}" class="text-decoration-none">
+                                            Silahkan daftar baptis
+                                        </a>
+                                    @endif
+                                </div>
                             @else
                                 <a href="{{ route('download.pdf', $getSuratBaptis->id) }}"
                                     class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
@@ -77,10 +114,16 @@
                             </div>
                             <i class="small-box-icon bi bi-envelope"></i>
                             @if ($getSuratSidhi === null)
-                                <a href="{{ route('sidhi') }}"
+                                <div
                                     class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">
-                                    Silahkan daftar sidhi
-                                </a>
+                                    @if ($diprosesSidhi)
+                                        Sidhi sedang diproses
+                                    @else
+                                        <a href="{{ route('sidhi') }}" class="text-decoration-none">
+                                            Silahkan daftar sidhi
+                                        </a>
+                                    @endif
+                                </div>
                             @else
                                 <a href="{{ route('download.pdf', $getSuratSidhi->id) }}"
                                     class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
@@ -102,10 +145,16 @@
                             </div>
                             <i class="small-box-icon bi bi-envelope"></i>
                             @if ($getSuratKatekisasi === null)
-                                <a href="{{ route('katekisasi') }}"
+                                <div
                                     class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">
-                                    Silahkan daftar katekisasi
-                                </a>
+                                    @if ($diprosesKatekisasi)
+                                        Katekisasi sedang diproses
+                                    @else
+                                        <a href="{{ route('katekisasi') }}" class="text-decoration-none">
+                                            Silahkan daftar katekisasi
+                                        </a>
+                                    @endif
+                                </div>
                             @else
                                 <a href="{{ route('jadwal.pdf', $getSuratKatekisasi->id) }}"
                                     class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
@@ -117,10 +166,19 @@
                     </div> <!-- ./col -->
                 </div> <!-- /.row -->
 
-                <p>
-                    Unduh kartu kehadiran katekisasi : <a href="{{ route('kartuKehadiranPDF', Auth::user()->id) }}"
-                        target="_blank">Unduh</a>
-                </p>
+                @if ($suratKehadiran != null && !$isTidakHadirKatekisasi)
+                    <p>
+                        Unduh kartu kehadiran katekisasi:
+                        <a href="{{ route('kartuKehadiranPDF', Auth::user()->id) }}" target="_blank">Unduh</a>
+                    </p>
+                @elseif ($isTidakHadirKatekisasi)
+                    <p class="text-danger">
+                        Anda tidak hadir pada katekisasi
+                        <strong>{{ \Carbon\Carbon::parse($katekisasiTidakHadir->jadwal->tanggal)->isoFormat('D MMMM YYYY') }}</strong>.
+                        Silahkan mendaftar
+                        pada periode berikutnya.
+                    </p>
+                @endif
             </div>
         @endif
     </div>
