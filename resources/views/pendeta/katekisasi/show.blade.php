@@ -64,7 +64,7 @@
                                                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                                     data-bs-target="#detailModal{{ $pendaftar->id }}"
                                                     data-id="{{ $pendaftar->id }}">
-                                                    <i class="bi bi-eye"></i>
+                                                    <i class="bi bi-eye"></i> Detail
                                                 </button>
                                             @endif
 

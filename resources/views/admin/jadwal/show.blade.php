@@ -44,6 +44,13 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td style="width: 10%;" class="fw-bold">Jenis Bahasa</td>
+                                    <td style="width: 0%;">:</td>
+                                    <td>
+                                        {{ $jadwal->jenis_bahasa }}
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td style="width: 10%;" class="fw-bold">Jumlah Pendaftar</td>
                                     <td style="width: 0%;">:</td>
                                     <td>

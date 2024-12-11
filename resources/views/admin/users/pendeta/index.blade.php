@@ -32,16 +32,12 @@
                             <thead>
                                 <tr>
                                     <th>Nama</th>
-                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($pendetas as $pendeta)
                                     <tr>
                                         <td>{{ $pendeta->profilPendeta->nama }}</td>
-                                        <td>
-                                            Aksi
-                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

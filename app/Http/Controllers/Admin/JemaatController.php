@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Baptis;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,7 @@ class JemaatController extends Controller
     {
         $dataType = 'jemaat';
         $jemaats = User::with('profilJemaat')->where('role', 'jemaat')->orderBy('created_at','asc')->get();
+
         return view('admin.users.jemaat.index', compact('dataType','jemaats'));
     }
 

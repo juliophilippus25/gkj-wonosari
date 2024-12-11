@@ -18,7 +18,8 @@ class Jadwal extends Model
         'tanggal',
         'jam',
         'pendeta_id',
-        'layanan_id'
+        'layanan_id',
+        'jenis_bahasa',
     ];
 
     public function layanan()

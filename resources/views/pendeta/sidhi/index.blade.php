@@ -43,7 +43,7 @@
                                         <td>
                                             <a href="{{ route('sidhi.pendeta.show', $jadwal->id) }}"
                                                 class="btn btn-primary btn-sm" title="Detail">
-                                                <i class="bi bi-eye"></i>
+                                                <i class="bi bi-eye"></i> Detail
                                             </a>
                                         </td>
                                     </tr>

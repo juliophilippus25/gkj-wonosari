@@ -37,6 +37,7 @@ class JadwalController extends Controller
             'jam' => 'required|date_format:H:i',
             'pendeta_id' => 'required|exists:users,id', // Validasi pendeta
             'layanan_id' => 'required|exists:layanans,id', // Validasi ID wilayah
+            'jenis_bahasa' => 'required|in:Indonesia,Jawa',
         ],
         // Pesan
         [
@@ -44,6 +45,11 @@ class JadwalController extends Controller
             'date.required' => 'Tanggal harus diisi.', // Pesan untuk tanggal
             'jam.required' => 'Waktu harus diisi.', // Pesan untuk waktu
             'layanan_id.required' => 'Wilayah harus dipilih.', // Pesan untuk layanan_id
+            'pendeta_id.required' => 'Pendeta harus dipilih.', // Pesan untuk pendeta_id
+            'jenis_bahasa.required' => 'Bahasa harus dipilih.',
+
+            // In
+            'jenis_bahasa.in' => 'Bahasa dipilih tidak valid.',
 
             // Date
             'tanggal.date' => 'Tanggal harus berupa tanggal yang valid.', // Pesan untuk tanggal
@@ -66,7 +72,8 @@ class JadwalController extends Controller
             'tanggal' => $request->tanggal,
             'jam' => $request->jam,
             'pendeta_id' => $request->pendeta_id,
-            'layanan_id' => $request->layanan_id
+            'layanan_id' => $request->layanan_id,
+            'jenis_bahasa' => $request->jenis_bahasa
         ]);
 
         toast('Jadwal berhasil ditambahkan.','success')->timerProgressBar()->autoClose(5000);

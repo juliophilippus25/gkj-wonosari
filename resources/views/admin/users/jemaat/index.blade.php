@@ -85,6 +85,101 @@
                                                     data-bs-target="#detailModal{{ $jemaat->id }}" title="Detail">
                                                     <i class="bi bi-eye"></i> Detail
                                                 </button>
+
+                                                <div class="modal fade" id="detailModal{{ $jemaat->id }}" tabindex="-1"
+                                                    aria-labelledby="verificationModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="verificationModalLabel">Detail
+                                                                    Jemaat</h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <!-- Data Penanggung Jawab -->
+                                                                <table class="table-borderless w-100 mb-4">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="fw-bold" style="width: 45%">Nama
+                                                                            </td>
+                                                                            <td>:</td>
+                                                                            <td style="width: 55%">
+                                                                                {{ $jemaat->profilJemaat->nama }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="fw-bold">Jenis kelamin</td>
+                                                                            <td>:</td>
+                                                                            <td>{{ $jemaat->profilJemaat->jenis_kelamin === 'L' ? 'Laki-laki' : 'Perempuan' }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="fw-bold">Tempat dan tanggal lahir
+                                                                            </td>
+                                                                            <td>:</td>
+                                                                            <td>
+                                                                                {{ $jemaat->profilJemaat->tempat_lahir }},
+                                                                                {{ \Carbon\Carbon::parse($jemaat->profilJemaat->tanggal_lahir)->isoFormat('D MMMM YYYY') }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="fw-bold">Wilayah</td>
+                                                                            <td>:</td>
+                                                                            <td>{{ $jemaat->profilJemaat->wilayah->nama }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="fw-bold">Nama ayah</td>
+                                                                            <td>:</td>
+                                                                            <td>{{ $jemaat->profilJemaat->ayah }}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="fw-bold">Nama ibu</td>
+                                                                            <td>:</td>
+                                                                            <td>{{ $jemaat->profilJemaat->ibu }}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="fw-bold">Akta Bakptis</td>
+                                                                            <td>:</td>
+                                                                            <td>
+                                                                                @if ($jemaat->profilJemaat && $jemaat->profilJemaat->akta_baptis)
+                                                                                    <a href="{{ asset('storage/' . $jemaat->profilJemaat->akta_baptis) }}"
+                                                                                        target="_blank"
+                                                                                        class="text-decoration-none"> Lihat
+                                                                                        Akta
+                                                                                        Baptis
+                                                                                    </a>
+                                                                                @else
+                                                                                    <span class="text-danger">
+                                                                                        Belum diupload
+                                                                                    </span>
+                                                                                @endif
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="fw-bold">Serifikasi Katekisasi</td>
+                                                                            <td>:</td>
+                                                                            <td>
+                                                                                @if ($jemaat->profilJemaat && $jemaat->profilJemaat->katekisasi)
+                                                                                    <a href="{{ asset('storage/' . $jemaat->profilJemaat->katekisasi) }}"
+                                                                                        target="_blank"
+                                                                                        class="text-decoration-none"> Lihat
+                                                                                        Serifikasi Katekisasi
+                                                                                    </a>
+                                                                                @else
+                                                                                    <span class="text-danger">
+                                                                                        Belum diupload
+                                                                                    </span>
+                                                                                @endif
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             @endif
                                         </td>
                                     </tr>

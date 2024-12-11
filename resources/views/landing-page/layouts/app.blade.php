@@ -29,6 +29,9 @@
     <!-- Main CSS File -->
     <link href="{{ asset('Lumia/assets/css/main.css') }}" rel="stylesheet">
 
+    <!-- CSS DataTables Bootstrap -->
+    <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.1.8/datatables.min.css" rel="stylesheet">
+
     @yield('styles')
 
     <!-- =======================================================
@@ -60,6 +63,8 @@
     <div id="preloader"></div>
 
     @include('sweetalert::alert')
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+
     <!-- Vendor JS Files -->
     <script src="{{ asset('Lumia/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('Lumia/assets/vendor/php-email-form/validate.js') }}"></script>
@@ -74,6 +79,13 @@
     <!-- Main JS File -->
     <script src="{{ asset('Lumia/assets/js/main.js') }}"></script>
 
+
+    <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.1.8/datatables.min.js"></script>
+
+    <!-- JS DataTables -->
+    <script src="{{ asset('datatables.net/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
+
+    @yield('scripts')
 </body>
 
 </html>

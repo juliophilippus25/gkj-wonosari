@@ -67,7 +67,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="pendeta_id" class="form-label">Pendeta</label>
+                                    <label for="pendeta_id" class="form-label">Pendeta <b class="text-danger">*</b></label>
                                     <select
                                         class="form-select @error('pendeta_id') is-invalid @enderror @if (old('pendeta_id') && !$errors->has('pendeta_id')) is-valid @endif"
                                         name="pendeta_id" id="pendeta_id">
@@ -83,6 +83,27 @@
                                     </select>
 
                                     @error('pendeta_id')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="jenis_bahasa" class="form-label">Jenis Bahasa <b
+                                            class="text-danger">*</b></label>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <label class="form-check-label">
+                                            <input type="radio" name="jenis_bahasa" value="Indonesia" id="indonesia"
+                                                @if (old('jenis_bahasa') == 'Indonesia') checked @endif>
+                                            Indonesia
+                                        </label>
+                                        <label class="form-check-label">
+                                            <input type="radio" name="jenis_bahasa" value="Jawa" id="Jawa"
+                                                @if (old('jenis_bahasa') == 'Jawa') checked @endif>
+                                            Jawa
+                                        </label>
+                                    </div>
+
+                                    @error('jenis_bahasa')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>

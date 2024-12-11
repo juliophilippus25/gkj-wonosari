@@ -118,7 +118,7 @@
 
     </section>
 
-    <!-- Pengumuman -->
+    <!-- Jadwal Pelayanan -->
     <section class="services section light-background">
 
         <!-- Section Title -->
@@ -143,7 +143,7 @@
                         <div class="col-lg-4 col-md-6 jadwal {{ strtolower(str_replace(['/', ' '], [' ', '_'], $jadwal->layanan->nama)) }}"
                             data-aos="fade-up" data-aos-delay="100">
                             <div class="service-item  position-relative">
-                                <a href="service-details.html" class="stretched-link">
+                                <a href="{{ route('lp.jadwal.show', $jadwal->id) }}" class="stretched-link">
                                     <h3>Pelayanan {{ $jadwal->layanan->nama }}</h3>
                                 </a>
                                 <div class="d-flex flex-column gap-1">
@@ -159,6 +159,10 @@
                                     <div class="d-flex justify-content-between">
                                         <p class="fw-bold">Pendeta</p>
                                         <p>{{ $jadwal->pendeta->profilPendeta->nama }}</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="fw-bold">Jenis Bahasa</p>
+                                        <p>{{ $jadwal->jenis_bahasa }}</p>
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <p class="fw-bold">Jumlah Pendaftar</p>

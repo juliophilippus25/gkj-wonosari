@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('pendeta_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('layanan_id');
             $table->foreign('layanan_id')->references('id')->on('layanans')->onDelete('cascade');
+            $table->enum('jenis_bahasa', ['Indonesia', 'Jawa']);
             $table->timestamps();
         });
     }
