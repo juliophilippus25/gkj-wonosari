@@ -61,7 +61,7 @@
 
     </section>
 
-    <!-- Jadwal Pelayanan -->
+    <!-- Layanan Kami -->
     <section class="what-we-do section">
 
         <div class="container section-title" data-aos="fade-up">
@@ -78,7 +78,6 @@
 
                         <div class="col-xl-4">
                             <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                                <i class="bi bi-clipboard-data"></i>
                                 <h4>Baptis</h4>
                                 <p>Pelayanan Baptis adalah sakramen penting dalam kehidupan Kristen, yang menandakan awal
                                     kehidupan rohani seseorang. Kami menyambut Anda untuk merayakan momen berharga ini
@@ -90,7 +89,6 @@
 
                         <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
                             <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                                <i class="bi bi-gem"></i>
                                 <h4>Sidhi/Baptis Dewasa</h4>
                                 <p>Layanan Sidhi atau Baptis Dewasa adalah kesempatan untuk memperbarui iman dalam usia
                                     dewasa, memberikan pemahaman lebih mendalam tentang ajaran Kristen. Ini adalah sakramen
@@ -101,7 +99,6 @@
 
                         <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
                             <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                                <i class="bi bi-inboxes"></i>
                                 <h4>Katekisasi</h4>
                                 <p>Katekisasi adalah program pendidikan agama untuk memperkenalkan ajaran Kristen lebih
                                     dalam. Layanan ini dirancang untuk membantu individu mempelajari dasar-dasar iman dan

@@ -1,6 +1,6 @@
 <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
     <div class="sidebar-brand"> <!--begin::Brand Link-->
-        <a href="../index.html" class="brand-link"> <!--begin::Brand Image-->
+        <a href="{{ route('dashboard') }}" class="brand-link"> <!--begin::Brand Image-->
             <img src="{{ asset('imgs/logo.png') }}" alt="GKJ Wonosari Logo" class="brand-image opacity-75 shadow">
             <!--end::Brand Image--> <!--begin::Brand Text-->
             <span class="brand-text fw-light">GKJ Wonosari</span> <!--end::Brand Text-->

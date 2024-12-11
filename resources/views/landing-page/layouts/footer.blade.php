@@ -13,12 +13,6 @@
                     dukungan bagi individu dan keluarga dalam perjalanan kehidupan mereka. Kami mengundang Anda untuk
                     bergabung dalam ibadah, pelayanan, dan kegiatan lainnya, serta bersama-sama merayakan kasih dan
                     berkat Tuhan.</p>
-                <div class="social-links d-flex mt-4">
-                    <a href=""><i class="bi bi-twitter-x"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
             </div>
 
             <div class="col-lg-2 col-6 footer-links">

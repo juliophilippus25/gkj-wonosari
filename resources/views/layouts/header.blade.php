@@ -33,7 +33,7 @@
                             @endif
                         </p>
                     </li> <!--end::User Image--> <!--begin::Menu Body-->
-                    <li class="user-footer">
+                    {{-- <li class="user-footer">
                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
@@ -44,7 +44,7 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
-                    </li> <!--end::Menu Footer-->
+                    </li> <!--end::Menu Footer--> --}}
                 </ul>
             </li> <!--end::User Menu Dropdown-->
         </ul> <!--end::End Navbar Links-->
