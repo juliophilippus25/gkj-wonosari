@@ -106,8 +106,11 @@
             @auth
                 <div class="d-flex justify-content-center">
                     <div class="d-flex justify-content-center">
-                        @if ($pernahBaptis)
+                        @if ($pernahBaptis && !$baptisTidakHadir)
                             <p class="text-danger">Anda sudah terdaftar untuk baptis.</p>
+                        @elseif ($baptisTidakHadir)
+                            <a href="{{ route('baptis.create') }}" class="btn"
+                                style="background-color: #3498db; color: white;">Daftar Baptis</a>
                         @else
                             <a href="{{ route('baptis.create') }}" class="btn"
                                 style="background-color: #3498db; color: white;">Daftar Baptis</a>
@@ -119,6 +122,7 @@
                     <p class="text-danger">Anda harus login terlebih dahulu untuk melakukan pendaftaran baptis.</p>
                 </div>
             @endauth
+
         </div>
 
     </section><!-- /Starter Section Section -->

@@ -17,7 +17,13 @@ class SidhiController extends Controller
     {
         $jemaatId = Auth::id();
         $pernahSidhi = Sidhi::where('jemaat_id', $jemaatId)->where('status_verifikasi', '!=', 'ditolak')->first();
-        return view('landing-page.sidhi.index', compact('pernahSidhi'));
+
+        $sidhiTidakHadir = Sidhi::where('jemaat_id', $jemaatId)
+        ->where('status_kehadiran', 'Tidak Hadir')
+        ->orderBy('created_at', 'desc')
+        ->first();
+
+        return view('landing-page.sidhi.index', compact('pernahSidhi', 'sidhiTidakHadir'));
     }
 
     public function create(){
@@ -53,12 +59,26 @@ class SidhiController extends Controller
         }
 
         $jemaatId = $request->jemaat_id;
-        $pernahSidhi = Sidhi::where('jemaat_id', $jemaatId)->where('status_verifikasi', '!=', 'ditolak')->first();
+        $pernahSidhi = Sidhi::where('jemaat_id', $jemaatId)
+                          ->where('status_verifikasi', '!=', 'Ditolak')
+                          ->first();
 
-        if ($pernahSidhi) {
+        $sidhiTidakHadir = Sidhi::where('jemaat_id', $jemaatId)
+                                ->where('status_kehadiran', 'Tidak Hadir')
+                                ->orderBy('created_at', 'desc')
+                                ->first();
+
+        if ($pernahSidhi && !$sidhiTidakHadir) {
             toast('Anda sudah pernah mendaftar sidhi/baptis dewasa.','error')->timerProgressBar()->autoClose(5000);
             return redirect()->back()->withInput();
         }
+
+        if ($sidhiTidakHadir) {
+            Sidhi::where('jemaat_id', $jemaatId)
+                  ->where('status_kehadiran', 'Tidak Hadir')
+                  ->delete();
+        }
+
 
         if ($request->hasFile('akta_baptis') && $request->file('akta_baptis')->isValid()) {
             $extension = $request->akta_baptis->getClientOriginalExtension();

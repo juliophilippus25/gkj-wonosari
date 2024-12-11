@@ -14,8 +14,17 @@ class BaptisController extends Controller
 {
     public function index(){
         $jemaatId = Auth::id();
-        $pernahBaptis = Baptis::where('jemaat_id', $jemaatId)->where('status_verifikasi', '!=', 'ditolak')->first();
-        return view('landing-page.baptis.index', compact('pernahBaptis'));
+
+        $pernahBaptis = Baptis::where('jemaat_id', $jemaatId)
+                              ->where('status_verifikasi', '!=', 'Ditolak')
+                              ->first();
+
+        $baptisTidakHadir = Baptis::where('jemaat_id', $jemaatId)
+                                  ->where('status_kehadiran', 'Tidak Hadir')
+                                  ->orderBy('created_at', 'desc')
+                                  ->first();
+
+        return view('landing-page.baptis.index', compact('pernahBaptis', 'baptisTidakHadir'));
     }
 
     public function create(){
@@ -44,11 +53,24 @@ class BaptisController extends Controller
         }
 
         $jemaatId = $request->jemaat_id;
-        $pernahBaptis = Baptis::where('jemaat_id', $jemaatId)->where('status_verifikasi', '!=', 'ditolak')->first();
+        $pernahBaptis = Baptis::where('jemaat_id', $jemaatId)
+                          ->where('status_verifikasi', '!=', 'Ditolak')
+                          ->first();
 
-        if ($pernahBaptis) {
+        $baptisTidakHadir = Baptis::where('jemaat_id', $jemaatId)
+                                ->where('status_kehadiran', 'Tidak Hadir')
+                                ->orderBy('created_at', 'desc')
+                                ->first();
+
+        if ($pernahBaptis && !$baptisTidakHadir) {
             toast('Anda sudah pernah mendaftar baptis.','error')->timerProgressBar()->autoClose(5000);
             return redirect()->back()->withInput();
+        }
+
+        if ($baptisTidakHadir) {
+            Baptis::where('jemaat_id', $jemaatId)
+                  ->where('status_kehadiran', 'Tidak Hadir')
+                  ->delete();
         }
 
         if ($request->filled('nik')) {

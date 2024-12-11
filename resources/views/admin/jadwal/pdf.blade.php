@@ -62,7 +62,7 @@
             Kudus atas dari :
         </p>
 
-        <div style="margin-top: 16px; text-transform: uppercase;">
+        <div style="margin-top: 16px;">
             <p style="margin: 4px 0;"><span style="display: inline-block; width: 250px;">Nama Lengkap</span>:
                 <strong>{{ $pendaftar->profilJemaat->nama }}</strong>
             </p>

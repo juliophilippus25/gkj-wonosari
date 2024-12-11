@@ -107,11 +107,14 @@
             @auth
                 <div class="d-flex justify-content-center">
                     <div class="d-flex justify-content-center">
-                        @if ($pernahSidhi)
+                        @if ($pernahSidhi && !$sidhiTidakHadir)
                             <p class="text-danger">Anda sudah terdaftar untuk sidhi/baptis dewasa.</p>
+                        @elseif ($sidhiTidakHadir)
+                            <a href="{{ route('sidhi.create') }}" class="btn"
+                                style="background-color: #3498db; color: white;">Daftar sidhi/baptis dewasa</a>
                         @else
                             <a href="{{ route('sidhi.create') }}" class="btn"
-                                style="background-color: #3498db; color: white;">Daftar Sidhi/Baptis Dewasa</a>
+                                style="background-color: #3498db; color: white;">Daftar sidhi/baptis dewasa</a>
                         @endif
                     </div>
                 </div>

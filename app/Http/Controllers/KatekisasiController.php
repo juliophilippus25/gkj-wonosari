@@ -17,7 +17,12 @@ class KatekisasiController extends Controller
     {
         $jemaatId = Auth::id();
         $pernahKatekisasi = Katekisasi::where('jemaat_id', $jemaatId)->where('status_verifikasi', '!=', 'ditolak')->first();
-        return view('landing-page.katekisasi.index', compact('pernahKatekisasi'));
+        $katekisasiTidakHadir = Katekisasi::where('jemaat_id', $jemaatId)
+            ->where('status_kehadiran', 'Tidak Hadir')
+            ->orderBy('created_at', 'desc')
+            ->first();
+
+        return view('landing-page.katekisasi.index', compact('pernahKatekisasi', 'katekisasiTidakHadir'));
     }
 
     public function create(){
@@ -53,11 +58,24 @@ class KatekisasiController extends Controller
         }
 
         $jemaatId = $request->jemaat_id;
-        $pernahKatekisasi = Katekisasi::where('jemaat_id', $jemaatId)->where('status_verifikasi', '!=', 'ditolak')->first();
+        $pernahKatekisasi = Katekisasi::where('jemaat_id', $jemaatId)
+                          ->where('status_verifikasi', '!=', 'Ditolak')
+                          ->first();
 
-        if ($pernahKatekisasi) {
+        $katekisasiTidakHadir = Katekisasi::where('jemaat_id', $jemaatId)
+        ->where('status_kehadiran', 'Tidak Hadir')
+        ->orderBy('created_at', 'desc')
+        ->first();
+
+        if ($pernahKatekisasi && !$katekisasiTidakHadir) {
             toast('Anda sudah pernah mendaftar katekisasi.','error')->timerProgressBar()->autoClose(5000);
             return redirect()->back()->withInput();
+        }
+
+        if ($katekisasiTidakHadir) {
+            Katekisasi::where('jemaat_id', $jemaatId)
+                ->where('status_kehadiran', 'Tidak Hadir')
+                ->delete();
         }
 
         if ($request->hasFile('akta_baptis') && $request->file('akta_baptis')->isValid()) {

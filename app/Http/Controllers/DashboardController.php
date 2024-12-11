@@ -71,15 +71,15 @@ class DashboardController extends Controller
             ->exists();
 
         $diprosesKatekisasi = Katekisasi::where('jemaat_id', $jemaatId)
-            ->where('status_verifikasi', 'Diproses')
+            ->whereIn('status_verifikasi', ['Diproses', 'Disetujui'])
             ->first();
 
         $diprosesBaptis = Baptis::where('jemaat_id', $jemaatId)
-            ->where('status_verifikasi', 'Diproses')
+            ->whereIn('status_verifikasi', ['Diproses', 'Disetujui'])
             ->first();
 
         $diprosesSidhi = Sidhi::where('jemaat_id', $jemaatId)
-            ->where('status_verifikasi', 'Diproses')
+            ->whereIn('status_verifikasi', ['Diproses', 'Disetujui'])
             ->first();
 
         $katekisasiTidakHadir = Katekisasi::where('jemaat_id', $jemaatId)

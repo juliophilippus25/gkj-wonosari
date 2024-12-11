@@ -94,7 +94,7 @@
                                     @endif
                                 </div>
                             @else
-                                <a href="{{ route('download.pdf', $getSuratBaptis->id) }}"
+                                <a href="{{ route('jadwal.pdf', $getSuratBaptis->id) }}"
                                     class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
                                     target="_blank">
                                     Unduh <i class="bi bi-download"></i>
@@ -125,7 +125,7 @@
                                     @endif
                                 </div>
                             @else
-                                <a href="{{ route('download.pdf', $getSuratSidhi->id) }}"
+                                <a href="{{ route('jadwal.pdf', $getSuratSidhi->id) }}"
                                     class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
                                     target="_blank">
                                     Unduh <i class="bi bi-download"></i>
