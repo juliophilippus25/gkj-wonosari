@@ -196,9 +196,11 @@
                         </div>
                         <div class="row">
                             <div class="col-8">
-                                <div class="form-check"> <input class="form-check-input" type="checkbox" value=""
-                                        id="flexCheckDefault"> <label class="form-check-label" for="flexCheckDefault">
-                                        Tampilkan kata sandi</label> </div>
+                                <div class="form-check">
+                                    <input type="checkbox" name="check-password" id="check-password"
+                                        class="form-check-input" onclick="togglePassword()">
+                                    <label class="form-check-label" for="check-password">Tampilkan kata sandi</label>
+                                </div>
                             </div> <!-- /.col -->
                             <div class="col-4">
                                 <div class="d-grid gap-2"> <button type="submit" class="btn btn-primary">Daftar</button>
@@ -224,5 +226,20 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
             integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script>
         <script src="{{ asset('adminLTE/js/adminlte.js') }}"></script>
+        <script>
+            function togglePassword() {
+                var passwordField = document.getElementById("password");
+                var passwordConfirm = document.getElementById("password_confirmation");
+                var checkBox = document.getElementById("check-password");
+
+                if (checkBox.checked) {
+                    passwordField.type = "text";
+                    passwordConfirm.type = "text";
+                } else {
+                    passwordField.type = "password";
+                    passwordConfirm.type = "password";
+                }
+            }
+        </script>
     </section>
 @endsection
