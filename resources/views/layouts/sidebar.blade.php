@@ -83,6 +83,15 @@
                 @endif --}}
 
                 @if (Auth::user()->role == 'pendeta')
+                    <li class="nav-item">
+                        <a href="{{ route('jemaat.index') }}"
+                            class="nav-link {{ request()->routeIs('jemaat.*') ? 'active' : '' }}"> <i
+                                class="nav-icon bi bi-people"></i>
+                            <p>
+                                Jemaat
+                            </p>
+                        </a>
+                    </li>
                     <li
                         class="nav-item {{ request()->is('pelayanan/baptis*', 'pelayanan/sidhi*', 'pelayanan/katekisasi*') ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link"> <i class="nav-icon bi bi-person-lines-fill"></i>
