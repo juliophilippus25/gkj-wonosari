@@ -109,7 +109,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('sidhi.pendeta.index') }}" class="nav-link"> <i
+                                <a href="{{ route('sidhi.pendeta.index') }}"
+                                    class="nav-link {{ request()->routeIs('sidhi.pendeta.*') ? 'active' : '' }}"> <i
                                         class="nav-icon bi bi-circle"></i>
                                     <p>Sidhi/Baptis Dewasa</p>
                                 </a>
