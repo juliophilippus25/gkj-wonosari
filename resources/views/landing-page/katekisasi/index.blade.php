@@ -103,25 +103,27 @@
                     gereja dalam kehidupan sehari-hari dan hidup sesuai dengan prinsip iman Katolik.</li>
             </ul>
 
-            @auth
-                <div class="d-flex justify-content-center">
+            @if (Auth::user()->role === 'jemaat')
+                @auth
                     <div class="d-flex justify-content-center">
-                        @if ($pernahKatekisasi && !$katekisasiTidakHadir)
-                            <p class="text-danger">Anda sudah terdaftar untuk katekisasi.</p>
-                        @elseif ($katekisasiTidakHadir)
-                            <a href="{{ route('katekisasi.create') }}" class="btn"
-                                style="background-color: #3498db; color: white;">Daftar katekisasi</a>
-                        @else
-                            <a href="{{ route('katekisasi.create') }}" class="btn"
-                                style="background-color: #3498db; color: white;">Daftar katekisasi</a>
-                        @endif
+                        <div class="d-flex justify-content-center">
+                            @if ($pernahKatekisasi && !$katekisasiTidakHadir)
+                                <p class="text-danger">Anda sudah terdaftar untuk katekisasi.</p>
+                            @elseif ($katekisasiTidakHadir)
+                                <a href="{{ route('katekisasi.create') }}" class="btn"
+                                    style="background-color: #3498db; color: white;">Daftar katekisasi</a>
+                            @else
+                                <a href="{{ route('katekisasi.create') }}" class="btn"
+                                    style="background-color: #3498db; color: white;">Daftar katekisasi</a>
+                            @endif
+                        </div>
                     </div>
-                </div>
-            @else
-                <div class="d-flex justify-content-center">
-                    <p class="text-danger">Anda harus login terlebih dahulu untuk melakukan pendaftaran katekisasi.</p>
-                </div>
-            @endauth
+                @else
+                    <div class="d-flex justify-content-center">
+                        <p class="text-danger">Anda harus login terlebih dahulu untuk melakukan pendaftaran katekisasi.</p>
+                    </div>
+                @endauth
+            @endif
         </div>
 
     </section><!-- /Starter Section Section -->

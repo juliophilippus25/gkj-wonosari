@@ -104,25 +104,28 @@
                     sakramen gereja secara aktif.</li>
             </ul>
 
-            @auth
-                <div class="d-flex justify-content-center">
+            @if (Auth::user()->role === 'jemaat')
+                @auth
                     <div class="d-flex justify-content-center">
-                        @if ($pernahSidhi && !$sidhiTidakHadir)
-                            <p class="text-danger">Anda sudah terdaftar untuk sidhi/baptis dewasa.</p>
-                        @elseif ($sidhiTidakHadir)
-                            <a href="{{ route('sidhi.create') }}" class="btn"
-                                style="background-color: #3498db; color: white;">Daftar sidhi/baptis dewasa</a>
-                        @else
-                            <a href="{{ route('sidhi.create') }}" class="btn"
-                                style="background-color: #3498db; color: white;">Daftar sidhi/baptis dewasa</a>
-                        @endif
+                        <div class="d-flex justify-content-center">
+                            @if ($pernahSidhi && !$sidhiTidakHadir)
+                                <p class="text-danger">Anda sudah terdaftar untuk sidhi/baptis dewasa.</p>
+                            @elseif ($sidhiTidakHadir)
+                                <a href="{{ route('sidhi.create') }}" class="btn"
+                                    style="background-color: #3498db; color: white;">Daftar sidhi/baptis dewasa</a>
+                            @else
+                                <a href="{{ route('sidhi.create') }}" class="btn"
+                                    style="background-color: #3498db; color: white;">Daftar sidhi/baptis dewasa</a>
+                            @endif
+                        </div>
                     </div>
-                </div>
-            @else
-                <div class="d-flex justify-content-center">
-                    <p class="text-danger">Anda harus login terlebih dahulu untuk melakukan pendaftaran sidhi/baptis dewasa.</p>
-                </div>
-            @endauth
+                @else
+                    <div class="d-flex justify-content-center">
+                        <p class="text-danger">Anda harus login terlebih dahulu untuk melakukan pendaftaran sidhi/baptis dewasa.
+                        </p>
+                    </div>
+                @endauth
+            @endif
         </div>
 
     </section><!-- /Starter Section Section -->

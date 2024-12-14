@@ -103,25 +103,27 @@
                     Katolik dan mengikuti ajaran gereja.</li>
             </ul>
 
-            @auth
-                <div class="d-flex justify-content-center">
+            @if (Auth::user()->role === 'jemaat')
+                @auth
                     <div class="d-flex justify-content-center">
-                        @if ($pernahBaptis && !$baptisTidakHadir)
-                            <p class="text-danger">Anda sudah terdaftar untuk baptis.</p>
-                        @elseif ($baptisTidakHadir)
-                            <a href="{{ route('baptis.create') }}" class="btn"
-                                style="background-color: #3498db; color: white;">Daftar Baptis</a>
-                        @else
-                            <a href="{{ route('baptis.create') }}" class="btn"
-                                style="background-color: #3498db; color: white;">Daftar Baptis</a>
-                        @endif
+                        <div class="d-flex justify-content-center">
+                            @if ($pernahBaptis && !$baptisTidakHadir)
+                                <p class="text-danger">Anda sudah terdaftar untuk baptis.</p>
+                            @elseif ($baptisTidakHadir)
+                                <a href="{{ route('baptis.create') }}" class="btn"
+                                    style="background-color: #3498db; color: white;">Daftar Baptis</a>
+                            @else
+                                <a href="{{ route('baptis.create') }}" class="btn"
+                                    style="background-color: #3498db; color: white;">Daftar Baptis</a>
+                            @endif
+                        </div>
                     </div>
-                </div>
-            @else
-                <div class="d-flex justify-content-center">
-                    <p class="text-danger">Anda harus login terlebih dahulu untuk melakukan pendaftaran baptis.</p>
-                </div>
-            @endauth
+                @else
+                    <div class="d-flex justify-content-center">
+                        <p class="text-danger">Anda harus login terlebih dahulu untuk melakukan pendaftaran baptis.</p>
+                    </div>
+                @endauth
+            @endif
 
         </div>
 

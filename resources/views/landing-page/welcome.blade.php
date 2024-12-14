@@ -171,6 +171,8 @@
                                 </div>
                             </div>
                         </div><!-- End Service Item -->
+                    @elseif($jadwal->isExpired === null)
+                        <p class="text-center text-danger">Belum ada jadwal pelayanan.</p>
                     @endif
                 @empty
                     <p class="text-center text-danger">Belum ada jadwal pelayanan.</p>
