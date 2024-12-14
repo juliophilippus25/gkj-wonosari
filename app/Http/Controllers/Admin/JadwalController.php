@@ -165,4 +165,33 @@ class JadwalController extends Controller
         // Download PDF file with download method
         return $pdf->stream('SURAT_'.$layanan.'_'.$nama.'_'.$tanggal.'_'.'.pdf', compact('pendaftar'));
     }
+
+    public function destroy($id)
+    {
+        $jadwal = Jadwal::findOrFail($id);
+        $pendaftars = collect();
+
+        if (Baptis::where('jadwal_id', $jadwal->id)->exists()) {
+            $pendaftars = Baptis::where('jadwal_id', $jadwal->id)
+                ->where('status_verifikasi', '!=', 'Ditolak')
+                ->get();
+        } elseif (Sidhi::where('jadwal_id', $jadwal->id)->exists()) {
+            $pendaftars = Sidhi::where('jadwal_id', $jadwal->id)
+                ->where('status_verifikasi', '!=', 'Ditolak')
+                ->get();
+        } elseif (Katekisasi::where('jadwal_id', $jadwal->id)->exists()) {
+            $pendaftars = Katekisasi::where('jadwal_id', $jadwal->id)
+                ->where('status_verifikasi', '!=', 'Ditolak')
+                ->get();
+        }
+
+        foreach ($pendaftars as $pendaftar) {
+            $pendaftar->delete();
+        }
+
+        $jadwal->delete();
+
+        toast('Jadwal berhasil dihapus.', 'success')->timerProgressBar()->autoClose(5000);
+        return redirect()->back();
+    }
 }

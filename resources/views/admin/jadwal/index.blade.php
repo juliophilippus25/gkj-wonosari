@@ -56,6 +56,43 @@
                                                 class="btn btn-primary btn-sm">
                                                 <i class="bi bi-eye"></i> Detail
                                             </a>
+                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#destroyModal{{ $jadwal->id }}" title="Hapus">
+                                                <i class="bi bi-trash"></i> Hapus
+                                            </button>
+
+                                            {{-- Modal Delete --}}
+                                            <div class="modal fade" id="destroyModal{{ $jadwal->id }}" tabindex="-1"
+                                                aria-labelledby="destroyModalLabel{{ $jadwal->id }}" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title"
+                                                                id="destroyModalLabel{{ $jadwal->id }}">Konfirmasi
+                                                                Hapus</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Apakah Anda yakin ingin menghapus jadwal pelayanan
+                                                            <strong>{{ $jadwal->layanan->nama }}</strong> di
+                                                            <strong>
+                                                                {{ \Carbon\Carbon::parse($jadwal->tanggal)->isoFormat('dddd, D MMMM YYYY') }}
+                                                                -
+                                                                {{ \Carbon\Carbon::parse($jadwal->jam)->isoFormat('H:mm a') }}
+                                                            </strong>?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <form action="{{ route('jadwal.destroy', $jadwal->id) }}"
+                                                                method="POST" id="destroyForm{{ $jadwal->id }}">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-danger">Hapus</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

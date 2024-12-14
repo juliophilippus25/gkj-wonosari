@@ -12,7 +12,7 @@ class LandingPageController extends Controller
 {
     public function index()
     {
-        $jadwals = Jadwal::all();
+        $jadwals = Jadwal::orderBy('tanggal', 'desc')->get();
 
         foreach ($jadwals as $jadwal) {
             $pendaftarCount = $this->getJumlahPendaftar($jadwal->id);

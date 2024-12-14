@@ -172,7 +172,7 @@
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td class="fw-bold">Serifikasi Katekisasi
+                                                                                <td class="fw-bold">Sertifikasi Katekisasi
                                                                                 </td>
                                                                                 <td>:</td>
                                                                                 <td>
@@ -181,7 +181,7 @@
                                                                                             target="_blank"
                                                                                             class="text-decoration-none">
                                                                                             Lihat
-                                                                                            Serifikasi Katekisasi
+                                                                                            Sertifikasi Katekisasi
                                                                                         </a>
                                                                                     @else
                                                                                         <span class="text-danger">
@@ -279,7 +279,7 @@
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td class="fw-bold">Serifikasi Katekisasi
+                                                                            <td class="fw-bold">Sertifikasi Katekisasi
                                                                             </td>
                                                                             <td>:</td>
                                                                             <td>
@@ -288,7 +288,7 @@
                                                                                         target="_blank"
                                                                                         class="text-decoration-none">
                                                                                         Lihat
-                                                                                        Serifikasi Katekisasi
+                                                                                        Sertifikasi Katekisasi
                                                                                     </a>
                                                                                 @else
                                                                                     <span class="text-danger">
