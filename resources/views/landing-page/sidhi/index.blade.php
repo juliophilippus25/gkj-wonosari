@@ -104,8 +104,8 @@
                     sakramen gereja secara aktif.</li>
             </ul>
 
-            @if (Auth::user()->role === 'jemaat')
-                @auth
+            @auth
+                @if (Auth::user()->role === 'jemaat')
                     <div class="d-flex justify-content-center">
                         <div class="d-flex justify-content-center">
                             @if ($pernahSidhi && !$sidhiTidakHadir)
@@ -124,8 +124,8 @@
                         <p class="text-danger">Anda harus login terlebih dahulu untuk melakukan pendaftaran sidhi/baptis dewasa.
                         </p>
                     </div>
-                @endauth
-            @endif
+                @endif
+            @endauth
         </div>
 
     </section><!-- /Starter Section Section -->

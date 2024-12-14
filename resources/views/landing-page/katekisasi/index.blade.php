@@ -103,8 +103,8 @@
                     gereja dalam kehidupan sehari-hari dan hidup sesuai dengan prinsip iman Katolik.</li>
             </ul>
 
-            @if (Auth::user()->role === 'jemaat')
-                @auth
+            @auth
+                @if (Auth::user()->role === 'jemaat')
                     <div class="d-flex justify-content-center">
                         <div class="d-flex justify-content-center">
                             @if ($pernahKatekisasi && !$katekisasiTidakHadir)
@@ -122,8 +122,8 @@
                     <div class="d-flex justify-content-center">
                         <p class="text-danger">Anda harus login terlebih dahulu untuk melakukan pendaftaran katekisasi.</p>
                     </div>
-                @endauth
-            @endif
+                @endif
+            @endauth
         </div>
 
     </section><!-- /Starter Section Section -->

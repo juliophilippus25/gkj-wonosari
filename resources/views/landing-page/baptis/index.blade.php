@@ -103,8 +103,8 @@
                     Katolik dan mengikuti ajaran gereja.</li>
             </ul>
 
-            @if (Auth::user()->role === 'jemaat')
-                @auth
+            @auth
+                @if (Auth::user()->role === 'jemaat')
                     <div class="d-flex justify-content-center">
                         <div class="d-flex justify-content-center">
                             @if ($pernahBaptis && !$baptisTidakHadir)
@@ -122,8 +122,8 @@
                     <div class="d-flex justify-content-center">
                         <p class="text-danger">Anda harus login terlebih dahulu untuk melakukan pendaftaran baptis.</p>
                     </div>
-                @endauth
-            @endif
+                @endif
+            @endauth
 
         </div>
 
