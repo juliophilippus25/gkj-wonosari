@@ -106,7 +106,7 @@
                                                     data-id="{{ $pendaftar->id }}">
                                                     <i class="bi bi-check"></i> Verifikasi
                                                 </button>
-                                            @elseif($pendaftar->status_kehadiran == 'Hadir')
+                                            @elseif($pendaftar->status_kehadiran == 'Hadir' && $jadwal->layanan->nama !== 'Katekisasi')
                                                 <a href="{{ route('jadwal.pdf', $pendaftar->id) }}"
                                                     class="btn btn-sm btn-primary" target="_blank">
                                                     <i class="bi bi-eye"></i> Unduh {{ $jadwal->layanan->nama }}

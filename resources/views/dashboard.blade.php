@@ -290,7 +290,7 @@
                         </div>
                     </div> <!-- ./col -->
 
-                    <!-- Card untuk Katekisasi -->
+                    {{-- <!-- Card untuk Katekisasi -->
                     <div class="col-lg-4 col-6"> <!-- small box -->
                         <div class="small-box text-bg-warning">
                             <div class="inner">
@@ -319,7 +319,7 @@
                                 </a>
                             @endif
                         </div>
-                    </div> <!-- ./col -->
+                    </div> <!-- ./col --> --}}
                 </div> <!-- /.row -->
 
                 @if ($suratKehadiran != null && !$isTidakHadirKatekisasi)
