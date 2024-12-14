@@ -153,7 +153,7 @@
                                                                                 <td>{{ $jemaat->profilJemaat->ibu }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td class="fw-bold">Akta Bakptis</td>
+                                                                                <td class="fw-bold">Akta Baptis</td>
                                                                                 <td>:</td>
                                                                                 <td>
                                                                                     @if ($jemaat->profilJemaat && $jemaat->profilJemaat->akta_baptis)
@@ -172,7 +172,7 @@
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td class="fw-bold">Sertifikasi Katekisasi
+                                                                                <td class="fw-bold">Kartu Katekisasi
                                                                                 </td>
                                                                                 <td>:</td>
                                                                                 <td>
@@ -181,7 +181,7 @@
                                                                                             target="_blank"
                                                                                             class="text-decoration-none">
                                                                                             Lihat
-                                                                                            Sertifikasi Katekisasi
+                                                                                            Kartu Katekisasi
                                                                                         </a>
                                                                                     @else
                                                                                         <span class="text-danger">
@@ -260,7 +260,7 @@
                                                                             <td>{{ $jemaat->profilJemaat->ibu }}</td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td class="fw-bold">Akta Bakptis</td>
+                                                                            <td class="fw-bold">Akta Baptis</td>
                                                                             <td>:</td>
                                                                             <td>
                                                                                 @if ($jemaat->profilJemaat && $jemaat->profilJemaat->akta_baptis)
@@ -279,7 +279,7 @@
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td class="fw-bold">Sertifikasi Katekisasi
+                                                                            <td class="fw-bold">Kartu Katekisasi
                                                                             </td>
                                                                             <td>:</td>
                                                                             <td>
@@ -288,7 +288,7 @@
                                                                                         target="_blank"
                                                                                         class="text-decoration-none">
                                                                                         Lihat
-                                                                                        Sertifikasi Katekisasi
+                                                                                        Kartu Katekisasi
                                                                                     </a>
                                                                                 @else
                                                                                     <span class="text-danger">

@@ -157,36 +157,6 @@
                 </div>
             </div> <!-- /.row -->
 
-            {{-- <div class="row mt-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            Pendaftar ditolak
-                        </h3>
-                    </div>
-                    <div class="card-body">
-                        <table id="table1" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Nama</th>
-                                    <th>Catatan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($pendaftarDitolaks as $pendaftar)
-                                    <tr>
-                                        <td>{{ $pendaftar->profilJemaat->nama }}</td>
-                                        <td>
-                                            {{ $pendaftar->catatan ?? '-' }}
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div> --}}
-
             <a href="{{ route('jadwal.index') }}" class="btn btn-secondary mt-4">Kembali</a>
 
         </div> <!--end::Container-->

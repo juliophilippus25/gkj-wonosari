@@ -159,7 +159,7 @@ class JadwalController extends Controller
         // Setup PDF
         $pdf = PDF::loadView('admin.jadwal.pdf', compact('pendaftar'));
         $nama = strtoupper(str_replace(' ', '_', $pendaftar->profilJemaat->nama));
-        $layanan = strtoupper(str_replace(' ', '_', $pendaftar->jadwal->layanan->nama));
+        $layanan = strtoupper(preg_replace('/[ \/]/', '_', $pendaftar->jadwal->layanan->nama));
         $tanggal = strtoupper(str_replace(' ', '_', \Carbon\Carbon::parse($pendaftar->jadwal->tanggal)->isoFormat('D_MMMM_Y')));
 
         // Download PDF file with download method

@@ -281,14 +281,14 @@
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td class="fw-bold">Serifikasi Katekisasi</td>
+                                                                        <td class="fw-bold">Kartu Katekisasi</td>
                                                                         <td>:</td>
                                                                         <td>
                                                                             @if ($pendaftar->profilJemaat && $pendaftar->profilJemaat->katekisasi)
                                                                                 <a href="{{ asset('storage/' . $pendaftar->profilJemaat->katekisasi) }}"
                                                                                     target="_blank"
                                                                                     class="text-decoration-none"> Lihat
-                                                                                    Serifikasi Katekisasi
+                                                                                    Kartu Katekisasi
                                                                                 </a>
                                                                             @else
                                                                                 <span class="text-danger">
