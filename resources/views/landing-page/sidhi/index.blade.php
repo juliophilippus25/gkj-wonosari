@@ -119,12 +119,12 @@
                             @endif
                         </div>
                     </div>
-                @else
-                    <div class="d-flex justify-content-center">
-                        <p class="text-danger">Anda harus login terlebih dahulu untuk melakukan pendaftaran sidhi/baptis dewasa.
-                        </p>
-                    </div>
                 @endif
+            @else
+                <div class="d-flex justify-content-center">
+                    <p class="text-danger">Anda harus login terlebih dahulu untuk melakukan pendaftaran sidhi/baptis dewasa.
+                    </p>
+                </div>
             @endauth
         </div>
 
