@@ -70,4 +70,12 @@ class PendetaController extends Controller
         toast('Pendeta berhasil ditambahkan.','success')->timerProgressBar()->autoClose(5000);
         return redirect()->route('pendeta.index');
     }
+
+    public function destroy($id){
+        $pendeta = User::findOrFail($id);
+        $pendeta->delete();
+
+        toast('Pendeta berhasil dihapus.','success')->timerProgressBar()->autoClose(5000);
+        return redirect()->back();
+    }
 }

@@ -42,6 +42,7 @@ Route::middleware(['role:admin', 'verified'])->group(function () {
         Route::get('/', [App\Http\Controllers\Admin\PendetaController::class, 'index'])->name('pendeta.index');
         Route::get('/tambah', [App\Http\Controllers\Admin\PendetaController::class, 'create'])->name('pendeta.create');
         Route::post('/post', [App\Http\Controllers\Admin\PendetaController::class, 'store'])->name('pendeta.store');
+        Route::delete('/{id}', [App\Http\Controllers\Admin\PendetaController::class, 'destroy'])->name('pendeta.destroy');
     });
 
     Route::prefix('/jadwal')->group(function () {
