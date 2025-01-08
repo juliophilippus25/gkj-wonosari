@@ -18,6 +18,8 @@ class Baptis extends Model
         'jadwal_id',
         'status_verifikasi',
         'status_kehadiran',
+        'status_bersedia',
+        'status_snk',
         'catatan',
     ];
 

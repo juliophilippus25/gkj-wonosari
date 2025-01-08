@@ -122,6 +122,21 @@
                                                                 </tbody>
                                                             </table>
 
+                                                            <div class="alert alert-info">
+                                                                <p>
+                                                                    <b>{{ $pendaftar->profilJemaat->nama }}</b> telah
+                                                                    bersedia
+                                                                    mengikuti
+                                                                    <b>{{ $jadwal->layanan->nama }}</b> pada
+                                                                    tanggal
+                                                                    <b>{{ \Carbon\Carbon::parse($jadwal->tanggal)->isoFormat('D MMMM YYYY') }}</b>
+                                                                    pukul
+                                                                    <b>{{ \Carbon\Carbon::parse($jadwal->waktu)->isoFormat('HH:mm') }}</b>
+                                                                    dan telah membaca dan menyetujui
+                                                                    <b>Syarat & Ketentuan</b>.
+                                                                </p>
+                                                            </div>
+
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-danger"

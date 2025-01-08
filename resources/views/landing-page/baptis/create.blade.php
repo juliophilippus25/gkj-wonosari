@@ -183,12 +183,42 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <button type="submit" class="btn"
-                            style="background-color: #3498db; color: white;">Daftar</button>
+                        <div class="mb-4">
+                            <div>
+                                <input type="checkbox" name="status_bersedia" id="status_bersedia"
+                                    {{ old('status_bersedia') ? 'checked' : '' }}>
+                                <label for="status_bersedia">Saya bersedia</label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" name="status_snk" id="status_snk"
+                                    {{ old('status_snk') ? 'checked' : '' }}>
+                                <label for="status_snk">Saya telah membaca dan menyetujui Syarat & Ketentuan</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn" id="submit_button"
+                            style="background-color: #3498db; color: white;" disabled>Daftar</button>
                     </form>
                 </div>
             </div>
         </div>
 
     </section><!-- /Starter Section Section -->
+
+    <script>
+        document.getElementById('status_bersedia').addEventListener('change', toggleSubmitButton);
+        document.getElementById('status_snk').addEventListener('change', toggleSubmitButton);
+
+        function toggleSubmitButton() {
+            const statusBersedia = document.getElementById('status_bersedia').checked;
+            const statusSnk = document.getElementById('status_snk').checked;
+            const submitButton = document.getElementById('submit_button');
+
+            if (statusBersedia && statusSnk) {
+                submitButton.disabled = false;
+            } else {
+                submitButton.disabled = true;
+            }
+        }
+    </script>
 @endsection

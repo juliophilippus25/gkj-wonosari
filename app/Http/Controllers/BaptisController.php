@@ -15,6 +15,12 @@ class BaptisController extends Controller
     public function index(){
         $jemaatId = Auth::id();
 
+        $getSuratBaptis = $this->getSuratBaptis();
+
+        $diprosesBaptis = Baptis::where('jemaat_id', $jemaatId)
+            ->whereIn('status_verifikasi', ['Diproses', 'Disetujui'])
+            ->first();
+
         $pernahBaptis = Baptis::where('jemaat_id', $jemaatId)
                               ->where('status_verifikasi', '!=', 'Ditolak')
                               ->first();
@@ -24,7 +30,7 @@ class BaptisController extends Controller
                                   ->orderBy('created_at', 'desc')
                                   ->first();
 
-        return view('landing-page.baptis.index', compact('pernahBaptis', 'baptisTidakHadir'));
+        return view('landing-page.baptis.index', compact('pernahBaptis', 'baptisTidakHadir', 'getSuratBaptis', 'diprosesBaptis'));
     }
 
     public function create(){
@@ -38,7 +44,9 @@ class BaptisController extends Controller
         $validator = Validator::make($request->all(), [
             'nik' => 'nullable|numeric|digits:16',
             'jemaat_id' => 'required',
-            'jadwal_id' => 'required'
+            'jadwal_id' => 'required',
+            'status_bersedia' => 'accepted',
+            'status_snk' => 'accepted',
         ], [
             'nik.numeric' => 'NIK harus berupa angka.',
             'nik.digits' => 'NIK harus memiliki 16 angka.',
@@ -51,6 +59,9 @@ class BaptisController extends Controller
             toast('Gagal mendaftar baptis.','error')->timerProgressBar()->autoClose(5000);
             return redirect()->back()->withErrors($validator)->withInput();
         }
+
+        $status_bersedia = $request->has('status_bersedia');
+        $status_snk = $request->has('status_snk');
 
         $jemaatId = $request->jemaat_id;
         $pernahBaptis = Baptis::where('jemaat_id', $jemaatId)
@@ -82,10 +93,23 @@ class BaptisController extends Controller
         Baptis::create([
             'id' => strtoupper(md5("!@#!@#" . Carbon::now()->format('YmdH:i:s'))),
             'jemaat_id' => $jemaatId,
-            'jadwal_id' => $request->jadwal_id
+            'jadwal_id' => $request->jadwal_id,
+            'status_bersedia' => $status_bersedia,
+            'status_snk' => $status_snk
         ]);
 
         toast('Berhasil mendaftar baptis.','success')->timerProgressBar()->autoClose(5000);
         return redirect()->route('baptis');
+    }
+
+    private function getSuratBaptis(){
+        $jemaatId = Auth::user()->id;
+
+        $suratBaptis = Baptis::where('jemaat_id', $jemaatId)
+            ->where('status_verifikasi', 'Disetujui')
+            ->where('status_kehadiran', 'Hadir')
+            ->first();
+
+        return $suratBaptis;
     }
 }

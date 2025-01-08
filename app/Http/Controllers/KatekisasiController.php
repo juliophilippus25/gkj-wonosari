@@ -22,7 +22,14 @@ class KatekisasiController extends Controller
             ->orderBy('created_at', 'desc')
             ->first();
 
-        return view('landing-page.katekisasi.index', compact('pernahKatekisasi', 'katekisasiTidakHadir'));
+        $suratKehadiran = Katekisasi::where('jemaat_id', $jemaatId)
+        ->where('status_verifikasi', 'Disetujui')
+        ->orderBy('created_at', 'desc')
+        ->first();
+
+        $isTidakHadirKatekisasi = $katekisasiTidakHadir ? true : false;
+
+        return view('landing-page.katekisasi.index', compact('pernahKatekisasi', 'katekisasiTidakHadir', 'isTidakHadirKatekisasi', 'suratKehadiran'));
     }
 
     public function create(){

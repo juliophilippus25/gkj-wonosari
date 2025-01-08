@@ -36,10 +36,16 @@
                             </span> <i class="bi bi-chevron-down toggle-dropdown"></i>
                         </a>
                         <ul>
-                            <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                            <li><a href="{{ route('logout') }}"
+                            <li>
+                                @if (auth()->user()->role !== 'jemaat')
+                                    <a href="{{ route('dashboard') }}">Dashboard</a>
+                                @endif
+                            </li>
+                            <li>
+                                <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
-                                      document.getElementById('logout-form').submit();">Logout</a>
+                              document.getElementById('logout-form').submit();">Logout
+                                </a>
                             </li>
                         </ul>
                     </li>

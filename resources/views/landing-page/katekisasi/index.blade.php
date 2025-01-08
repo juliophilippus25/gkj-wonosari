@@ -103,12 +103,37 @@
                     gereja dalam kehidupan sehari-hari dan hidup sesuai dengan prinsip iman Katolik.</li>
             </ul>
 
+            @if ($isTidakHadirKatekisasi)
+                <p class="text-danger text-center">
+                    Anda tidak hadir pada katekisasi
+                    <strong>{{ \Carbon\Carbon::parse($katekisasiTidakHadir->jadwal->tanggal)->isoFormat('D MMMM YYYY') }}</strong>.
+                    Silahkan mendaftar
+                    pada periode berikutnya.
+                </p>
+            @endif
+
             @auth
                 @if (Auth::user()->role === 'jemaat')
                     <div class="d-flex justify-content-center">
                         <div class="d-flex justify-content-center">
                             @if ($pernahKatekisasi && !$katekisasiTidakHadir)
-                                <p class="text-danger">Anda sudah terdaftar untuk katekisasi.</p>
+                                <div class="flex flex-col">
+                                    <p class="text-danger text-center">Anda sudah terdaftar untuk sidhi/baptis dewasa.</p>
+                                    <div class="alert alert-info">
+                                        <p>
+                                            Silahkan kembali ke halaman ini jika Anda sudah terverifikasi untuk mengunduh kartu
+                                            kehadiran katekisasi.
+                                        </p>
+
+                                        @if ($suratKehadiran != null && !$isTidakHadirKatekisasi)
+                                            <p>
+                                                <a href="{{ route('kartuKehadiranPDF', Auth::user()->id) }}" target="_blank"
+                                                    class="link-underline">Unduh kartu kehadiran katekisasi <i
+                                                        class="bi bi-download"></i></a>
+                                            </p>
+                                        @endif
+                                    </div>
+                                </div>
                             @elseif ($katekisasiTidakHadir)
                                 <a href="{{ route('katekisasi.create') }}" class="btn"
                                     style="background-color: #3498db; color: white;">Daftar katekisasi</a>

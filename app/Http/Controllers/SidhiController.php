@@ -16,6 +16,13 @@ class SidhiController extends Controller
     public function index()
     {
         $jemaatId = Auth::id();
+
+        $getSuratSidhi = $this->getSuratSidhi();
+
+        $diprosesSidhi = Sidhi::where('jemaat_id', $jemaatId)
+        ->whereIn('status_verifikasi', ['Diproses', 'Disetujui'])
+        ->first();
+
         $pernahSidhi = Sidhi::where('jemaat_id', $jemaatId)->where('status_verifikasi', '!=', 'ditolak')->first();
 
         $sidhiTidakHadir = Sidhi::where('jemaat_id', $jemaatId)
@@ -23,7 +30,7 @@ class SidhiController extends Controller
         ->orderBy('created_at', 'desc')
         ->first();
 
-        return view('landing-page.sidhi.index', compact('pernahSidhi', 'sidhiTidakHadir'));
+        return view('landing-page.sidhi.index', compact('pernahSidhi', 'sidhiTidakHadir', 'getSuratSidhi', 'diprosesSidhi'));
     }
 
     public function create(){
@@ -131,4 +138,16 @@ class SidhiController extends Controller
         toast('Berhasil mendaftar sidhi/baptis dewasa.','success')->timerProgressBar()->autoClose(5000);
         return redirect()->route('sidhi');
     }
+
+    private function getSuratSidhi(){
+        $jemaatId = Auth::user()->id;
+
+        $suratSidhi = Sidhi::where('jemaat_id', $jemaatId)
+            ->where('status_verifikasi', 'Disetujui')
+            ->where('status_kehadiran', 'Hadir')
+            ->first();
+
+        return $suratSidhi;
+    }
+
 }

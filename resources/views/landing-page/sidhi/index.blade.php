@@ -109,7 +109,28 @@
                     <div class="d-flex justify-content-center">
                         <div class="d-flex justify-content-center">
                             @if ($pernahSidhi && !$sidhiTidakHadir)
-                                <p class="text-danger">Anda sudah terdaftar untuk sidhi/baptis dewasa.</p>
+                                <div class="flex flex-col">
+                                    <p class="text-danger text-center">Anda sudah terdaftar untuk sidhi/baptis dewasa.</p>
+                                    <div class="alert alert-info">
+                                        <p>
+                                            Silahkan kembali ke halaman ini jika Anda sudah mengikuti dan hadir untuk
+                                            sidhi/baptis dewasa
+                                            akan
+                                            terdapat sertifikat/kartu yang dapat diunduh.
+                                        </p>
+
+                                        @if ($getSuratSidhi === null)
+                                            @if ($diprosesSidhi)
+                                                <b>Status verifikasi: Menunggu verifikasi</b>
+                                            @endif
+                                        @else
+                                            <a href="{{ route('jadwal.pdf', $getSuratSidhi->id) }}" class="link-underline"
+                                                target="_blank">
+                                                Unduh sertifikat/kartu sidhi/baptis dewasa <i class="bi bi-download"></i>
+                                            </a>
+                                        @endif
+                                    </div>
+                                </div>
                             @elseif ($sidhiTidakHadir)
                                 <a href="{{ route('sidhi.create') }}" class="btn"
                                     style="background-color: #3498db; color: white;">Daftar sidhi/baptis dewasa</a>
