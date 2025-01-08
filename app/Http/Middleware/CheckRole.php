@@ -23,6 +23,10 @@ class CheckRole
         $userRole = Auth::user()->role;
 
         if (!in_array($userRole, $roles)) {
+            if($userRole == 'jemaat') {
+                toast('Anda tidak memiliki akses ke halaman ini.', 'error')->timerProgressBar()->autoClose(5000);
+                return redirect()->route('home');
+            }
             toast('Anda tidak memiliki akses ke halaman ini.', 'error')->timerProgressBar()->autoClose(5000);
             return redirect()->route('dashboard');
         }
